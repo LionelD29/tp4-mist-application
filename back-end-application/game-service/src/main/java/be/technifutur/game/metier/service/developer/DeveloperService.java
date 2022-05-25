@@ -11,13 +11,13 @@ public interface DeveloperService {
 
     List<DeveloperDTO> getDevelopers();
 
-    DeveloperDTO getDeveloperByUUID(UUID reference);
+    DeveloperDTO getDeveloperByReference(UUID reference);
 
     DeveloperDTO getDeveloperByName(String name);
 
     DeveloperDTO insertDeveloper(DeveloperForm developerForm);
 
-    DeveloperDTO updateDeveloper(DeveloperForm developerForm);
+    DeveloperDTO updateDeveloper(UUID reference, DeveloperForm developerForm);
 
     DeveloperDTO deleteDeveloper(UUID reference);
 }

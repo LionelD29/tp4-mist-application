@@ -2,6 +2,7 @@ package be.technifutur.game.metier.mapper;
 
 import be.technifutur.game.models.dto.DeveloperDTO;
 import be.technifutur.game.models.entities.Developer;
+import be.technifutur.game.models.forms.DeveloperForm;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,15 +21,13 @@ public class DeveloperMapper {
                 .build();
     }
 
-//    public Developer formToEntity(DeveloperForm form) {
-//        if (form == null) {
-//            return null;
-//        }
-//
-//        return Developer.builder()
-//                .name(form.getName())
-//                .parentCompany(form.getParentCompany())
-//                .creationDate(form.getCreationDate())
-//                .build();
-//    }
+    public Developer formToEntity(DeveloperForm form) {
+        if (form == null) {
+            return null;
+        }
+
+        return Developer.builder()
+                .name(form.getName())
+                .build();
+    }
 }

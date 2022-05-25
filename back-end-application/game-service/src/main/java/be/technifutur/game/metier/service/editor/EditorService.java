@@ -10,13 +10,13 @@ public interface EditorService {
 
     List<EditorDTO> getDevelopers();
 
-    EditorDTO getEditorByUUID(UUID reference);
+    EditorDTO getEditorByReference(UUID reference);
 
     EditorDTO getEditorByName(String name);
 
     EditorDTO insertEditor(EditorForm editorForm);
 
-    EditorDTO updateEditor(EditorForm editorForm);
+    EditorDTO updateEditor(UUID reference, EditorForm editorForm);
 
     EditorDTO deleteEditor(UUID reference);
 }
