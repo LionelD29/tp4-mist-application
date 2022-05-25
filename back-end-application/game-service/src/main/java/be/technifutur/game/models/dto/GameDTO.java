@@ -22,7 +22,6 @@ public class GameDTO {
     @Data
     @AllArgsConstructor
     public static class DeveloperDTO{
-        private Long id;
         private UUID reference;
         private String name;
     }
@@ -30,7 +29,6 @@ public class GameDTO {
     @Data
     @AllArgsConstructor
     public static class EditorDTO{
-        private Long id;
         private UUID reference;
         private String name;
     }
