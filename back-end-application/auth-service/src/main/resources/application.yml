@@ -1,5 +1,21 @@
+server:
+  port: 8181
+application:
+  jwt:
+    header: 'Authorization'
+    prefix: 'Bearer '
+    expires-at: 86400000
+    secret: 'mpd!ZAtzpf4dv$r-6f-nWbWw9sPkN##e'
 spring:
   application:
     name: auth-service
   config:
     import: configserver:http://user:pass@localhost:9999
+  datasource:
+    url: jdbc:h2:mem:user_account_db
+    username: user
+    password: pass
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
