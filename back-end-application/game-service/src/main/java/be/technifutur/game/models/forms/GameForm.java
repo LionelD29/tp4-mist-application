@@ -23,6 +23,7 @@ public class GameForm {
     @Data
     @AllArgsConstructor
     public static class Developer {
+        private Long id;
         private UUID reference;
         private String name;
     }
@@ -30,6 +31,7 @@ public class GameForm {
     @Data
     @AllArgsConstructor
     public static class Editor {
+        private Long id;
         private UUID reference;
         private String name;
     }

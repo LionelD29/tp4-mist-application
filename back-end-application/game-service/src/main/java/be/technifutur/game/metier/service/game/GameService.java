@@ -16,7 +16,7 @@ public interface GameService {
 
     GameDTO insertGame(GameForm gameForm);
 
-    GameDTO updateGame(GameForm gameForm);
+    GameDTO updateGame(UUID reference, GameForm gameForm);
 
     GameDTO deleteGame(UUID reference);
 
