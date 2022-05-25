@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          uri: http://github.com/LionelD29/tp4-mist-config-server.git
+          uri: https://github.com/LionelD29/tp4-mist-config-server.git
           clone-on-start: true
           default-label: main
   security:
