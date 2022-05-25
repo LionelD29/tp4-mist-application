@@ -1,10 +1,10 @@
 AUTH SERVICE - REST API
 =======================
 
-BASE_URL: http://localhost:<port>/auth
+BASE_URL: http://localhost:8181/auth
 
-no auth:       POST   - /signIn          --> public String signIn(@RequestBody SignInForm form) (returns a JWT)
-no auth:       POST   - /signUp          --> public String signUp(@RequestBody SignUpForm form) (returns a JWT) ** // sign up and login
+no auth:       POST   - /sign-in          --> public String signIn(@RequestBody SignInForm form) (returns a JWT)
+no auth:       POST   - /sign-up          --> public String signUp(@RequestBody SignUpForm form) (returns a JWT) ** // sign up and login
 authenticated: GET    - /user/roles      --> public SimpleUserDTO getUserRoles(Authentication auth)
 authenticated: GET    - /user/account    --> public UserDTO getUserAccount(Authentication auth)
 authenticated: PUT    - /user/update     --> public void updateUserAccount(@RequestBody SignUpForm form)
