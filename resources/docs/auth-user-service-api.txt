@@ -1,0 +1,50 @@
+AUTH SERVICE - REST API
+=======================
+
+BASE_URL: http://localhost:<port>/auth
+
+no auth:       POST   - /signIn          --> public String signIn(@RequestBody SignInForm form) (returns a JWT)
+no auth:       POST   - /signUp          --> public String signUp(@RequestBody SignUpForm form) (returns a JWT) ** // sign up and login
+authenticated: GET    - /user/roles      --> public SimpleUserDTO getUserRoles(Authentication auth)
+authenticated: GET    - /user/account    --> public UserDTO getUserAccount(Authentication auth)
+authenticated: PUT    - /user/update     --> public void updateUserAccount(@RequestBody SignUpForm form)
+admin:         PATCH  - /user/toggle     --> public void toggleUserAccount(@RequestParam UUID ref) // pass boolean 'active' to false/true
+
+-----------------------------
+SimpleUserDTO:
+ - ref: UUID
+ - roles: List<String>
+
+-----------------------------
+UserDTO:
+ - ref: UUID
+ - username: String
+ - password: String
+ - email: String
+ 
+ 
+///////////////////////////
+ 
+USER SERVICE - REST API
+=======================
+
+BASE_URL: http://localhost:<port>/user
+
+no auth:       POST   - /add                    --> public void createUser(@RequestBody UserForm form) **
+authenticated: PUT    - /update                 --> public void updateUserInfo(Authentication auth, @RequestBody UserForm form)
+authenticated: GET    - /details                --> public UserDTO getUserInfo(Authentication auth) // auth.getPrincipal() should return the user ref (UUID)
+authenticated: GET    - /billing-address        --> public List<BillingAddressDTO> getUserBillingAddresses(Authentication auth)
+authenticated: POST   - /billing-address/add    --> public void addBillingAddress(Authentication auth, @RequestBody BillingAddressForm form)
+authenticated: DELETE - /billing-address/delete --> public void deleteBillingAddress(Authentication auth, @RequestParam Long addressId)
+authenticated: GET    - /wishlist               --> public List<GameDTO> getUserWishlist(Authentication auth)
+authenticated: POST   - /wishlist/add           --> public void addGameToWishlist(Authentication auth, @RequestBody GameForm form)
+authenticated: DELETE - /wishlist/delete        --> public void deleteGameFromWishlist(Authentication auth, @RequestParam UUID gameRef)
+
+
+//////////////////////////
+
+**: communication from auth-service to user-service with RabbitMQ
+
+
+
+

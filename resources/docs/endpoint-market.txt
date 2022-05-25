@@ -1,0 +1,11 @@
+MARKET-SERVICE 
+==============
+
+Base url : http://localhost:<port>/market 
+
+not auth - GET     --> /check/{gameRef}  --> checkGameStockByGameInfo(ref:UUID) : Boolean 
+not auth - GET     --> /{gameRef}        --> getPriceByGameInfo(ref:UUID) : MarketDTO 
+
+admin    - DELETE  --> /{gameRef}        --> deleteByGameInfo(ref:UUID) : void
+admin    - PATCH   --> /{gameRef}        --> updateByGameInfo(ref:UUID, @RequestBody form : MarketForm) : void
+admin    - POST    --> /add              --> addGame(@RequestBody game : MarketDTO) : MarketDTO 

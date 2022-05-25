@@ -1,0 +1,19 @@
+ORDER SERVICE
+=============
+
+BASE_URL: http://localhost:<port>/orders
+
+// L'utilisateur veut passer une commande
+. POST		- /add			-->	+ placeOrder(Authentication auth, orderForm: OrderForm): OrderDTO
+
+// L'utilisateur veut récupérer son historique de commande
+. GET		- 			-->	+ getOrdersByUser(Authentication auth): List<OrderDTO>
+
+// L'utilisateur veut récupérer une commande
+. GET		- /{orderId}		-->	+ getOrderById(Authentication auth, orderId: Long): OrderDTO
+
+// L'utilisateur veut modifier une commande
+. PATCH		- /{orderId}/update	-->	+ updateOrderById(Authentication auth, orderId: Long, numberOfSameGame: int): OrderDTO
+
+// L'utilisateur veut supprimer une commande
+. DELETE	- /{orderId}		-->	+ deleteOrderById(Authentication auth, orderId: Long): void
