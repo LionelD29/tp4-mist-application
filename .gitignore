@@ -1,4 +1,5 @@
 # Default ignored files
 /shelf/
+/.idea
 /back-end-application/.idea/
 /back-end-application/*/target/
