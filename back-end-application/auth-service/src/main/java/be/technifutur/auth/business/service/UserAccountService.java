@@ -29,10 +29,7 @@ public class UserAccountService implements UserDetailsService {
     }
 
     public void toggleUserAccount(UUID userRef) {
-        UserAccount account = userAccountRepository.findByRef(userRef)
-                .orElseThrow(
-                        () -> new UsernameNotFoundException("There is no user with ref " + userRef)
-                );
+        UserAccount account = findUserAccountByRef(userRef);
         account.setAccountActive(!account.isAccountActive()); // toggle 'active' boolean
         userAccountRepository.save(account);
     }
@@ -41,6 +38,13 @@ public class UserAccountService implements UserDetailsService {
         return userAccountRepository.findByEmail(email)
                 .orElseThrow(
                         () -> new UsernameNotFoundException("There is no user with the email " + email)
+                );
+    }
+
+    private UserAccount findUserAccountByRef(UUID userRef) {
+        return userAccountRepository.findByRef(userRef)
+                .orElseThrow(
+                        () -> new UsernameNotFoundException("There is no user with ref " + userRef)
                 );
     }
 }
