@@ -1,26 +1,26 @@
 package be.technifutur.order.business.mapper;
 
 import be.technifutur.order.model.dto.OrderDTO;
-import be.technifutur.order.model.entity.Order;
+import be.technifutur.order.model.entity.OnlineOrder;
 import be.technifutur.order.model.form.OrderForm;
 import org.springframework.stereotype.Service;
 
 @Service
 public class OrderMapper {
 
-    public Order formToEntity(OrderForm form) {
+    public OnlineOrder formToEntity(OrderForm form) {
         if (form == null) {
             return null;
         }
 
-        return Order.builder()
+        return OnlineOrder.builder()
                 .buyer_name(form.getBuyer_name())
                 .shipping_address(form.getShipping_address())
                 .gamesToOrder(form.getGamesToOrder())
                 .build();
     }
 
-    public OrderDTO entityToDTO(Order entity) {
+    public OrderDTO entityToDTO(OnlineOrder entity) {
         if (entity == null) {
             return null;
         }

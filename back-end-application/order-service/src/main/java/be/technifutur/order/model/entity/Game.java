@@ -24,6 +24,6 @@ public class Game {
 
     // GAME-ORDER ENTITIES RELATIONSHIP
     @ManyToMany(mappedBy = "gamesToOrder")
-    private List<Order> orders;
+    private List<OnlineOrder> onlineOrders;
 
 }

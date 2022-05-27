@@ -12,8 +12,8 @@ import java.util.UUID;
 @Getter @Setter
 @Builder
 @Entity
-@Table(name = "order")
-public class Order {
+@Table(name = "online_order")
+public class OnlineOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
