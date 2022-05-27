@@ -3,10 +3,8 @@ package be.technifutur.auth.controller;
 import be.technifutur.auth.business.service.SignInService;
 import be.technifutur.auth.model.form.SignInForm;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -20,6 +18,12 @@ public class AuthController {
     @PostMapping("/sign-in")
     public String signIn(@Valid @RequestBody SignInForm form) {
         return signInService.signIn(form);
+    }
+
+    @GetMapping("/test")
+    @PreAuthorize("isAuthenticated()")
+    public String test() {
+        return "it works!";
     }
 
 }
