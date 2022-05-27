@@ -42,7 +42,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 if (jwt.getExpiresAt() != null && jwt.getExpiresAt().after(new Date())) {
                     Authentication auth = new UsernamePasswordAuthenticationToken(
                             jwt.getSubject(),
-                            null,
+                            "",
                             jwt.getClaim("roles")
                                     .asList(String.class)
                                     .stream()

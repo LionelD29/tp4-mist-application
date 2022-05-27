@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/auth")
@@ -28,6 +29,12 @@ public class AuthController {
     @PreAuthorize("isAuthenticated()")
     public SimpleUserAccountDTO getUserRoles(Authentication auth) {
         return userAccountService.getUserRoles((String) auth.getPrincipal());
+    }
+
+    @PatchMapping("/toggle")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void toggleUserAccount(@RequestParam String userRef) {
+        userAccountService.toggleUserAccount(UUID.fromString(userRef));
     }
 
 }

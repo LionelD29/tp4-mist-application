@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @AllArgsConstructor
 public class UserAccountService implements UserDetailsService {
@@ -24,6 +26,15 @@ public class UserAccountService implements UserDetailsService {
 
     public SimpleUserAccountDTO getUserRoles(String email) {
         return userAccountMapper.entityToDTO(findUserAccountByEmail(email));
+    }
+
+    public void toggleUserAccount(UUID userRef) {
+        UserAccount account = userAccountRepository.findByRef(userRef)
+                .orElseThrow(
+                        () -> new UsernameNotFoundException("There is no user with ref " + userRef)
+                );
+        account.setAccountActive(!account.isAccountActive()); // toggle 'active' boolean
+        userAccountRepository.save(account);
     }
 
     private UserAccount findUserAccountByEmail(String email) {
