@@ -1,6 +1,7 @@
 package be.technifutur.order.model.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Entity
+@Builder
 public class Game {
 
     @Id
@@ -23,7 +25,7 @@ public class Game {
     private UUID gameReference;
 
     // GAME-ORDER ENTITIES RELATIONSHIP
-    @ManyToMany(mappedBy = "gamesToOrder")
-    private List<OnlineOrder> onlineOrders;
+    @ManyToMany(mappedBy = "games")
+    private List<Order> orders;
 
 }

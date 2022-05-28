@@ -3,10 +3,7 @@ package be.technifutur.order.model.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PositiveOrZero;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -17,7 +14,7 @@ import java.util.UUID;
 @Builder
 @Entity
 @Table(name = "online_order")
-public class OnlineOrder {
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,15 +25,15 @@ public class OnlineOrder {
     @Column(nullable = false, unique = true)
     private UUID userRef;
 
-    @NotBlank(message = "Buyer name must not be blank")
-    @Size(max = 50, message = "Buyer name must be 50 characters at maximum")
-    @Column(nullable = false, length = 50)
-    private String buyerName;
+//    @NotBlank(message = "Buyer name must not be blank")
+//    @Size(max = 50, message = "Buyer name must be 50 characters at maximum")
+//    @Column(nullable = false, length = 50)
+//    private String buyerName;
 
-    @NotBlank(message = "Shipping address must not be blank")
-    @Size(max = 50, message = "Shipping address must be 100 characters at maximum")
+    @NotBlank(message = "Billing address must not be blank")
+    @Size(max = 50, message = "Billing address must be 100 characters at maximum")
     @Column(nullable = false, length = 100)
-    private String shippingAddress;
+    private String billingAddress;
 
     @PositiveOrZero(message = "Total price must not be negative")
     private int totalPrice;
@@ -50,6 +47,6 @@ public class OnlineOrder {
 
     // ORDER-GAME ENTITIES RELATIONSHIP
     @ManyToMany
-    private List<Game> gamesToOrder;
+    private List<Game> games;
 
 }
