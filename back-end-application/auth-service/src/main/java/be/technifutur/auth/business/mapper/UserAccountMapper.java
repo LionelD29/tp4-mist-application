@@ -1,6 +1,7 @@
 package be.technifutur.auth.business.mapper;
 
 import be.technifutur.auth.model.dto.SimpleUserAccountDTO;
+import be.technifutur.auth.model.dto.UserAccountDTO;
 import be.technifutur.auth.model.entity.UserAccount;
 import be.technifutur.auth.model.form.SignUpForm;
 import lombok.AllArgsConstructor;
@@ -16,13 +17,25 @@ public class UserAccountMapper {
 
     private final PasswordEncoder encoder;
 
-    public SimpleUserAccountDTO entityToDTO(UserAccount entity) {
+    public SimpleUserAccountDTO entityToSimpleUserAccountDTO(UserAccount entity) {
         if (entity == null)
             return null;
 
         return SimpleUserAccountDTO.builder()
                 .ref(entity.getRef())
                 .roles(entity.getRoles())
+                .build();
+    }
+
+    public UserAccountDTO entityToUserAccountDTO(UserAccount entity) {
+        if (entity == null)
+            return null;
+
+        return UserAccountDTO.builder()
+                .ref(entity.getRef())
+                .username(entity.getUsername())
+                .password(entity.getPassword())
+                .email(entity.getEmail())
                 .build();
     }
 

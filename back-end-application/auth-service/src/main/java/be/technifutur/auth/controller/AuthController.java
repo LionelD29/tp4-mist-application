@@ -3,6 +3,7 @@ package be.technifutur.auth.controller;
 import be.technifutur.auth.business.service.SignInService;
 import be.technifutur.auth.business.service.UserAccountService;
 import be.technifutur.auth.model.dto.SimpleUserAccountDTO;
+import be.technifutur.auth.model.dto.UserAccountDTO;
 import be.technifutur.auth.model.form.SignInForm;
 import be.technifutur.auth.model.form.SignUpForm;
 import lombok.AllArgsConstructor;
@@ -37,6 +38,12 @@ public class AuthController {
     @PreAuthorize("isAuthenticated()")
     public SimpleUserAccountDTO getUserRoles(Authentication auth) {
         return userAccountService.getUserRoles((String) auth.getPrincipal());
+    }
+
+    @GetMapping("/account")
+    @PreAuthorize("isAuthenticated()")
+    public UserAccountDTO getUserAccount(Authentication auth) {
+        return userAccountService.getUserAccount((String) auth.getPrincipal());
     }
 
     @PatchMapping("/toggle")
