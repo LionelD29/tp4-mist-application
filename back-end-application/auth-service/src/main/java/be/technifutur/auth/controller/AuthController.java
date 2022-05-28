@@ -4,6 +4,7 @@ import be.technifutur.auth.business.service.SignInService;
 import be.technifutur.auth.business.service.UserAccountService;
 import be.technifutur.auth.model.dto.SimpleUserAccountDTO;
 import be.technifutur.auth.model.form.SignInForm;
+import be.technifutur.auth.model.form.SignUpForm;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -23,6 +24,13 @@ public class AuthController {
     @PostMapping("/sign-in")
     public String signIn(@Valid @RequestBody SignInForm form) {
         return signInService.signIn(form);
+    }
+
+    @PostMapping("/sign-up")
+    public String signUp(@Valid @RequestBody SignUpForm form) {
+        userAccountService.addUserAccount(form);
+        SignInForm signInForm = new SignInForm(form.getEmail(), form.getPassword());
+        return signInService.signIn(signInForm);
     }
 
     @GetMapping("/roles")

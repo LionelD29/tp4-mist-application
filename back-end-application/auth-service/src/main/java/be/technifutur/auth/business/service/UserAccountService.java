@@ -3,6 +3,7 @@ package be.technifutur.auth.business.service;
 import be.technifutur.auth.business.mapper.UserAccountMapper;
 import be.technifutur.auth.model.dto.SimpleUserAccountDTO;
 import be.technifutur.auth.model.entity.UserAccount;
+import be.technifutur.auth.model.form.SignUpForm;
 import be.technifutur.auth.repository.UserAccountRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -46,5 +47,11 @@ public class UserAccountService implements UserDetailsService {
                 .orElseThrow(
                         () -> new UsernameNotFoundException("There is no user with ref " + userRef)
                 );
+    }
+
+    public void addUserAccount(SignUpForm form) {
+        UserAccount userAccount = userAccountMapper.formToEntity(form);
+        userAccountRepository.save(userAccount);
+        // TODO: Send a message to RabbitMQ queue to ask for user creation inside of user-service (async)
     }
 }
