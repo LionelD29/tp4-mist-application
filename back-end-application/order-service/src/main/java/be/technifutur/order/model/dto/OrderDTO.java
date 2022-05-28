@@ -14,9 +14,9 @@ import java.util.UUID;
 public class OrderDTO {
 
     private Long id;
-    private UUID user_ref;
-    private String buyer_name;
-    private String shipping_address;
+    private UUID userRef;
+    private String buyerName;
+    private String shippingAddress;
     private int totalPrice;
     private LocalDate orderDate;
     private OrderStatus status;

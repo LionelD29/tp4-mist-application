@@ -14,8 +14,8 @@ public class OrderMapper {
         }
 
         return OnlineOrder.builder()
-                .buyer_name(form.getBuyer_name())
-                .shipping_address(form.getShipping_address())
+                .buyerName(form.getBuyer_name())
+                .shippingAddress(form.getShipping_address())
                 .gamesToOrder(form.getGamesToOrder())
                 .build();
     }
@@ -27,9 +27,9 @@ public class OrderMapper {
 
         return OrderDTO.builder()
                 .id(entity.getId())
-                .user_ref(entity.getUser_ref())
-                .buyer_name(entity.getBuyer_name())
-                .shipping_address(entity.getShipping_address())
+                .userRef(entity.getUserRef())
+                .buyerName(entity.getBuyerName())
+                .shippingAddress(entity.getShippingAddress())
                 .totalPrice(entity.getTotalPrice())
                 .orderDate(entity.getOrderDate())
                 .status(entity.getStatus())
