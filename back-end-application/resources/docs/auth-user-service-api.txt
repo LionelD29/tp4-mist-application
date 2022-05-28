@@ -5,10 +5,10 @@ BASE_URL: http://localhost:8181/auth
 
 DONE -- no auth:       POST   - /sign-in          --> public String signIn(@RequestBody SignInForm form) (returns a JWT)
 DONE -- no auth:       POST   - /sign-up          --> public String signUp(@RequestBody SignUpForm form) (returns a JWT) ** // sign up and login
-DONE -- authenticated: GET    - /user/roles      --> public SimpleUserAccountDTO getUserRoles(Authentication auth)
-TODO -- authenticated: GET    - /user/account    --> public UserAccountDTO getUserAccount(Authentication auth)
-TODO -- authenticated: PUT    - /user/update     --> public void updateUserAccount(@RequestBody SignUpForm form)
-DONE -- admin:         PATCH  - /user/toggle     --> public void toggleUserAccount(@RequestParam UUID ref) // update 'active' boolean to false/true
+DONE -- authenticated: GET    - /user/roles       --> public SimpleUserAccountDTO getUserRoles(Authentication auth)
+DONE -- authenticated: GET    - /user/account     --> public UserAccountDTO getUserAccount(Authentication auth)
+DONE -- authenticated: PUT    - /user/update      --> public void updateUserAccount(@RequestBody SignUpForm form)
+DONE -- admin:         PATCH  - /user/toggle      --> public void toggleUserAccount(@RequestParam UUID ref) // update 'active' boolean to false/true
 
 -----------------------------
 SimpleUserAccountDTO:

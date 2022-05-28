@@ -52,4 +52,10 @@ public class AuthController {
         userAccountService.toggleUserAccount(UUID.fromString(userRef));
     }
 
+    @PutMapping("/update")
+    @PreAuthorize("isAuthenticated()")
+    public void updateUserAccount(Authentication auth, @Valid @RequestBody SignUpForm form) {
+        userAccountService.updateUserAccount((String) auth.getPrincipal(), form);
+    }
+
 }
