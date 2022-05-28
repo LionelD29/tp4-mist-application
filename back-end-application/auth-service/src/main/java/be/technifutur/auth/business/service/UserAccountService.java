@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -20,6 +21,7 @@ public class UserAccountService implements UserDetailsService {
 
     private final UserAccountRepository userAccountRepository;
     private final UserAccountMapper userAccountMapper;
+    private final PasswordEncoder encoder;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -58,5 +60,14 @@ public class UserAccountService implements UserDetailsService {
         UserAccount account = findUserAccountByRef(userRef);
         account.setAccountActive(!account.isAccountActive()); // toggle 'active' boolean
         userAccountRepository.save(account);
+    }
+
+    public void updateUserAccount(String email, SignUpForm form) {
+        UserAccount userAccount = findUserAccountByEmail(email);
+        userAccount.setUsername(form.getUsername());
+        userAccount.setPassword(encoder.encode(form.getPassword()));
+        userAccount.setEmail(form.getEmail());
+        userAccountRepository.save(userAccount);
+        // TODO: Send a message to RabbitMQ queue to ask for user update inside of user-service (async)
     }
 }
