@@ -26,17 +26,17 @@ public class OnlineOrder {
 
     @NotNull
     @Column(nullable = false, unique = true)
-    private UUID user_ref;
+    private UUID userRef;
 
     @NotBlank(message = "Buyer name must not be blank")
     @Size(max = 50, message = "Buyer name must be 50 characters at maximum")
     @Column(nullable = false, length = 50)
-    private String buyer_name;
+    private String buyerName;
 
     @NotBlank(message = "Shipping address must not be blank")
     @Size(max = 50, message = "Shipping address must be 100 characters at maximum")
     @Column(nullable = false, length = 100)
-    private String shipping_address;
+    private String shippingAddress;
 
     @PositiveOrZero(message = "Total price must not be negative")
     private int totalPrice;
