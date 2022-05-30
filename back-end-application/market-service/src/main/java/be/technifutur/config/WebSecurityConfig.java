@@ -19,6 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 )
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private JwtValidationFilter jwtValidationFilter;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
@@ -26,9 +27,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.headers().frameOptions().disable();
 
-        ////    Will be tested after communication between services is done
-        ///     http.addFilterBefore(jwtValidationFilter, UsernamePasswordAuthenticationFilter.class);
-        /////////////////////////////////////////////
+
+        http.addFilterBefore(jwtValidationFilter, UsernamePasswordAuthenticationFilter.class);
 
     }
 }
