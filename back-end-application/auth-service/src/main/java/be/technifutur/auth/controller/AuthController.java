@@ -34,9 +34,9 @@ public class AuthController {
         return signInService.signIn(signInForm);
     }
 
-    @GetMapping("/roles")
+    @GetMapping("/authenticate")
     @PreAuthorize("isAuthenticated()")
-    public SimpleUserAccountDTO getUserRoles(Authentication auth) {
+    public SimpleUserAccountDTO authenticateUser(Authentication auth) {
         return userAccountService.getUserRoles((String) auth.getPrincipal());
     }
 
