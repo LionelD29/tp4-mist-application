@@ -30,7 +30,7 @@ public class EditorServiceImpl implements EditorService {
     }
 
     @Override
-    public List<EditorDTO> getDevelopers() {
+    public List<EditorDTO> getEditors() {
         return repository.findAll()
                 .stream()
                 .map(mapper::entityToDTO)

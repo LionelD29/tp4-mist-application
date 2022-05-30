@@ -22,7 +22,8 @@ public class GameController {
         this.service = service;
     }
 
-    @GetMapping("")
+    // --- GET ---
+    @GetMapping
     public List<GameDTO> getGames(){
         return service.getGames();
     }
@@ -51,19 +52,35 @@ public class GameController {
         }
     }
 
+
+    // --- POST ---
     @PostMapping("/add")
     public ResponseEntity<GameDTO> insertGame(@RequestBody GameInsertForm form){
         return ResponseEntity.ok(service.insertGame(form));
     }
 
+
+    // --- PUT ---
     @PutMapping("/update")
     public ResponseEntity<GameDTO> updateGame(@RequestBody GameUpdateForm form, @RequestParam(name = "reference") UUID reference){
         return ResponseEntity.ok(service.updateGame(reference, form));
     }
 
+
+    // --- DELETE ---
     @DeleteMapping("/delete")
-    public ResponseEntity<GameDTO> delete(@RequestParam(name = "reference") UUID reference){
+    public ResponseEntity<GameDTO> deleteGame(@RequestParam(name = "reference") UUID reference){
         return ResponseEntity.ok(service.deleteGame(reference));
+    }
+
+    @PutMapping(value = "/updateDeveloper", params = "{reference, devReference}")
+    public ResponseEntity<GameDTO> updateDeveloperOfGame(@RequestParam(name = "reference") UUID reference, @RequestParam(name = "devReference") UUID devReference){
+        return ResponseEntity.ok(service.updateDeveloperOfGame(reference, devReference));
+    }
+
+    @PutMapping(value = "/updateEditor", params = "{reference, editReference}")
+    public ResponseEntity<GameDTO> updateEditorOfGame(@RequestParam(name = "reference") UUID reference, @RequestParam(name = "editReference") UUID editReference){
+        return ResponseEntity.ok(service.updateEditorOfGame(reference, editReference));
     }
 
 }

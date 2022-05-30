@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public interface EditorService {
 
-    List<EditorDTO> getDevelopers();
+    List<EditorDTO> getEditors();
 
     EditorDTO getEditorByReference(UUID reference);
 
