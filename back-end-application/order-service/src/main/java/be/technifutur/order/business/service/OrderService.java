@@ -21,7 +21,7 @@ public class OrderService {
     // CREATE NEW ORDER
     public OrderDTO placeOrder(UUID userRef, OrderForm form) {
         Order entity = mapper.formToEntity(form);
-        entity = repository.save(entity);
+        repository.findByUserRef(userRef).add(entity);
         return mapper.entityToDTO(entity);
     }
 
