@@ -1,0 +1,32 @@
+package be.technifutur.game.models.entities;
+
+import lombok.*;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Entity
+@Table(name = "editor")
+public class Editor {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "game_id", nullable = false)
+    private Long id;
+
+    @Column(name = "reference", nullable = false)
+    private UUID reference;
+
+    @Column(name = "name", length = 150, nullable = false)
+    private String name;
+
+    @OneToMany(mappedBy = "editor", cascade = CascadeType.REFRESH)
+    private List<Game> games = new ArrayList<>();
+}
