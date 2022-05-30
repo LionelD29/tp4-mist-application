@@ -7,6 +7,8 @@ import be.technifutur.game.models.entities.Game;
 import be.technifutur.game.models.forms.GameForm;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class GameMapper {
 
@@ -40,6 +42,7 @@ public class GameMapper {
 
         return Game.builder()
                 .title(form.getTitle())
+                .reference(UUID.randomUUID())
                 .releaseDate(form.getReleaseDate())
                 .genre(form.getGenre())
                 .build();

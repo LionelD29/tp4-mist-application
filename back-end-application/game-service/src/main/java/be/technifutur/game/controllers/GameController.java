@@ -26,8 +26,8 @@ public class GameController {
         return service.getGames();
     }
 
-    @GetMapping("/{reference}")
-    public ResponseEntity<GameDTO> getGameByReference(@PathVariable UUID reference){
+    @GetMapping(params = "reference")
+    public ResponseEntity<GameDTO> getGameByReference(@RequestParam(name = "reference") UUID reference){
         try {
             GameDTO dto = service.getGameByReference(reference);
             return ResponseEntity.status(HttpStatus.OK)
@@ -38,8 +38,8 @@ public class GameController {
         }
     }
 
-    @GetMapping("/{title}")
-    public ResponseEntity<GameDTO> getGameByTitle(@PathVariable String title){
+    @GetMapping(params = "title")
+    public ResponseEntity<GameDTO> getGameByTitle(@RequestParam(name = "title") String title){
         try {
             GameDTO dto = service.getGameByTitle(title);
             return ResponseEntity.status(HttpStatus.OK)
@@ -55,9 +55,14 @@ public class GameController {
         return ResponseEntity.ok(service.insertGame(form));
     }
 
-//    @PutMapping("/{reference}/update")
-//    public ResponseEntity<GameDTO> updateGame(@RequestBody GameForm form, @PathVariable UUID reference){
-//
-//    }
+    @PutMapping("/{reference}/update")
+    public ResponseEntity<GameDTO> updateGame(@RequestBody GameForm form, @PathVariable UUID reference){
+        return ResponseEntity.ok(service.updateGame(reference, form));
+    }
+
+    @DeleteMapping("/{reference}/delete")
+    public ResponseEntity<GameDTO> delete(@PathVariable UUID reference){
+        return ResponseEntity.ok(service.deleteGame(reference));
+    }
 
 }

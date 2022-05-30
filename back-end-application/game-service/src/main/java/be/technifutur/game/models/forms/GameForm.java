@@ -6,12 +6,15 @@ import be.technifutur.game.models.entities.Genre;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class GameForm {
 
     private String title;
@@ -22,17 +25,15 @@ public class GameForm {
 
     @Data
     @AllArgsConstructor
+    @NoArgsConstructor
     public static class Developer {
-        private Long id;
-        private UUID reference;
         private String name;
     }
 
     @Data
     @AllArgsConstructor
+    @NoArgsConstructor
     public static class Editor {
-        private Long id;
-        private UUID reference;
         private String name;
     }
 }

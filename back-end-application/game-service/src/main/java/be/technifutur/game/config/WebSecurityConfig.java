@@ -32,6 +32,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().anyRequest().permitAll();
-        http.addFilterBefore(jwtValidationFilter, UsernamePasswordAuthenticationFilter.class);
+//        http.addFilterBefore(jwtValidationFilter, UsernamePasswordAuthenticationFilter.class);
     }
 }

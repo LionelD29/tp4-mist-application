@@ -2,10 +2,14 @@ package be.technifutur.game.metier.service.game;
 
 import be.technifutur.game.exceptions.ElementNotFoundException;
 import be.technifutur.game.metier.mapper.GameMapper;
+import be.technifutur.game.metier.service.developer.DeveloperService;
+import be.technifutur.game.metier.service.editor.EditorService;
 import be.technifutur.game.models.dto.GameDTO;
 import be.technifutur.game.models.entities.Developer;
 import be.technifutur.game.models.entities.Editor;
 import be.technifutur.game.models.entities.Game;
+import be.technifutur.game.models.forms.DeveloperForm;
+import be.technifutur.game.models.forms.EditorForm;
 import be.technifutur.game.models.forms.GameForm;
 import be.technifutur.game.repository.DeveloperRepository;
 import be.technifutur.game.repository.EditorRepository;
@@ -14,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -24,12 +29,16 @@ public class GameServiceImpl implements GameService{
     private final GameMapper mapper;
     private final DeveloperRepository developerRepository;
     private final EditorRepository editorRepository;
+    private final DeveloperService developerService;
+    private final EditorService editorService;
 
-    public GameServiceImpl(GameRepository repository, GameMapper mapper, DeveloperRepository developerRepository, EditorRepository editorRepository) {
+    public GameServiceImpl(GameRepository repository, GameMapper mapper, DeveloperRepository developerRepository, EditorRepository editorRepository, DeveloperService developerService, EditorService editorService) {
         this.repository = repository;
         this.mapper = mapper;
         this.developerRepository = developerRepository;
         this.editorRepository = editorRepository;
+        this.developerService = developerService;
+        this.editorService = editorService;
     }
 
     @Override
@@ -59,12 +68,32 @@ public class GameServiceImpl implements GameService{
     @Override
     public GameDTO insertGame(GameForm gameForm) {
         Game entity = mapper.formToEntity(gameForm);
-        Developer dev = developerRepository.findById(gameForm.getDeveloper().getId())
-                .orElseThrow(()-> new ElementNotFoundException(gameForm.getDeveloper().getReference(), Developer.class));
-        entity.setDeveloper(dev);
-        Editor editor = editorRepository.findById(gameForm.getEditor().getId())
-                .orElseThrow(()-> new ElementNotFoundException(gameForm.getEditor().getId(), Editor.class));
+        Optional<Developer> dev = developerRepository.findByName(gameForm.getDeveloper().getName());
+        Developer developer = null;
+
+        if (dev.isPresent()){
+            developer = dev.get();
+
+        } else {
+            developerService.insertDeveloper(new DeveloperForm(gameForm.getDeveloper().getName()));
+            developer = developerRepository.findByName(gameForm.getDeveloper().getName())
+                    .orElseThrow(() -> new ElementNotFoundException(gameForm.getDeveloper().getName(), Developer.class));
+        }
+        entity.setDeveloper(developer);
+
+        Optional<Editor> edit = editorRepository.findByName(gameForm.getEditor().getName());
+        Editor editor = null;
+
+        if (edit.isPresent()){
+            editor = edit.get();
+
+        } else {
+            editorService.insertEditor(new EditorForm(gameForm.getEditor().getName()));
+            editor = editorRepository.findByName(gameForm.getEditor().getName())
+                    .orElseThrow(() -> new ElementNotFoundException(gameForm.getEditor().getName(), Editor.class));
+        }
         entity.setEditor(editor);
+
         entity = repository.save(entity);
         return mapper.entityToDTO(entity);
     }

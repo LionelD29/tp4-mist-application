@@ -30,6 +30,7 @@ public class Game {
     private LocalDate releaseDate;
 
     @Column(name = "genre")
+    @Enumerated(EnumType.STRING)
     private Genre genre;
 
     @ManyToOne
