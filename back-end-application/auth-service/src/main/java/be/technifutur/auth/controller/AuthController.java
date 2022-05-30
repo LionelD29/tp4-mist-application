@@ -2,10 +2,10 @@ package be.technifutur.auth.controller;
 
 import be.technifutur.auth.business.service.SignInService;
 import be.technifutur.auth.business.service.UserAccountService;
-import be.technifutur.auth.model.dto.SimpleUserAccountDTO;
 import be.technifutur.auth.model.dto.UserAccountDTO;
 import be.technifutur.auth.model.form.SignInForm;
 import be.technifutur.auth.model.form.SignUpForm;
+import be.technifutur.shared.model.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -36,7 +36,7 @@ public class AuthController {
 
     @GetMapping("/authenticate")
     @PreAuthorize("isAuthenticated()")
-    public SimpleUserAccountDTO authenticateUser(Authentication auth) {
+    public UserDTO authenticateUser(Authentication auth) {
         return userAccountService.getUserRoles((String) auth.getPrincipal());
     }
 
