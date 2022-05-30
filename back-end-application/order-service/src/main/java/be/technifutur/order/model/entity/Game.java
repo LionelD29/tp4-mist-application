@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Positive;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,6 +24,9 @@ public class Game {
 
     @Column(nullable = false, unique = true)
     private UUID gameReference;
+
+    @Positive
+    private int howMany;
 
     // GAME-ORDER ENTITIES RELATIONSHIP
     @ManyToMany(mappedBy = "games")

@@ -31,9 +31,12 @@ public class OrderController {
 
     // READ ONE ORDER OF A SPECIFIC USER
     @GetMapping("/{orderId}")
-    public OrderDTO getOneOrderByUserByOrderId(Authentication auth, @PathVariable Long orderId) {
-        return service.getOneOrderByUserByOrderId((UUID) auth.getPrincipal(), orderId);
+    public OrderDTO getOneUserOrderByOrderId(Authentication auth, @PathVariable Long orderId) {
+        return service.getOneUserOrderByOrderId((UUID) auth.getPrincipal(), orderId);
     }
+
+    // UPDATE ONE ORDER OF A SPECIFIC USER
+    // TODO: Create PATCH method
 
     // DELETE ONE USER ORDER BY ID
     @DeleteMapping("/{orderId}")

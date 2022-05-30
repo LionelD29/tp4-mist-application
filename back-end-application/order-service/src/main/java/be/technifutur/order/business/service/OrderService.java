@@ -9,8 +9,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -36,14 +34,18 @@ public class OrderService {
     }
 
     // READ ONE ORDER OF A SPECIFIC USER
-    public OrderDTO getOneOrderByUserByOrderId(UUID userRef, Long orderId) {
+    public OrderDTO getOneUserOrderByOrderId(UUID userRef, Long orderId) {
         Order orderToGet = repository.findByUserRefAndId(userRef, orderId);
         return mapper.entityToDTO(orderToGet);
     }
+
+    // UPDATE ONE ORDER OF A SPECIFIC USER
+    // TODO: Create PATCH method
 
     // DELETE ONE USER ORDER BY ID
     public OrderDTO deleteUserOrderById(UUID userRef, Long orderId) {
         Order orderToDelete = repository.deleteByUserRefAndId(userRef, orderId);
         return mapper.entityToDTO(orderToDelete);
     }
+
 }

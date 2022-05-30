@@ -25,6 +25,7 @@ public class OrderDTO {
     @Builder
     public static class GameDTO {
         private UUID gameReference;
+        private int howMany;
     }
 
 }

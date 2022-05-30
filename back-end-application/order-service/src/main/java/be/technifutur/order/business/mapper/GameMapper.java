@@ -15,6 +15,7 @@ public class GameMapper {
 
         return Game.builder()
                 .gameReference(form.getGameReference())
+                .howMany(form.getHowMany())
                 .build();
     }
 
@@ -25,6 +26,7 @@ public class GameMapper {
 
         return OrderDTO.GameDTO.builder()
                 .gameReference(entity.getGameReference())
+                .howMany(entity.getHowMany())
                 .build();
     }
 
