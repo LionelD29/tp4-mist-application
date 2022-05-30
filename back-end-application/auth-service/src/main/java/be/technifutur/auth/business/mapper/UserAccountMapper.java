@@ -1,9 +1,9 @@
 package be.technifutur.auth.business.mapper;
 
-import be.technifutur.auth.model.dto.SimpleUserAccountDTO;
 import be.technifutur.auth.model.dto.UserAccountDTO;
 import be.technifutur.auth.model.entity.UserAccount;
 import be.technifutur.auth.model.form.SignUpForm;
+import be.technifutur.shared.model.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,11 +17,11 @@ public class UserAccountMapper {
 
     private final PasswordEncoder encoder;
 
-    public SimpleUserAccountDTO entityToSimpleUserAccountDTO(UserAccount entity) {
+    public UserDTO entityToUserDTO(UserAccount entity) {
         if (entity == null)
             return null;
 
-        return SimpleUserAccountDTO.builder()
+        return UserDTO.builder()
                 .ref(entity.getRef())
                 .roles(entity.getRoles())
                 .build();

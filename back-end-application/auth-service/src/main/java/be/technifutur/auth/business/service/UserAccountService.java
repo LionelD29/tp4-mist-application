@@ -1,11 +1,11 @@
 package be.technifutur.auth.business.service;
 
 import be.technifutur.auth.business.mapper.UserAccountMapper;
-import be.technifutur.auth.model.dto.SimpleUserAccountDTO;
 import be.technifutur.auth.model.dto.UserAccountDTO;
 import be.technifutur.auth.model.entity.UserAccount;
 import be.technifutur.auth.model.form.SignUpForm;
 import be.technifutur.auth.repository.UserAccountRepository;
+import be.technifutur.shared.model.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -42,8 +42,8 @@ public class UserAccountService implements UserDetailsService {
                 );
     }
 
-    public SimpleUserAccountDTO getUserRoles(String email) {
-        return userAccountMapper.entityToSimpleUserAccountDTO(findUserAccountByEmail(email));
+    public UserDTO getUserRoles(String email) {
+        return userAccountMapper.entityToUserDTO(findUserAccountByEmail(email));
     }
 
     public UserAccountDTO getUserAccount(String email) {
