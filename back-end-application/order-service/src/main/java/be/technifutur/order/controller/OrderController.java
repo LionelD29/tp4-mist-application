@@ -5,10 +5,7 @@ import be.technifutur.order.model.dto.OrderDTO;
 import be.technifutur.order.model.form.OrderForm;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -26,10 +23,16 @@ public class OrderController {
         return service.placeOrder((UUID) auth.getPrincipal(), form);
     }
 
-    // READ USER'S ORDERS LIST
+    // READ ORDERS LIST OF A SPECIFIC USER
     @GetMapping
     public List<OrderDTO> getOrdersByUser(Authentication auth) {
         return service.getOrdersByUser((UUID) auth.getPrincipal());
+    }
+
+    // READ ONE ORDER OF A SPECIFIC USER
+    @GetMapping("/{orderId}")
+    public OrderDTO getOneOrderByUserByOrderId(Authentication auth, @PathVariable Long orderId) {
+        return service.getOneOrderByUserByOrderId((UUID) auth.getPrincipal(), orderId);
     }
 
 }

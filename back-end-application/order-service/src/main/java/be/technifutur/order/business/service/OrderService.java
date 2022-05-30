@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -25,11 +26,17 @@ public class OrderService {
         return mapper.entityToDTO(entity);
     }
 
-    // READ USER'S ORDERS LIST
+    // READ ORDERS LIST OF A SPECIFIC USER
     public List<OrderDTO> getOrdersByUser(UUID userRef) {
         return repository.findByUserRef(userRef)
                 .stream()
                 .map(mapper::entityToDTO)
                 .toList();
     }
+
+    // READ ONE ORDER OF A SPECIFIC USER
+    public OrderDTO getOneOrderByUserByOrderId(UUID userRef, Long orderId) {
+        return null;
+    }
+
 }
