@@ -35,4 +35,10 @@ public class OrderController {
         return service.getOneOrderByUserByOrderId((UUID) auth.getPrincipal(), orderId);
     }
 
+    // DELETE ONE USER ORDER BY ID
+    @DeleteMapping("/{orderId}")
+    public OrderDTO deleteUserOrderById(Authentication auth, Long orderId) {
+        return service.deleteUserOrderById((UUID) auth.getPrincipal(), orderId);
+    }
+
 }

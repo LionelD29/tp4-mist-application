@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -36,7 +37,13 @@ public class OrderService {
 
     // READ ONE ORDER OF A SPECIFIC USER
     public OrderDTO getOneOrderByUserByOrderId(UUID userRef, Long orderId) {
-        return null;
+        Order orderToGet = repository.findByUserRefAndId(userRef, orderId);
+        return mapper.entityToDTO(orderToGet);
     }
 
+    // DELETE ONE USER ORDER BY ID
+    public OrderDTO deleteUserOrderById(UUID userRef, Long orderId) {
+        Order orderToDelete = repository.deleteByUserRefAndId(userRef, orderId);
+        return mapper.entityToDTO(orderToDelete);
+    }
 }
