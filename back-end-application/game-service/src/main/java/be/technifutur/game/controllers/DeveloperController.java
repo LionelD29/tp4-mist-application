@@ -4,12 +4,11 @@ import be.technifutur.game.exceptions.ElementNotFoundException;
 import be.technifutur.game.metier.service.developer.DeveloperService;
 import be.technifutur.game.models.dto.DeveloperDTO;
 import be.technifutur.game.models.dto.EditorDTO;
+import be.technifutur.game.models.forms.DeveloperForm;
+import be.technifutur.game.models.forms.EditorForm;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -52,5 +51,26 @@ public class DeveloperController {
         } catch (ElementNotFoundException ex) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+
+    // --- INSERT ---
+    @PostMapping("/add")
+    public ResponseEntity<DeveloperDTO> insertDeveloper(@RequestBody DeveloperForm form){
+        return ResponseEntity.ok(service.insertDeveloper(form));
+    }
+
+
+    // --- UPDATE ---
+    @PutMapping("/update")
+    public ResponseEntity<DeveloperDTO> updateDeveloper(@RequestBody DeveloperForm form, @RequestParam(name = "reference") UUID reference){
+        return ResponseEntity.ok(service.updateDeveloper(reference, form));
+    }
+
+
+    // --- DELETE ---
+    @DeleteMapping("/delete")
+    public ResponseEntity<DeveloperDTO> deleteDeveloper(@RequestParam(name = "reference") UUID reference){
+        return ResponseEntity.ok(service.deleteDeveloper(reference));
     }
 }
