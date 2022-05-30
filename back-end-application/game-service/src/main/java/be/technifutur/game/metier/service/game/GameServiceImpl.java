@@ -10,7 +10,8 @@ import be.technifutur.game.models.entities.Editor;
 import be.technifutur.game.models.entities.Game;
 import be.technifutur.game.models.forms.DeveloperForm;
 import be.technifutur.game.models.forms.EditorForm;
-import be.technifutur.game.models.forms.GameForm;
+import be.technifutur.game.models.forms.GameInsertForm;
+import be.technifutur.game.models.forms.GameUpdateForm;
 import be.technifutur.game.repository.DeveloperRepository;
 import be.technifutur.game.repository.EditorRepository;
 import be.technifutur.game.repository.GameRepository;
@@ -66,7 +67,7 @@ public class GameServiceImpl implements GameService{
     }
 
     @Override
-    public GameDTO insertGame(GameForm gameForm) {
+    public GameDTO insertGame(GameInsertForm gameForm) {
         Game entity = mapper.formToEntity(gameForm);
         Optional<Developer> dev = developerRepository.findByName(gameForm.getDeveloper().getName());
         Developer developer = null;
@@ -99,7 +100,7 @@ public class GameServiceImpl implements GameService{
     }
 
     @Override
-    public GameDTO updateGame(UUID reference, GameForm gameForm) {
+    public GameDTO updateGame(UUID reference, GameUpdateForm gameForm) {
         Game entity = repository.findByReference(reference)
                 .orElseThrow(() -> new ElementNotFoundException(reference, Game.class));
         entity.setTitle(gameForm.getTitle());
@@ -117,7 +118,7 @@ public class GameServiceImpl implements GameService{
     }
 
     @Override
-    public GameDTO updateDeveloperofGame(UUID gameReference, UUID devReference) {
+    public GameDTO updateDeveloperOfGame(UUID gameReference, UUID devReference) {
         Game game = repository.findByReference(gameReference)
                 .orElseThrow(() -> new ElementNotFoundException(gameReference, Game.class));
         Developer developer = developerRepository.findByReference(devReference)

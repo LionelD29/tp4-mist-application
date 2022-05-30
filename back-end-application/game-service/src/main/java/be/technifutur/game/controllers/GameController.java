@@ -3,7 +3,8 @@ package be.technifutur.game.controllers;
 import be.technifutur.game.exceptions.ElementNotFoundException;
 import be.technifutur.game.metier.service.game.GameService;
 import be.technifutur.game.models.dto.GameDTO;
-import be.technifutur.game.models.forms.GameForm;
+import be.technifutur.game.models.forms.GameInsertForm;
+import be.technifutur.game.models.forms.GameUpdateForm;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,17 +52,17 @@ public class GameController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<GameDTO> insertGame(@RequestBody GameForm form){
+    public ResponseEntity<GameDTO> insertGame(@RequestBody GameInsertForm form){
         return ResponseEntity.ok(service.insertGame(form));
     }
 
-    @PutMapping("/{reference}/update")
-    public ResponseEntity<GameDTO> updateGame(@RequestBody GameForm form, @PathVariable UUID reference){
+    @PutMapping("/update")
+    public ResponseEntity<GameDTO> updateGame(@RequestBody GameUpdateForm form, @RequestParam(name = "reference") UUID reference){
         return ResponseEntity.ok(service.updateGame(reference, form));
     }
 
-    @DeleteMapping("/{reference}/delete")
-    public ResponseEntity<GameDTO> delete(@PathVariable UUID reference){
+    @DeleteMapping("/delete")
+    public ResponseEntity<GameDTO> delete(@RequestParam(name = "reference") UUID reference){
         return ResponseEntity.ok(service.deleteGame(reference));
     }
 

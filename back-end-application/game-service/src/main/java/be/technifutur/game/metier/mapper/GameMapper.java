@@ -4,7 +4,7 @@ import be.technifutur.game.models.dto.GameDTO;
 import be.technifutur.game.models.entities.Developer;
 import be.technifutur.game.models.entities.Editor;
 import be.technifutur.game.models.entities.Game;
-import be.technifutur.game.models.forms.GameForm;
+import be.technifutur.game.models.forms.GameInsertForm;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -35,7 +35,7 @@ public class GameMapper {
     }
 
 
-    public Game formToEntity(GameForm form){
+    public Game formToEntity(GameInsertForm form){
         if (form == null){
             return null;
         }

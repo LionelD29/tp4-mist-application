@@ -1,7 +1,5 @@
 package be.technifutur.game.models.forms;
 
-import be.technifutur.game.models.entities.Developer;
-import be.technifutur.game.models.entities.Editor;
 import be.technifutur.game.models.entities.Genre;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,13 +7,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GameForm {
+public class GameInsertForm {
 
     private String title;
     private LocalDate releaseDate;

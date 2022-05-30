@@ -4,7 +4,6 @@ import be.technifutur.game.models.entities.Developer;
 import be.technifutur.game.models.entities.Editor;
 import be.technifutur.game.models.entities.Game;
 import be.technifutur.game.models.entities.Genre;
-import be.technifutur.game.models.forms.GameForm;
 import be.technifutur.game.repository.DeveloperRepository;
 import be.technifutur.game.repository.EditorRepository;
 import be.technifutur.game.repository.GameRepository;
