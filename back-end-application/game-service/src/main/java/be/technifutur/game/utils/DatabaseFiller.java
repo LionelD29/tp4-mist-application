@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.UUID;
 
 @Configuration
@@ -52,7 +53,7 @@ public class DatabaseFiller implements InitializingBean {
                 .reference(UUID.randomUUID())
                 .title("Elden Ring")
                 .releaseDate(LocalDate.of(2022, 02, 25))
-                .genres(EnumSet.of(Genre.RPG, Genre.SOLO))
+                .genres(List.of(Genre.RPG, Genre.SOLO))
                 .editor(e)
                 .developer(d)
                 .build();
@@ -76,7 +77,7 @@ public class DatabaseFiller implements InitializingBean {
                 .reference(UUID.randomUUID())
                 .title("Dune - Spice wars")
                 .releaseDate(LocalDate.of(2022, 04, 26))
-                .genres(EnumSet.of(Genre.STRATEGY, Genre.SOLO))
+                .genres(List.of(Genre.STRATEGY, Genre.SOLO))
                 .editor(e)
                 .developer(d)
                 .build();
@@ -100,7 +101,7 @@ public class DatabaseFiller implements InitializingBean {
                 .reference(UUID.randomUUID())
                 .title("Fall Guys - Sixth edition")
                 .releaseDate(LocalDate.of(2020, 8, 04))
-                .genres(EnumSet.of(Genre.MULTI, Genre.ACTION))
+                .genres(List.of(Genre.MULTI, Genre.ACTION))
                 .editor(e)
                 .developer(d)
                 .build();

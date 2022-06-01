@@ -18,5 +18,5 @@ public class GameUpdateForm {
 
     private String title;
     private LocalDate releaseDate;
-    private Set<Genre> genres;
+    private List<Genre> genres;
 }

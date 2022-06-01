@@ -107,7 +107,7 @@ public class GameServiceImpl implements GameService{
                 .orElseThrow(() -> new ElementNotFoundException(reference, Game.class));
         entity.setTitle(gameForm.getTitle());
         entity.setReleaseDate(gameForm.getReleaseDate());
-        entity.setGenres((EnumSet<Genre>) gameForm.getGenres());
+        entity.setGenres(gameForm.getGenres());
         entity = repository.save(entity);
         return mapper.entityToDTO(entity);
     }

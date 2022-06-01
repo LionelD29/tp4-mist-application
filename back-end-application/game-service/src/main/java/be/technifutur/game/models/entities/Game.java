@@ -29,9 +29,9 @@ public class Game {
     @Column(name = "releaseDate")
     private LocalDate releaseDate;
 
-    @Column(name = "genres")
     @Enumerated(EnumType.STRING)
-    private EnumSet<Genre> genres = EnumSet.allOf(Genre.class);
+    @ElementCollection
+    private List<Genre> genres = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn

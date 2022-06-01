@@ -19,7 +19,7 @@ public class GameInsertForm {
 
     private String title;
     private LocalDate releaseDate;
-    private Set<Genre> genres;
+    private List<Genre> genres;
     private Developer developer;
     private Editor editor;
 

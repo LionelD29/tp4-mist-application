@@ -46,7 +46,7 @@ public class GameMapper {
                 .title(form.getTitle())
                 .reference(UUID.randomUUID())
                 .releaseDate(form.getReleaseDate())
-                .genres((EnumSet<Genre>) form.getGenres())
+                .genres(form.getGenres())
                 .build();
     }
 }
