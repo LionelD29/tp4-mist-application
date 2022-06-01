@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Builder
@@ -16,7 +17,7 @@ public class GameInsertForm {
 
     private String title;
     private LocalDate releaseDate;
-    private Genre genre;
+    private List<Genre> genres;
     private Developer developer;
     private Editor editor;
 

@@ -4,6 +4,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 @Builder
@@ -31,7 +34,7 @@ public class Game {
 
     @Column(name = "genre")
     @Enumerated(EnumType.STRING)
-    private Genre genre;
+    private List<Genre> genres = new ArrayList<Genre>(Arrays.asList(Genre.values()));
 
     @ManyToOne
     @JoinColumn

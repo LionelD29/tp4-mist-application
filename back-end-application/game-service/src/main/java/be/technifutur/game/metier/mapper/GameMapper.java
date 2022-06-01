@@ -28,7 +28,7 @@ public class GameMapper {
                 .reference(entity.getReference())
                 .title(entity.getTitle())
                 .releaseDate(entity.getReleaseDate())
-                .genre(entity.getGenre())
+                .genres(entity.getGenres())
                 .developer(developer)
                 .editor(editor)
                 .build();
@@ -44,7 +44,7 @@ public class GameMapper {
                 .title(form.getTitle())
                 .reference(UUID.randomUUID())
                 .releaseDate(form.getReleaseDate())
-                .genre(form.getGenre())
+                .genres(form.getGenres())
                 .build();
     }
 }

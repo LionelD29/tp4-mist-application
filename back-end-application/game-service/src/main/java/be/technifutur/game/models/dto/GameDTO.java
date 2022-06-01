@@ -1,10 +1,13 @@
 package be.technifutur.game.models.dto;
 
+import be.technifutur.game.models.entities.Game;
+import be.technifutur.game.models.entities.Genre;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -15,9 +18,10 @@ public class GameDTO {
     private UUID reference;
     private String title;
     private LocalDate releaseDate;
-    private Enum genre;
+    private List<Genre> genres;
     private DeveloperDTO developer;
     private EditorDTO editor;
+
 
     @Data
     @AllArgsConstructor
