@@ -25,7 +25,7 @@ public class OrderForm {
     @Getter @Setter
     public static class GameForm {
         private UUID gameReference;
-        private int howMany;
+        private int quantity;
     }
 
 }

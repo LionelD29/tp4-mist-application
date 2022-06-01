@@ -26,7 +26,7 @@ public class Game {
     private UUID gameReference;
 
     @Positive
-    private int howMany;
+    private int quantity;
 
     // GAME-ORDER ENTITIES RELATIONSHIP
     @ManyToMany(mappedBy = "games")
