@@ -36,7 +36,10 @@ public class OrderController {
     }
 
     // UPDATE ONE ORDER OF A SPECIFIC USER
-    // TODO: Create PATCH method
+//    @PatchMapping("/{orderId}/update")
+//    public OrderDTO updateUserOrderByOrderId(Authentication auth, @PathVariable Long orderId, @RequestBody int quantity) {
+//        return service.updateUserOrderByOrderId((UUID) auth.getPrincipal(), orderId, quantity);
+//    }
 
     // DELETE ONE USER ORDER BY ID
     @DeleteMapping("/{orderId}")

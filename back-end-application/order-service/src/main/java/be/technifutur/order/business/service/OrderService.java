@@ -40,7 +40,9 @@ public class OrderService {
     }
 
     // UPDATE ONE ORDER OF A SPECIFIC USER
-    // TODO: Create PATCH method
+//    public OrderDTO updateUserOrderByOrderId(UUID userRef, Long orderId, UUID gameReference, int quantity) {
+//
+//    }
 
     // DELETE ONE USER ORDER BY ID
     public OrderDTO deleteUserOrderById(UUID userRef, Long orderId) {
