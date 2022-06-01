@@ -4,9 +4,11 @@ import be.technifutur.game.models.dto.GameDTO;
 import be.technifutur.game.models.entities.Developer;
 import be.technifutur.game.models.entities.Editor;
 import be.technifutur.game.models.entities.Game;
+import be.technifutur.game.models.entities.Genre;
 import be.technifutur.game.models.forms.GameInsertForm;
 import org.springframework.stereotype.Service;
 
+import java.util.EnumSet;
 import java.util.UUID;
 
 @Service
@@ -44,7 +46,7 @@ public class GameMapper {
                 .title(form.getTitle())
                 .reference(UUID.randomUUID())
                 .releaseDate(form.getReleaseDate())
-                .genres(form.getGenres())
+                .genres((EnumSet<Genre>) form.getGenres())
                 .build();
     }
 }

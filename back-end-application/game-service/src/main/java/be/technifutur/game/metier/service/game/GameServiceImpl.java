@@ -8,6 +8,7 @@ import be.technifutur.game.models.dto.GameDTO;
 import be.technifutur.game.models.entities.Developer;
 import be.technifutur.game.models.entities.Editor;
 import be.technifutur.game.models.entities.Game;
+import be.technifutur.game.models.entities.Genre;
 import be.technifutur.game.models.forms.DeveloperForm;
 import be.technifutur.game.models.forms.EditorForm;
 import be.technifutur.game.models.forms.GameInsertForm;
@@ -18,6 +19,7 @@ import be.technifutur.game.repository.GameRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -105,7 +107,7 @@ public class GameServiceImpl implements GameService{
                 .orElseThrow(() -> new ElementNotFoundException(reference, Game.class));
         entity.setTitle(gameForm.getTitle());
         entity.setReleaseDate(gameForm.getReleaseDate());
-        entity.setGenres(gameForm.getGenres());
+        entity.setGenres((EnumSet<Genre>) gameForm.getGenres());
         entity = repository.save(entity);
         return mapper.entityToDTO(entity);
     }
