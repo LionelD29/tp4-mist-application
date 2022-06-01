@@ -15,6 +15,6 @@ public class BeanConfig {
 
     @Bean
     public JwtValidationFilter jwtValidationFilter(){
-        return new JwtValidationFilter(restTemplate());
+        return new JwtValidationFilter(restTemplate(), "10.27.1.17", 8181); //chez moi, changer le authService en "localhost"
     }
 }
