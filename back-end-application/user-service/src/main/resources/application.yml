@@ -2,6 +2,6 @@ spring:
   application:
     name: user-service
   profiles:
-    active: dev
+    active: technifutur
   config:
-    import: configserver:http://user:pass@localhost:9999
+    import: configserver:http://user:pass@10.27.1.17:9999

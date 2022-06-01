@@ -23,6 +23,8 @@ import java.io.IOException;
 public class JwtValidationFilter extends OncePerRequestFilter {
 
     private final RestTemplate restTemplate;
+    private final String authServiceHost;
+    private final int authServicePort;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -38,7 +40,7 @@ public class JwtValidationFilter extends OncePerRequestFilter {
                 HttpEntity<Object> entity = new HttpEntity<>(headers);
 
                 UserDTO dto = restTemplate.exchange(
-                        "http://localhost:8181/auth/authenticate",
+                        "http://" + authServiceHost + ":" + authServicePort + "/auth/authenticate",
                         HttpMethod.GET,
                         entity,
                         UserDTO.class
