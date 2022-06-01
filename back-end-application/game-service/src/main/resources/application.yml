@@ -3,18 +3,5 @@ spring:
     name: game-service
   profiles:
     active: technifutur
-  datasource:
-    url: jdbc:h2:mem:tp4DB
-    username: user
-    password: pswd
-  jpa:
-    show-sql: true
-  h2:
-    console:
-      enabled: true
-      path: /h2
   config:
     import: configserver:http://user:pass@10.27.1.17:9999
-
-server:
-  port: 8282
