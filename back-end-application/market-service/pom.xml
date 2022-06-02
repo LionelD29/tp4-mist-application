@@ -17,8 +17,9 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>be.technifutur</groupId>
+            <artifactId>shared</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

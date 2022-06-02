@@ -7,12 +7,14 @@ import lombok.Setter;
 
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
+import java.util.UUID;
 
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter @Setter
 public class MarketForm {
+    private UUID gameRef;
     @Positive
     private double price;
     @PositiveOrZero

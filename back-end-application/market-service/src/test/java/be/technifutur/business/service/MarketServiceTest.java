@@ -47,7 +47,7 @@ class MarketServiceTest {
     @Test
     void can_add_market() {
         //given
-        MarketForm marketForm = new MarketForm(103.34, 20);
+        MarketForm marketForm = new MarketForm(UUID.randomUUID(),103.34, 20);
 
         //when
         MarketDto addedMarket = underTest.addMarket(marketForm);
@@ -124,7 +124,7 @@ class MarketServiceTest {
         doReturn(opt).when(mockRepo).findByGameRef(UUID_TEST);
 
         //when
-        underTest.updateAll(UUID_TEST, new MarketForm(50.25,33));
+        underTest.updateAll(UUID_TEST, new MarketForm(UUID.randomUUID(),50.25,33));
 
         //then
         ArgumentCaptor<Market> captor = ArgumentCaptor.forClass(Market.class);

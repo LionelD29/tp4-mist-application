@@ -1,6 +1,6 @@
 package be.technifutur.config;
 
-import be.technifutur.filter.JwtValidationFilter;
+import be.technifutur.shared.model.security.JwtValidationFilter;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -26,7 +26,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeHttpRequests().anyRequest().permitAll();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.headers().frameOptions().disable();
-
 
         http.addFilterBefore(jwtValidationFilter, UsernamePasswordAuthenticationFilter.class);
 

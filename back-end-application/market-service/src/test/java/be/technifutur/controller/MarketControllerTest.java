@@ -1,7 +1,10 @@
 package be.technifutur.controller;
 
+import be.technifutur.MarketApplication;
 import be.technifutur.business.mapper.MarketMapper;
 import be.technifutur.business.service.MarketService;
+import be.technifutur.config.BeanConfig;
+import be.technifutur.config.WebSecurityConfig;
 import be.technifutur.model.entity.Market;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,18 +15,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.UUID;
 
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @IndicativeSentencesGeneration(separator = " -> ", generator = DisplayNameGenerator.ReplaceUnderscores.class)
+@ContextConfiguration(classes = {BeanConfig.class, WebSecurityConfig.class, MarketApplication.class})
 @WebMvcTest(controllers = MarketController.class)
 class MarketControllerTest {
 
@@ -53,12 +57,11 @@ class MarketControllerTest {
         when(service.getOneByGameRef(UUID_TEST)).thenReturn(mapper.entityToDTO(market));
 
         //then
-        this.mockMvc.perform(MockMvcRequestBuilders
-                .get("/market/{ref}", UUID_TEST))
+        this.mockMvc.perform(get("/market/{ref}", UUID_TEST))
                 .andDo(print())
                 .andExpectAll(
                         status().isOk(),
-                        MockMvcResultMatchers.jsonPath("$.price").value(100)
+                        jsonPath("$.price").value(100)
                 );
 
 
@@ -66,19 +69,13 @@ class MarketControllerTest {
 
     @Test
     public void add_one_market() throws Exception{
-        this.mockMvc.perform(MockMvcRequestBuilders
-                .post("/market/add")
+        this.mockMvc.perform(post("/market/add")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(market)))
                 .andDo(print())
                 .andExpect(
                         status().isCreated()
                 );
-
-
-
-
-
     }
 
     private static String asJsonString(Market content){
