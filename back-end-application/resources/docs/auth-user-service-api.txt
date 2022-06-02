@@ -30,7 +30,7 @@ USER SERVICE - REST API
 
 BASE_URL: http://localhost:8585/user
 
-TODO -- no auth:       POST   - /add                    --> public void createUser(@RequestBody UserForm form) **
+TODO -- RabbitMQ  - authQueue                           --> public void createUser(UserForm form) **
 TODO -- authenticated: PUT    - /update                 --> public void updateUserInfo(Authentication auth, @RequestBody UserForm form) **
 TODO -- authenticated: GET    - /details                --> public UserDTO getUserInfo(Authentication auth) // auth.getPrincipal() should return the user ref (UUID)
 TODO -- authenticated: GET    - /billing-address        --> public List<BillingAddressDTO> getUserBillingAddresses(Authentication auth)

@@ -1,5 +1,7 @@
-package be.technifutur.user.model.entity;
+package be.technifutur.user.model.dto;
 
+import be.technifutur.user.model.entity.BillingAddress;
+import be.technifutur.user.model.entity.Game;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,46 +15,16 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter @Setter
 @Builder
-@Entity
-public class User {
+public class UserDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, unique = true)
-    private Long id;
-
-    @NotNull
-    @Column(nullable = false, unique = true)
     private UUID ref;
-
-    @Size(max = 30)
-    @NotBlank
-    @Column(nullable = false, length = 30)
     private String firstName;
-
-    @Size(max = 30)
-    @NotBlank
-    @Column(nullable = false, length = 30)
     private String lastName;
-
-    @Min(0)
     private double wallet;
-
-    @Min(0)
     private int loyaltyPoints;
-
-    @Past
-    @NotNull
     private LocalDate birthDate;
-
-    @Size(max = 15)
-    @Column(unique = true, length = 15)
     private String phoneNumber;
-
-    @ManyToMany
     private List<Game> wishlist = new ArrayList<>();
-
-    @ManyToMany
     private List<BillingAddress> billingAddresses = new ArrayList<>();
 
 }
