@@ -5,6 +5,8 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -44,5 +46,11 @@ public class User {
     private LocalDate birthDate;
 
     private String phoneNumber;
+
+    @ManyToMany
+    private List<Game> wishlist = new ArrayList<>();
+
+    @ManyToMany
+    private List<BillingAddress> billingAddresses = new ArrayList<>();
 
 }

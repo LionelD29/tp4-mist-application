@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -21,5 +23,8 @@ public class Game {
     @NotNull
     @Column(nullable = false, unique = true)
     private UUID ref;
+
+    @ManyToMany(mappedBy = "wishlist")
+    private List<User> users = new ArrayList<>();
 
 }
