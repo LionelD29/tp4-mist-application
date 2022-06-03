@@ -62,4 +62,12 @@ public class GameService {
         userRepository.save(user);
 
     }
+
+    public void deleteGameFromWishlist(UUID userRef, UUID gameRef) {
+        User user = findUserByRef(userRef);
+        Game game = findGameByRef(gameRef);
+        user.getWishlist().remove(game);
+        userRepository.save(user);
+        gameRepository.delete(game);
+    }
 }

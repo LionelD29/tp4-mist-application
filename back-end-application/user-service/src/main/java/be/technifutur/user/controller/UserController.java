@@ -61,6 +61,12 @@ public class UserController {
         gameService.addGameToWishlist((UUID) auth.getPrincipal(), form);
     }
 
-// TODO -- authenticated: POST - /wishlist/add --> public void addGameToWishlist(Authentication auth, @RequestBody GameForm form)
+    @DeleteMapping("/wishlist/delete")
+    @PreAuthorize("isAuthenticated()")
+    public void deleteGameFromWishlist(Authentication auth, @RequestParam String gameRef) {
+        gameService.deleteGameFromWishlist((UUID) auth.getPrincipal(), UUID.fromString(gameRef));
+    }
+
+// TODO -- authenticated: DELETE - /wishlist/delete --> public void deleteGameFromWishlist(Authentication auth, @RequestParam UUID gameRef)
 
 }
