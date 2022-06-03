@@ -20,7 +20,7 @@ public class DatabaseFiller implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         User user = User.builder()
-                .ref(UUID.fromString("4ec25a52-4e91-4fe7-9d52-7c3612e5d373"))
+                .ref(UUID.fromString("063f2794-a853-432d-a399-3b75df98f83d"))
                 .firstName("lionel")
                 .lastName("delsupexhe")
                 .birthDate(LocalDate.of(1997, 4, 29))
