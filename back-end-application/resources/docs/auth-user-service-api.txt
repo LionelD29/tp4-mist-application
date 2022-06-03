@@ -32,7 +32,7 @@ BASE_URL: http://localhost:8585/user
 
 TODO -- RabbitMQ  - authQueue                           --> public void createUser(UserForm form) **
 TODO -- authenticated: PUT    - /update                 --> public void updateUserInfo(Authentication auth, @RequestBody UserForm form) **
-TODO -- authenticated: GET    - /details                --> public UserDTO getUserInfo(Authentication auth) // auth.getPrincipal() should return the user ref (UUID)
+DONE -- authenticated: GET    - /details                --> public UserDTO getUserInfo(Authentication auth) // auth.getPrincipal() should return the user ref (UUID)
 TODO -- authenticated: GET    - /billing-address        --> public List<BillingAddressDTO> getUserBillingAddresses(Authentication auth)
 TODO -- authenticated: POST   - /billing-address/add    --> public void addBillingAddress(Authentication auth, @RequestBody BillingAddressForm form)
 TODO -- authenticated: DELETE - /billing-address/delete --> public void deleteBillingAddress(Authentication auth, @RequestParam Long addressId)
