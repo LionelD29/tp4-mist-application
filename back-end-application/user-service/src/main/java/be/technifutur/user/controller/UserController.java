@@ -2,7 +2,9 @@ package be.technifutur.user.controller;
 
 import be.technifutur.shared.model.dto.BillingAddressDTO;
 import be.technifutur.user.business.service.BillingAddressService;
+import be.technifutur.user.business.service.GameService;
 import be.technifutur.user.business.service.UserService;
+import be.technifutur.user.model.dto.GameDTO;
 import be.technifutur.user.model.dto.UserDTO;
 import be.technifutur.user.model.form.BillingAddressForm;
 import lombok.AllArgsConstructor;
@@ -20,6 +22,7 @@ public class UserController {
 
     private final UserService userService;
     private final BillingAddressService billingAddressService;
+    private final GameService gameService;
 
     @GetMapping("/details")
     @PreAuthorize("isAuthenticated()")
@@ -45,6 +48,11 @@ public class UserController {
         billingAddressService.deleteBillingAddress((UUID) auth.getPrincipal(), addressId);
     }
 
-//TODO -- authenticated: DELETE - /billing-address/delete --> public void deleteBillingAddress(Authentication auth, @RequestParam Long addressId)
+    @GetMapping("/wishlist")
+    @PreAuthorize("isAuthenticated()")
+    public List<GameDTO> getUserWishlist(Authentication auth) {
+        return gameService.getUserWishlist((UUID) auth.getPrincipal());
+    }
 
+// TODO -- authenticated: GET    - /wishlist --> public List<GameDTO> getUserWishlist(Authentication auth)
 }
