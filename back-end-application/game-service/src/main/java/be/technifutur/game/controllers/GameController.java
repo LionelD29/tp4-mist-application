@@ -8,6 +8,7 @@ import be.technifutur.game.models.forms.GameUpdateForm;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -77,14 +78,16 @@ public class GameController {
         return ResponseEntity.ok(service.deleteGame(reference));
     }
 
+
+    // --- UPDATE DEV/EDIT ---
     @PreAuthorize("hasAuthority('ADMIN')")
-    @PutMapping(value = "/updateDeveloper", params = "{reference, devReference}")
+    @PatchMapping(value = "/updateDeveloper")
     public ResponseEntity<GameDTO> updateDeveloperOfGame(@RequestParam(name = "reference") UUID reference, @RequestParam(name = "devReference") UUID devReference){
         return ResponseEntity.ok(service.updateDeveloperOfGame(reference, devReference));
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @PutMapping(value = "/updateEditor", params = "{reference, editReference}")
+    @PatchMapping(value = "/updateEditor")
     public ResponseEntity<GameDTO> updateEditorOfGame(@RequestParam(name = "reference") UUID reference, @RequestParam(name = "editReference") UUID editReference){
         return ResponseEntity.ok(service.updateEditorOfGame(reference, editReference));
     }
