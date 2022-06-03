@@ -62,11 +62,20 @@ public class MarketService {
         return mapper.entityToDTO(market);
     }
 
+    public MarketDto updatePromotionOnly(UUID ref, int promo) {
+        Market market = repo.findByGameRef(ref)
+                .orElseThrow(() -> new MarketPriceNotFoundException(ref, MarketDto.class));
+        market.setPromotion(promo);
+        repo.save(market);
+        return mapper.entityToDTO(market);
+    }
+
     public MarketDto updateAll(UUID ref, MarketForm form) {
         Market market = repo.findByGameRef(ref)
                 .orElseThrow(() -> new MarketPriceNotFoundException(ref, MarketDto.class));
         market.setStock(form.getStock());
         market.setPrice(form.getPrice());
+        market.setPromotion(form.getPomotion() != null ? form.getPomotion() : 0);
         repo.save(market);
         return mapper.entityToDTO(market);
     }

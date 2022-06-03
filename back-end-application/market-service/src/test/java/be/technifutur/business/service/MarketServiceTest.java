@@ -47,7 +47,7 @@ class MarketServiceTest {
     @Test
     void can_add_market() {
         //given
-        MarketForm marketForm = new MarketForm(UUID.randomUUID(),103.34, 20);
+        MarketForm marketForm = new MarketForm(UUID.randomUUID(),103.34, 20,0);
 
         //when
         MarketDto addedMarket = underTest.addMarket(marketForm);
@@ -118,13 +118,29 @@ class MarketServiceTest {
     }
 
     @Test
+    void can_update_promo() {
+        //given
+        Optional<Market> opt = Optional.of(market);
+        doReturn(opt).when(mockRepo).findByGameRef(UUID_TEST);
+
+        //when
+        underTest.updatePromotionOnly(UUID_TEST, 30);
+
+        //then
+        ArgumentCaptor<Market> captor = ArgumentCaptor.forClass(Market.class);
+        verify(mockRepo).save(captor.capture());
+        MarketDto capturedDTO = mapper.entityToDTO(captor.getValue());
+        assertThat(capturedDTO.getPromotion()).isEqualTo(30);
+    }
+
+    @Test
     void can_update_all() {
         //given
         Optional<Market> opt = Optional.of(market);
         doReturn(opt).when(mockRepo).findByGameRef(UUID_TEST);
 
         //when
-        underTest.updateAll(UUID_TEST, new MarketForm(UUID.randomUUID(),50.25,33));
+        underTest.updateAll(UUID_TEST, new MarketForm(UUID.randomUUID(),50.25,33,0));
 
         //then
         ArgumentCaptor<Market> captor = ArgumentCaptor.forClass(Market.class);

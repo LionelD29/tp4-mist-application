@@ -23,6 +23,7 @@ public class MarketMapper {
                 .gameRef(entity.getGameRef())
                 .price(entity.getPrice())
                 .stock(entity.getStock())
+                .promotion(entity.getPromotion())
                 .build();
     }
 
@@ -39,6 +40,7 @@ public class MarketMapper {
                 .gameRef(UUID.randomUUID())
                 .price(form.getPrice())
                 .stock(form.getStock())
+                .promotion(form.getPomotion() != null ? form.getPomotion() : 0)
                 .build();
     }
 }

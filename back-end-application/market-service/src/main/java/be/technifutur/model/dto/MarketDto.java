@@ -13,4 +13,5 @@ public class MarketDto {
     private UUID gameRef;
     private double price;
     private int stock;
+    private int promotion;
 }

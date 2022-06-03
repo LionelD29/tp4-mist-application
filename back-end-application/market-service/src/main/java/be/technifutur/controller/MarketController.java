@@ -5,6 +5,7 @@ import be.technifutur.model.dto.MarketDto;
 import be.technifutur.model.form.MarketForm;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,6 +50,13 @@ public class MarketController {
     public MarketDto updateStockOnly(@PathVariable UUID ref, @RequestParam int stock) {
         return service.updateStockOnly(ref, stock);
     }
+
+
+    @PatchMapping("/update/promo/{ref}")
+    public MarketDto updatePromotionOnly(@PathVariable UUID ref, @RequestParam int promotion) {
+        return service.updatePromotionOnly(ref, promotion);
+    }
+    @PreAuthorize("isAuthenticated()")
     @PutMapping("/update/{ref}")
     public MarketDto updateAll(@PathVariable UUID ref,@Valid @RequestBody MarketForm form) {
         return service.updateAll(ref, form);

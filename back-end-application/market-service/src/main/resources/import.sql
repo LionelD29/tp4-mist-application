@@ -1,10 +1,1 @@
-insert into market (game_Ref,price,stock) values ('195e933381db43d38506ed9467d3c6c4',50,34);
-insert into market (game_Ref,price,stock) values ('295e933381db43d38506ed9467d3c6c4',50,34);
-insert into market (game_Ref,price,stock) values ('395e933381db43d38506ed9467d3c6c4',50,34);
-insert into market (game_Ref,price,stock) values ('495e933381db43d38506ed9467d3c6c4',50,34);
-insert into market (game_Ref,price,stock) values ('595e933381db43d38506ed9467d3c6c4',50,34);
-insert into market (game_Ref,price,stock) values ('695e933381db43d38506ed9467d3c6c4',50,34);
-insert into market (game_Ref,price,stock) values ('795e933381db43d38506ed9467d3c6c4',50,34);
-insert into market (game_Ref,price,stock) values ('895e933381db43d38506ed9467d3c6c4',50,34);
-insert into market (game_Ref,price,stock) values ('995e933381db43d38506ed9467d3c6c4',50,34);
-insert into market (game_Ref,price,stock) values ('125e933381db43d38506ed9467d3c6c4',50,34);
+insert into market (game_Ref,price,stock,promotion) values ('195e933381db43d38506ed9467d3c6c4',50,34,0);

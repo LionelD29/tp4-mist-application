@@ -19,5 +19,7 @@ public class MarketForm {
     private double price;
     @PositiveOrZero
     private int stock;
+    @PositiveOrZero
+    private Integer pomotion;
 
 }

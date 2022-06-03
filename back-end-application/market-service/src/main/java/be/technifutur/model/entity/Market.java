@@ -25,4 +25,5 @@ public class Market {
     private double price;
     @PositiveOrZero
     private int stock;
+    private int promotion;
 }

@@ -37,6 +37,7 @@ class MarketControllerTest {
     private MarketService service;
     Market market;
     MarketForm form;
+    String token;
 
     @BeforeEach
     void setUp() {
@@ -50,8 +51,10 @@ class MarketControllerTest {
         form = new MarketForm(
                 UUID_TEST,
                 105.5,
-                999
+                999,
+                30
         );
+        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsaW9uZWxAdGVzdC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY1NDMyNzMzMCwiaWF0IjoxNjU0MjQwOTMwfQ.gNuC8gd97w_KHD10J-VkE41KzYm_KvEsqMLVtNvAYbxXjSUKWbfE3lX_1S6mRE_88gMeffLfv-msbh6phSVlQQ";
     }
 
     @Test
@@ -69,6 +72,18 @@ class MarketControllerTest {
                 );
 
 
+    }
+
+    @Test
+    public void get_all_market() throws Exception{
+        //when
+        when(service.getAll()).thenReturn(null);
+        this.mockMvc.perform(get("/market/all")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(
+                        status().is2xxSuccessful()
+                );
     }
 
     @Test
@@ -117,10 +132,47 @@ class MarketControllerTest {
     }
 
     @Test
-    public void put_price_and_stock_update() throws Exception {
+    public void patch_promotion_only() throws Exception {
+        market.setPromotion(100);
+        when(service.updatePriceOnly(any(), anyDouble())).thenReturn(mapper.entityToDTO(market));
+        this.mockMvc.perform(patch("/market/update/price/{ref}", UUID_TEST)
+                        .param("price", String.valueOf(1002)))
+                .andDo(print())
+                .andExpectAll(
+                        status().is2xxSuccessful(),
+                        jsonPath("$.promotion").value(100)
+                );
+    }
+
+    @Test
+    public void put_full_update() throws Exception {
 
         market.setPrice(form.getPrice());
         market.setStock(form.getStock());
+        market.setPromotion(form.getPomotion());
+        //when
+        when(service.updateAll(any(), any())).thenReturn(mapper.entityToDTO(market));
+
+        //then
+        this.mockMvc.perform(put("/market/update/{ref}", UUID_TEST)
+                        .content(asJsonString(form))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .header("Authorization", token))
+                .andDo(print())
+                .andExpectAll(
+                        status().is2xxSuccessful(),
+                        jsonPath("$.price").value(105.5),
+                        jsonPath("$.stock").value(999),
+                        jsonPath("$.promotion").value(30)
+                );
+    }
+
+    @Test
+    public void put_without_token_should_be_403() throws Exception {
+
+        market.setPrice(form.getPrice());
+        market.setStock(form.getStock());
+        market.setPromotion(form.getPomotion());
         //when
         when(service.updateAll(any(), any())).thenReturn(mapper.entityToDTO(market));
 
@@ -130,9 +182,7 @@ class MarketControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpectAll(
-                        status().is2xxSuccessful(),
-                        jsonPath("$.price").value(105.5),
-                        jsonPath("$.stock").value(999)
+                        status().isForbidden()
                 );
     }
     private static <T> String asJsonString(T content){
