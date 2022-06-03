@@ -7,3 +7,9 @@ spring:
   config:
     import: configserver:http://user:pass@10.27.1.17:9999
 #    alterner entre 10.27.1.17 et localhost
+  feign:
+    client:
+      config:
+        default:
+          - connectTimeout: 160000000
+          - readTimeout: 160000000

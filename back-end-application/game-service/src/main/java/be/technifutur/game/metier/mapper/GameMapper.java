@@ -1,18 +1,23 @@
 package be.technifutur.game.metier.mapper;
 
+//import be.technifutur.game.feign.MarketClient;
 import be.technifutur.game.models.dto.GameDTO;
 import be.technifutur.game.models.entities.Developer;
 import be.technifutur.game.models.entities.Editor;
 import be.technifutur.game.models.entities.Game;
-import be.technifutur.game.models.entities.Genre;
 import be.technifutur.game.models.forms.GameInsertForm;
 import org.springframework.stereotype.Service;
 
-import java.util.EnumSet;
 import java.util.UUID;
 
 @Service
 public class GameMapper {
+
+//    private final MarketClient marketClient;
+//
+//    public GameMapper(MarketClient marketClient) {
+//        this.marketClient = marketClient;
+//    }
 
     public GameDTO entityToDTO(Game entity) {
         if (entity == null) {
@@ -25,12 +30,15 @@ public class GameMapper {
         Editor editorEntity = entity.getEditor();
         GameDTO.EditorDTO editor = editorEntity == null ? null : new GameDTO.EditorDTO(editorEntity.getReference(), editorEntity.getName());
 
+//        Double price = marketClient.getGamePrice(entity.getReference());
+
         return GameDTO.builder()
                 .id(entity.getId())
                 .reference(entity.getReference())
                 .title(entity.getTitle())
                 .releaseDate(entity.getReleaseDate())
                 .genres(entity.getGenres())
+//                .price(price)
                 .developer(developer)
                 .editor(editor)
                 .build();

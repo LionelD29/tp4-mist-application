@@ -1,12 +1,14 @@
 package be.technifutur.game.models.dto;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
-@Builder
 public class MarketDTO {
 
     private UUID gameRef;

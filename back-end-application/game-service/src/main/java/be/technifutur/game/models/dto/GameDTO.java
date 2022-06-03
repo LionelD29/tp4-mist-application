@@ -18,6 +18,7 @@ public class GameDTO {
     private String title;
     private LocalDate releaseDate;
     private List<Genre> genres;
+//    private Double price;
     private DeveloperDTO developer;
     private EditorDTO editor;
 

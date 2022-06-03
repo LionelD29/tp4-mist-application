@@ -1,6 +1,7 @@
 package be.technifutur.game.metier.service.game;
 
 import be.technifutur.game.exceptions.ElementNotFoundException;
+//import be.technifutur.game.feign.MarketClient;
 import be.technifutur.game.metier.mapper.GameMapper;
 import be.technifutur.game.metier.service.developer.DeveloperService;
 import be.technifutur.game.metier.service.editor.EditorService;
@@ -8,7 +9,6 @@ import be.technifutur.game.models.dto.GameDTO;
 import be.technifutur.game.models.entities.Developer;
 import be.technifutur.game.models.entities.Editor;
 import be.technifutur.game.models.entities.Game;
-import be.technifutur.game.models.entities.Genre;
 import be.technifutur.game.models.forms.DeveloperForm;
 import be.technifutur.game.models.forms.EditorForm;
 import be.technifutur.game.models.forms.GameInsertForm;
@@ -19,7 +19,6 @@ import be.technifutur.game.repository.GameRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -34,6 +33,7 @@ public class GameServiceImpl implements GameService{
     private final EditorRepository editorRepository;
     private final DeveloperService developerService;
     private final EditorService editorService;
+//    private final MarketClient marketGame;
 
     public GameServiceImpl(GameRepository repository, GameMapper mapper, DeveloperRepository developerRepository, EditorRepository editorRepository, DeveloperService developerService, EditorService editorService) {
         this.repository = repository;
@@ -42,6 +42,7 @@ public class GameServiceImpl implements GameService{
         this.editorRepository = editorRepository;
         this.developerService = developerService;
         this.editorService = editorService;
+//        this.marketGame = marketGame;
     }
 
     @Override
@@ -57,6 +58,9 @@ public class GameServiceImpl implements GameService{
         GameDTO gameDTO = repository.findByReference(reference)
                 .map(mapper::entityToDTO)
                 .orElseThrow(() -> new ElementNotFoundException(reference, Game.class));
+//        Double price = marketGame.getGamePrice(reference);
+//        int quantity = marketGame.getGameQuantity(reference);
+//        int promotion = marketGame.getGamePromotion(reference);
         return gameDTO;
     }
 
