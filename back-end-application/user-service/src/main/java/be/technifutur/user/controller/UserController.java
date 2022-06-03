@@ -7,6 +7,7 @@ import be.technifutur.user.business.service.UserService;
 import be.technifutur.user.model.dto.GameDTO;
 import be.technifutur.user.model.dto.UserDTO;
 import be.technifutur.user.model.form.BillingAddressForm;
+import be.technifutur.user.model.form.GameForm;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -54,5 +55,12 @@ public class UserController {
         return gameService.getUserWishlist((UUID) auth.getPrincipal());
     }
 
-// TODO -- authenticated: GET    - /wishlist --> public List<GameDTO> getUserWishlist(Authentication auth)
+    @PostMapping("/wishlist/add")
+    @PreAuthorize("isAuthenticated()")
+    public void addGameToWishlist(Authentication auth, @RequestBody GameForm form) {
+        gameService.addGameToWishlist((UUID) auth.getPrincipal(), form);
+    }
+
+// TODO -- authenticated: POST - /wishlist/add --> public void addGameToWishlist(Authentication auth, @RequestBody GameForm form)
+
 }

@@ -22,7 +22,7 @@ public class UserDTO {
     private int loyaltyPoints;
     private LocalDate birthDate;
     private String phoneNumber;
-    private List<Game> wishlist = new ArrayList<>();
+    private List<GameDTO> wishlist = new ArrayList<>();
     private List<BillingAddressDTO> billingAddresses = new ArrayList<>();
 
 }

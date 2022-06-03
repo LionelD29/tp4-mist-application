@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 public class UserMapper {
 
     private final BillingAddressMapper billingAddressMapper;
+    private final GameMapper gameMapper;
 
     public UserDTO entityToDTO(User entity) {
         if (entity == null)
@@ -23,7 +24,12 @@ public class UserMapper {
                 .phoneNumber(entity.getPhoneNumber())
                 .wallet(entity.getWallet())
                 .loyaltyPoints(entity.getLoyaltyPoints())
-                .wishlist(entity.getWishlist())
+                .wishlist(
+                        entity.getWishlist()
+                                .stream()
+                                .map(gameMapper::entityToDTO)
+                                .toList()
+                )
                 .billingAddresses(
                         entity.getBillingAddresses()
                                 .stream()

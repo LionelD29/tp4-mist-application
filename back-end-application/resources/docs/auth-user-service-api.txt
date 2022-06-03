@@ -36,7 +36,7 @@ DONE -- authenticated: GET    - /details                --> public UserDTO getUs
 DONE -- authenticated: GET    - /billing-address        --> public List<BillingAddressDTO> getUserBillingAddresses(Authentication auth)
 DONE -- authenticated: POST   - /billing-address/add    --> public void addBillingAddress(Authentication auth, @RequestBody BillingAddressForm form)
 DONE -- authenticated: DELETE - /billing-address/delete --> public void deleteBillingAddress(Authentication auth, @RequestParam Long addressId)
-TODO -- authenticated: GET    - /wishlist               --> public List<GameDTO> getUserWishlist(Authentication auth)
+DONE -- authenticated: GET    - /wishlist               --> public List<GameDTO> getUserWishlist(Authentication auth)
 TODO -- authenticated: POST   - /wishlist/add           --> public void addGameToWishlist(Authentication auth, @RequestBody GameForm form)
 TODO -- authenticated: DELETE - /wishlist/delete        --> public void deleteGameFromWishlist(Authentication auth, @RequestParam UUID gameRef)
 

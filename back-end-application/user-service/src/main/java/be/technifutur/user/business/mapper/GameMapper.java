@@ -2,6 +2,7 @@ package be.technifutur.user.business.mapper;
 
 import be.technifutur.user.model.dto.GameDTO;
 import be.technifutur.user.model.entity.Game;
+import be.technifutur.user.model.form.GameForm;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,4 +16,11 @@ public class GameMapper {
                 .build();
     }
 
+    public Game formToEntity(GameForm form) {
+        if (form == null)
+            return null;
+        return Game.builder()
+                .ref(form.getRef())
+                .build();
+    }
 }
