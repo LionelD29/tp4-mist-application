@@ -4,8 +4,10 @@ import be.technifutur.auth.business.mapper.UserAccountMapper;
 import be.technifutur.auth.model.dto.UserAccountDTO;
 import be.technifutur.auth.model.entity.UserAccount;
 import be.technifutur.auth.model.form.SignUpForm;
+import be.technifutur.auth.producer.MessageSender;
 import be.technifutur.auth.repository.UserAccountRepository;
 import be.technifutur.shared.model.dto.UserDTO;
+import be.technifutur.shared.model.form.UserForm;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,6 +24,7 @@ public class UserAccountService implements UserDetailsService {
     private final UserAccountRepository userAccountRepository;
     private final UserAccountMapper userAccountMapper;
     private final PasswordEncoder encoder;
+    private final MessageSender messageSender;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -52,8 +55,16 @@ public class UserAccountService implements UserDetailsService {
 
     public void addUserAccount(SignUpForm form) {
         UserAccount userAccount = userAccountMapper.formToEntity(form);
-        userAccountRepository.save(userAccount);
-        // TODO: Send a message to RabbitMQ queue to ask for user creation inside of user-service (async)
+        userAccount = userAccountRepository.save(userAccount);
+
+        UserForm userForm = UserForm.builder()
+                .firstName(form.getFirstName())
+                .lastName(form.getLastName())
+                .birthDate(form.getBirthDate())
+                .phoneNumber(form.getPhoneNumber())
+                .build();
+
+        messageSender.askForUserCreation(userForm);
     }
 
     public void toggleUserAccount(UUID userRef) {

@@ -3,3 +3,8 @@ spring:
     name: auth-service
   config:
     import: configserver:http://user:pass@localhost:9999
+  rabbitmq:
+    port: 5672
+    host: localhost
+    username: guest
+    password: guest
