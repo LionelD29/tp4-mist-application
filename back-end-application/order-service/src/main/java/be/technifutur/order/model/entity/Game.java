@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
+@Getter @Setter
 @Entity
 @Builder
 public class Game {
