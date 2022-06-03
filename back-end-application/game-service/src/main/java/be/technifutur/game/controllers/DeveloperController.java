@@ -8,6 +8,7 @@ import be.technifutur.game.models.forms.DeveloperForm;
 import be.technifutur.game.models.forms.EditorForm;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -55,6 +56,7 @@ public class DeveloperController {
 
 
     // --- INSERT ---
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/add")
     public ResponseEntity<DeveloperDTO> insertDeveloper(@RequestBody DeveloperForm form){
         return ResponseEntity.ok(service.insertDeveloper(form));
@@ -62,6 +64,7 @@ public class DeveloperController {
 
 
     // --- UPDATE ---
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/update")
     public ResponseEntity<DeveloperDTO> updateDeveloper(@RequestBody DeveloperForm form, @RequestParam(name = "reference") UUID reference){
         return ResponseEntity.ok(service.updateDeveloper(reference, form));
@@ -69,6 +72,7 @@ public class DeveloperController {
 
 
     // --- DELETE ---
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/delete")
     public ResponseEntity<DeveloperDTO> deleteDeveloper(@RequestParam(name = "reference") UUID reference){
         return ResponseEntity.ok(service.deleteDeveloper(reference));

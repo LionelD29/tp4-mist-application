@@ -6,6 +6,7 @@ import be.technifutur.game.models.dto.EditorDTO;
 import be.technifutur.game.models.forms.EditorForm;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -53,6 +54,7 @@ public class EditorController {
 
 
     // --- INSERT ---
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/add")
     public ResponseEntity<EditorDTO> insertEditor(@RequestBody EditorForm form){
         return ResponseEntity.ok(service.insertEditor(form));
@@ -60,6 +62,7 @@ public class EditorController {
 
 
     // --- UPDATE ---
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/update")
     public ResponseEntity<EditorDTO> update(@RequestBody EditorForm form, @RequestParam(name = "reference") UUID reference){
         return ResponseEntity.ok(service.updateEditor(reference, form));
@@ -67,6 +70,7 @@ public class EditorController {
 
 
     // --- DELETE ---
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/delete")
     public ResponseEntity<EditorDTO> deleteEditor(@RequestParam(name = "reference") UUID reference){
         return ResponseEntity.ok(service.deleteEditor(reference));
