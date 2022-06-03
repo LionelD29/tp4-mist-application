@@ -5,7 +5,6 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +23,10 @@ public class BillingAddress {
 
     @NotBlank
     @Size(max = 255)
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String address;
 
     @ManyToMany(mappedBy = "billingAddresses")
-    @NotEmpty
     private List<User> users = new ArrayList<>();
 
 }

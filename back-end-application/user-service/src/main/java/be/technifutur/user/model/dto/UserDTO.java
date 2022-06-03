@@ -1,11 +1,9 @@
 package be.technifutur.user.model.dto;
 
-import be.technifutur.user.model.entity.BillingAddress;
+import be.technifutur.shared.model.dto.BillingAddressDTO;
 import be.technifutur.user.model.entity.Game;
 import lombok.*;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +23,6 @@ public class UserDTO {
     private LocalDate birthDate;
     private String phoneNumber;
     private List<Game> wishlist = new ArrayList<>();
-    private List<BillingAddress> billingAddresses = new ArrayList<>();
+    private List<BillingAddressDTO> billingAddresses = new ArrayList<>();
 
 }

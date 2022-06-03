@@ -34,8 +34,8 @@ TODO -- RabbitMQ  - signUp                              --> public void createUs
 TODO -- RabbitMQ  - updateUser                          --> public void updateUserInfo(UserForm form) **
 DONE -- authenticated: GET    - /details                --> public UserDTO getUserInfo(Authentication auth) // auth.getPrincipal() should return the user ref (UUID)
 DONE -- authenticated: GET    - /billing-address        --> public List<BillingAddressDTO> getUserBillingAddresses(Authentication auth)
-TODO -- authenticated: POST   - /billing-address/add    --> public void addBillingAddress(Authentication auth, @RequestBody BillingAddressForm form)
-TODO -- authenticated: DELETE - /billing-address/delete --> public void deleteBillingAddress(Authentication auth, @RequestParam Long addressId)
+DONE -- authenticated: POST   - /billing-address/add    --> public void addBillingAddress(Authentication auth, @RequestBody BillingAddressForm form)
+DONE -- authenticated: DELETE - /billing-address/delete --> public void deleteBillingAddress(Authentication auth, @RequestParam Long addressId)
 TODO -- authenticated: GET    - /wishlist               --> public List<GameDTO> getUserWishlist(Authentication auth)
 TODO -- authenticated: POST   - /wishlist/add           --> public void addGameToWishlist(Authentication auth, @RequestBody GameForm form)
 TODO -- authenticated: DELETE - /wishlist/delete        --> public void deleteGameFromWishlist(Authentication auth, @RequestParam UUID gameRef)
