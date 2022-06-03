@@ -12,7 +12,6 @@ import org.springframework.http.HttpMethod;
 @NoArgsConstructor
 public class ErrorDto {
     private String message;
-    private String reference;
     private String uri;
     private HttpMethod method;
 }

@@ -19,7 +19,6 @@ public class MarketControllerAdvisor extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(ErrorDto.builder()
                         .message(ex.getMessage())
-                        .reference(ex.getRef().toString())
                         .method(HttpMethod.resolve(req.getMethod()))
                         .uri(req.getRequestURI())
                         .build());
