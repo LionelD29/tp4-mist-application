@@ -19,7 +19,6 @@ public class OrderControllerAdvisor extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(ErrorDTO.builder()
                         .message(ex.getMessage())
-                        .reference(ex.getRef().toString())
                         .method(HttpMethod.resolve(req.getMethod()))
                         .uri(req.getRequestURI())
                         .build());

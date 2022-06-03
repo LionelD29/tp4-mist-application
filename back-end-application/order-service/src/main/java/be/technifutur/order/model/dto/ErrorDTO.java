@@ -13,7 +13,6 @@ import org.springframework.http.HttpMethod;
 public class ErrorDTO {
 
     private String message;
-    private String reference;
     private String uri;
     private HttpMethod method;
 
