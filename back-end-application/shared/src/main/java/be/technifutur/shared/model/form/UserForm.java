@@ -7,12 +7,16 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter @Setter
 @Builder
 public class UserForm {
+
+    @NotNull
+    private UUID ref;
 
     @NotBlank
     @Size(max = 30)

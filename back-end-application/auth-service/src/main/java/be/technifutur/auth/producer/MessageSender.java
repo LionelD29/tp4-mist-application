@@ -21,4 +21,10 @@ public class MessageSender {
         } catch (JsonProcessingException ignored) { }
     }
 
+    public void askForUserUpdate(UserForm message) {
+        try {
+            String json = objectMapper.writeValueAsString(message);
+            rabbitTemplate.convertAndSend("authUserExchange", "update-user-info", json);
+        } catch (JsonProcessingException ignored) { }
+    }
 }

@@ -1,9 +1,12 @@
 package be.technifutur.user.business.mapper;
 
+import be.technifutur.shared.model.form.UserForm;
 import be.technifutur.user.model.dto.UserDTO;
 import be.technifutur.user.model.entity.User;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 
 @Service
 @AllArgsConstructor
@@ -36,6 +39,22 @@ public class UserMapper {
                                 .map(billingAddressMapper::entityToDTO)
                                 .toList()
                 )
+                .build();
+    }
+
+    public User formToEntity(UserForm form) {
+        if (form == null)
+            return null;
+        return User.builder()
+                .ref(form.getRef())
+                .firstName(form.getFirstName())
+                .lastName(form.getLastName())
+                .phoneNumber(form.getPhoneNumber())
+                .birthDate(form.getBirthDate())
+                .wallet(0)
+                .loyaltyPoints(0)
+                .wishlist(new ArrayList<>())
+                .billingAddresses(new ArrayList<>())
                 .build();
     }
 }

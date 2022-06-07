@@ -1,7 +1,6 @@
 package be.technifutur.user.model.entity;
 
 import lombok.*;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -9,8 +8,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-import org.hibernate.annotations.CascadeType;
 
 @AllArgsConstructor
 @NoArgsConstructor

@@ -58,6 +58,7 @@ public class UserAccountService implements UserDetailsService {
         userAccount = userAccountRepository.save(userAccount);
 
         UserForm userForm = UserForm.builder()
+                .ref(userAccount.getRef())
                 .firstName(form.getFirstName())
                 .lastName(form.getLastName())
                 .birthDate(form.getBirthDate())
@@ -78,7 +79,16 @@ public class UserAccountService implements UserDetailsService {
         userAccount.setUsername(form.getUsername());
         userAccount.setPassword(encoder.encode(form.getPassword()));
         userAccount.setEmail(form.getEmail());
-        userAccountRepository.save(userAccount);
-        // TODO: Send a message to RabbitMQ queue to ask for user update inside of user-service (async)
+        userAccount = userAccountRepository.save(userAccount);
+
+        UserForm userForm = UserForm.builder()
+                .ref(userAccount.getRef())
+                .firstName(form.getFirstName())
+                .lastName(form.getLastName())
+                .birthDate(form.getBirthDate())
+                .phoneNumber(form.getPhoneNumber())
+                .build();
+
+        messageSender.askForUserUpdate(userForm);
     }
 }
