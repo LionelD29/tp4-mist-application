@@ -1,7 +1,6 @@
 package be.technifutur.game.metier.mapper;
 
-//import be.technifutur.game.feign.MarketClient;
-import be.technifutur.game.models.dto.GameDTO;
+import be.technifutur.game.models.dto.*;
 import be.technifutur.game.models.entities.Developer;
 import be.technifutur.game.models.entities.Editor;
 import be.technifutur.game.models.entities.Game;
@@ -12,12 +11,6 @@ import java.util.UUID;
 
 @Service
 public class GameMapper {
-
-//    private final MarketClient marketClient;
-//
-//    public GameMapper(MarketClient marketClient) {
-//        this.marketClient = marketClient;
-//    }
 
     public GameDTO entityToDTO(Game entity) {
         if (entity == null) {
@@ -30,7 +23,6 @@ public class GameMapper {
         Editor editorEntity = entity.getEditor();
         GameDTO.EditorDTO editor = editorEntity == null ? null : new GameDTO.EditorDTO(editorEntity.getReference(), editorEntity.getName());
 
-//        Double price = marketClient.getGamePrice(entity.getReference());
 
         return GameDTO.builder()
                 .id(entity.getId())
@@ -38,7 +30,6 @@ public class GameMapper {
                 .title(entity.getTitle())
                 .releaseDate(entity.getReleaseDate())
                 .genres(entity.getGenres())
-//                .price(price)
                 .developer(developer)
                 .editor(editor)
                 .build();
@@ -55,6 +46,25 @@ public class GameMapper {
                 .reference(UUID.randomUUID())
                 .releaseDate(form.getReleaseDate())
                 .genres(form.getGenres())
+                .build();
+    }
+
+    public DetailedGameDTO simpleToDetailedDTO(MarketDTO marketDTO, GameDTO gameDTO){
+        if (marketDTO == null || gameDTO == null) {
+            return null;
+        }
+
+        return DetailedGameDTO.builder()
+                .id(gameDTO.getId())
+                .reference(gameDTO.getReference())
+                .title(gameDTO.getTitle())
+                .releaseDate(gameDTO.getReleaseDate())
+                .genres(gameDTO.getGenres())
+                .developer(DeveloperDTO.builder().build())
+                .editor(EditorDTO.builder().build())
+                .price(marketDTO.getPrice())
+                .stock(marketDTO.getStock())
+                .promotion(marketDTO.getPromotion())
                 .build();
     }
 }
