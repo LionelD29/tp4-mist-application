@@ -1,10 +1,9 @@
 spring:
   profiles:
-    active: technifutur
+    active: default
   cloud:
     gateway:
       discovery:
-
         locator:
           enabled: true
       routes:
@@ -28,12 +27,6 @@ spring:
           uri: lb://user-service:8585
           predicates:
             - Path=/user/**
-
-
-
-
-
-
 
 ---
 spring:
