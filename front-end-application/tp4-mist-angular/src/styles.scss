@@ -1,5 +1,15 @@
-/* COLORS */
-$violet-blue : #8D2CDD;
-$dark-grey : #292929;
-$light-grey : #333333;
-
+/*
+    @use '/src/styles/global' as c
+    p{
+        background-color: c.$<variable>
+    }
+*/
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    max-width: 100%;
+    overflow-x: hidden;
+}
