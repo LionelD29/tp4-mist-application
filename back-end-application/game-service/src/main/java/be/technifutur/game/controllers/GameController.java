@@ -2,6 +2,7 @@ package be.technifutur.game.controllers;
 
 import be.technifutur.game.exceptions.ElementNotFoundException;
 import be.technifutur.game.metier.service.game.GameService;
+import be.technifutur.game.models.dto.DetailedGameDTO;
 import be.technifutur.game.models.dto.GameDTO;
 import be.technifutur.game.models.forms.GameInsertForm;
 import be.technifutur.game.models.forms.GameUpdateForm;
@@ -32,9 +33,9 @@ public class GameController {
     }
 
     @GetMapping(params = "reference")
-    public ResponseEntity<GameDTO> getGameByReference(@RequestParam(name = "reference") UUID reference){
+    public ResponseEntity<DetailedGameDTO> getGameByReference(@RequestParam(name = "reference") UUID reference){
         try {
-            GameDTO dto = service.getGameByReference(reference);
+            DetailedGameDTO dto = service.getGameByReference(reference);
             return ResponseEntity.status(HttpStatus.OK)
                     .header("from controller", "GameController")
                     .body(service.getGameByReference(reference));
@@ -75,7 +76,7 @@ public class GameController {
     // --- DELETE ---
     @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/delete")
-    public ResponseEntity<GameDTO> deleteGame(@RequestParam(name = "reference") UUID reference){
+    public ResponseEntity<DetailedGameDTO> deleteGame(@RequestParam(name = "reference") UUID reference){
         return ResponseEntity.ok(service.deleteGame(reference));
     }
 

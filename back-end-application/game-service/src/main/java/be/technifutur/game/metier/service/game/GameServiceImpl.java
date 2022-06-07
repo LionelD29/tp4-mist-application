@@ -6,6 +6,7 @@ import be.technifutur.game.feign.MarketClient;
 import be.technifutur.game.metier.mapper.GameMapper;
 import be.technifutur.game.metier.service.developer.DeveloperService;
 import be.technifutur.game.metier.service.editor.EditorService;
+import be.technifutur.game.models.dto.DetailedGameDTO;
 import be.technifutur.game.models.dto.GameDTO;
 import be.technifutur.game.models.dto.MarketDTO;
 import be.technifutur.game.models.entities.Developer;
@@ -56,15 +57,17 @@ public class GameServiceImpl implements GameService{
     }
 
     @Override
-    public GameDTO getGameByReference(UUID reference) {
+    public DetailedGameDTO getGameByReference(UUID reference) {
         GameDTO gameDTO = repository.findByReference(reference)
                 .map(mapper::entityToDTO)
                 .orElseThrow(() -> new ElementNotFoundException(reference, Game.class));
         MarketDTO marketDTO = marketClient.getOneByRef(reference);
-        return gameDTO;
+        DetailedGameDTO detailedGameDTO = mapper.simpleToDetailedDTO(marketDTO, gameDTO);
+        return detailedGameDTO;
     }
 
     @Override
+    //TODO comment récupérer ici sans ref?
     public GameDTO getGameByTitle(String title) {
         GameDTO gameDTO = repository.findByTitle(title)
                 .map(mapper::entityToDTO)
@@ -117,8 +120,8 @@ public class GameServiceImpl implements GameService{
     }
 
     @Override
-    public GameDTO deleteGame(UUID reference) {
-        GameDTO dto = getGameByReference(reference);
+    public DetailedGameDTO deleteGame(UUID reference) {
+        DetailedGameDTO dto = getGameByReference(reference);
         repository.deleteByReference(reference);
         return dto;
     }

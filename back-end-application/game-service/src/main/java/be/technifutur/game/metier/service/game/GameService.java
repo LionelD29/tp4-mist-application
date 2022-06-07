@@ -1,5 +1,6 @@
 package be.technifutur.game.metier.service.game;
 
+import be.technifutur.game.models.dto.DetailedGameDTO;
 import be.technifutur.game.models.dto.GameDTO;
 import be.technifutur.game.models.forms.GameInsertForm;
 import be.technifutur.game.models.forms.GameUpdateForm;
@@ -11,7 +12,7 @@ public interface GameService {
 
     List<GameDTO> getGames();
 
-    GameDTO getGameByReference(UUID reference);
+    DetailedGameDTO getGameByReference(UUID reference);
 
     GameDTO getGameByTitle(String title);
 
@@ -19,7 +20,7 @@ public interface GameService {
 
     GameDTO updateGame(UUID reference, GameUpdateForm gameForm);
 
-    GameDTO deleteGame(UUID reference);
+    DetailedGameDTO deleteGame(UUID reference);
 
     GameDTO updateDeveloperOfGame(UUID gameReference, UUID devReference);
 
