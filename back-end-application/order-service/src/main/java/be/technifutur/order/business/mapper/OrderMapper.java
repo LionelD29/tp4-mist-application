@@ -6,19 +6,22 @@ import be.technifutur.order.model.form.OrderForm;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @AllArgsConstructor
 public class OrderMapper {
 
     private final GameMapper gameMapper;
 
-    public Order formToEntity(OrderForm form) {
+    public Order formToEntity(OrderForm form, UUID userRef) {
         if (form == null) {
             return null;
         }
 
         return Order.builder()
 //                .buyerName(form.getBuyerName())
+                .userRef(userRef)
                 .billingAddress(form.getBillingAddress())
                 .games(form.getGames()
                         .stream()

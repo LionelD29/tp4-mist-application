@@ -4,7 +4,6 @@ import be.technifutur.order.business.mapper.OrderMapper;
 import be.technifutur.order.model.dto.OrderDTO;
 import be.technifutur.order.model.entity.Order;
 import be.technifutur.order.model.form.OrderForm;
-import be.technifutur.order.repository.GameRepository;
 import be.technifutur.order.repository.OrderRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,13 +16,12 @@ import java.util.UUID;
 public class OrderService {
 
     private final OrderRepository orderRepository;
-    private final GameRepository gameRepository;
     private final OrderMapper mapper;
 
     // CREATE NEW ORDER
     public OrderDTO placeOrder(UUID userRef, OrderForm form) {
-        Order entity = mapper.formToEntity(form);
-        orderRepository.findByUserRef(userRef).add(entity);
+        Order entity = mapper.formToEntity(form, userRef);
+        entity = orderRepository.save(entity);
         return mapper.entityToDTO(entity);
     }
 
@@ -40,11 +38,6 @@ public class OrderService {
         Order orderToGet = orderRepository.findByUserRefAndId(userRef, orderId);
         return mapper.entityToDTO(orderToGet);
     }
-
-    // UPDATE ONE ORDER OF A SPECIFIC USER
-//    public OrderDTO updateUserOrderByOrderId(UUID userRef, UUID gameRef, Long orderId, int quantity) {
-//        Order orderToUpdate = orderRepository.findByUserRefAndId(userRef, orderId);
-//    }
 
     // DELETE ONE USER ORDER BY ID
     public OrderDTO deleteUserOrderById(UUID userRef, Long orderId) {
