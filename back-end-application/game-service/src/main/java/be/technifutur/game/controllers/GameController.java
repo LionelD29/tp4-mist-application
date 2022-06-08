@@ -28,7 +28,7 @@ public class GameController {
 
     // --- GET ---
     @GetMapping
-    public List<GameDTO> getGames(){
+    public List<DetailedGameDTO> getGames(){
         return service.getGames();
     }
 

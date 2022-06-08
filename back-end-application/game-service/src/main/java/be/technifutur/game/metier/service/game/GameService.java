@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public interface GameService {
 
-    List<GameDTO> getGames();
+    List<DetailedGameDTO> getGames();
 
     DetailedGameDTO getGameByReference(UUID reference);
 

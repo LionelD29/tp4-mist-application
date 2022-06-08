@@ -49,11 +49,14 @@ public class GameServiceImpl implements GameService{
     }
 
     @Override
-    public List<GameDTO> getGames() {
-        return repository.findAll()
+    public List<DetailedGameDTO> getGames() {
+        MarketDTO marketDTO = (MarketDTO) marketClient.getAll();
+        GameDTO gameDTO = (GameDTO) repository.findAll()
                 .stream()
                 .map(mapper::entityToDTO)
                 .toList();
+        DetailedGameDTO detailedGameDTO = mapper.simpleToDetailedDTO(marketDTO, gameDTO);
+        return (List<DetailedGameDTO>) detailedGameDTO;
     }
 
     @Override
