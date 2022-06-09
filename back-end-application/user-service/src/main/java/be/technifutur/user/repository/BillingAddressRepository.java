@@ -10,5 +10,6 @@ import java.util.Optional;
 public interface BillingAddressRepository extends JpaRepository<BillingAddress, Long> {
 
     List<BillingAddress> findByUsers(User user);
+    boolean existsByAddress(String address);
 
 }
