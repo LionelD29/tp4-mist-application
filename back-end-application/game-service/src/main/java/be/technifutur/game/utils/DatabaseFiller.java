@@ -74,7 +74,7 @@ public class DatabaseFiller implements InitializingBean {
         editorRepository.save(e);
 
         g = Game.builder()
-                .reference(UUID.randomUUID())
+                .reference(UUID.fromString("68cfd22f-799d-452d-8a09-7a292c41f010"))
                 .title("Dune - Spice wars")
                 .releaseDate(LocalDate.of(2022, 04, 26))
                 .genres(List.of(Genre.STRATEGY, Genre.SOLO))
@@ -98,7 +98,7 @@ public class DatabaseFiller implements InitializingBean {
         developerRepository.save(d);
 
         g = Game.builder()
-                .reference(UUID.randomUUID())
+                .reference(UUID.fromString("f15a67d5-65cb-40f7-87e5-0408d4fd5c28"))
                 .title("Fall Guys - Sixth edition")
                 .releaseDate(LocalDate.of(2020, 8, 04))
                 .genres(List.of(Genre.MULTI, Genre.ACTION))
