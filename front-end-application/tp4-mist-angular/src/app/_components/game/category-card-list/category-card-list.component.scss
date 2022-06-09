@@ -1,4 +1,8 @@
 @use '/src/styles/global' as c;
+.title{
+    text-align: center;
+    color: white;
+}
 .wrapper{
     width: 100%;
     min-height: 600px;
