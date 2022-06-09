@@ -1,7 +1,6 @@
 package be.technifutur.game.models.dto;
 
 import be.technifutur.game.models.entities.Genre;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,7 +10,7 @@ import java.util.UUID;
 
 @Data
 @Builder
-public class GameDTO {
+public class DetailedGameDTO {
 
     private Long id;
     private UUID reference;
@@ -20,19 +19,7 @@ public class GameDTO {
     private List<Genre> genres;
     private DeveloperDTO developer;
     private EditorDTO editor;
-
-
-    @Data
-    @AllArgsConstructor
-    public static class DeveloperDTO{
-        private UUID reference;
-        private String name;
-    }
-
-    @Data
-    @AllArgsConstructor
-    public static class EditorDTO{
-        private UUID reference;
-        private String name;
-    }
+    private double price;
+    private int stock;
+    private int promotion;
 }

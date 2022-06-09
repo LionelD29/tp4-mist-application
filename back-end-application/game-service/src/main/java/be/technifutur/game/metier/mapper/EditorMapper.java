@@ -6,6 +6,8 @@ import be.technifutur.game.models.entities.Editor;
 import be.technifutur.game.models.forms.EditorForm;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class EditorMapper {
 
@@ -28,6 +30,7 @@ public class EditorMapper {
         }
 
         return Editor.builder()
+                .reference(UUID.randomUUID())
                 .name(form.getName())
                 .build();
     }

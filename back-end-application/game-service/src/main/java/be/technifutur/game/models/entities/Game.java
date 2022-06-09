@@ -4,7 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.UUID;
+import java.util.*;
 
 @Builder
 @AllArgsConstructor
@@ -29,8 +29,9 @@ public class Game {
     @Column(name = "releaseDate")
     private LocalDate releaseDate;
 
-    @Column(name = "genre")
-    private Genre genre;
+    @Enumerated(EnumType.STRING)
+    @ElementCollection
+    private List<Genre> genres = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn

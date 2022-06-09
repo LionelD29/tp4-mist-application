@@ -5,6 +5,8 @@ import be.technifutur.game.models.entities.Developer;
 import be.technifutur.game.models.forms.DeveloperForm;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class DeveloperMapper {
 
@@ -27,6 +29,7 @@ public class DeveloperMapper {
         }
 
         return Developer.builder()
+                .reference(UUID.randomUUID())
                 .name(form.getName())
                 .build();
     }

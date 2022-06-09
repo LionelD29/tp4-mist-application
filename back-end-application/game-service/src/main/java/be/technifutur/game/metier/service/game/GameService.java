@@ -1,26 +1,28 @@
 package be.technifutur.game.metier.service.game;
 
+import be.technifutur.game.models.dto.DetailedGameDTO;
 import be.technifutur.game.models.dto.GameDTO;
-import be.technifutur.game.models.forms.GameForm;
+import be.technifutur.game.models.forms.GameInsertForm;
+import be.technifutur.game.models.forms.GameUpdateForm;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface GameService {
 
-    List<GameDTO> getGames();
+    List<DetailedGameDTO> getGames();
 
-    GameDTO getGameByReference(UUID reference);
+    DetailedGameDTO getGameByReference(UUID reference);
 
-    GameDTO getGameByTitle(String title);
+    DetailedGameDTO getGameByTitle(String title);
 
-    GameDTO insertGame(GameForm gameForm);
+    GameDTO insertGame(GameInsertForm gameForm);
 
-    GameDTO updateGame(UUID reference, GameForm gameForm);
+    GameDTO updateGame(UUID reference, GameUpdateForm gameForm);
 
-    GameDTO deleteGame(UUID reference);
+    DetailedGameDTO deleteGame(UUID reference);
 
-    GameDTO updateDeveloperofGame(UUID gameReference, UUID devReference);
+    GameDTO updateDeveloperOfGame(UUID gameReference, UUID devReference);
 
     GameDTO updateEditorOfGame(UUID gameReference, UUID edReference);
 }

@@ -1,12 +1,21 @@
 package be.technifutur.game.metier.service.game;
 
 import be.technifutur.game.exceptions.ElementNotFoundException;
+//import be.technifutur.game.feign.MarketClient;
+import be.technifutur.game.feign.MarketClient;
 import be.technifutur.game.metier.mapper.GameMapper;
+import be.technifutur.game.metier.service.developer.DeveloperService;
+import be.technifutur.game.metier.service.editor.EditorService;
+import be.technifutur.game.models.dto.DetailedGameDTO;
 import be.technifutur.game.models.dto.GameDTO;
+import be.technifutur.game.models.dto.MarketDTO;
 import be.technifutur.game.models.entities.Developer;
 import be.technifutur.game.models.entities.Editor;
 import be.technifutur.game.models.entities.Game;
-import be.technifutur.game.models.forms.GameForm;
+import be.technifutur.game.models.forms.DeveloperForm;
+import be.technifutur.game.models.forms.EditorForm;
+import be.technifutur.game.models.forms.GameInsertForm;
+import be.technifutur.game.models.forms.GameUpdateForm;
 import be.technifutur.game.repository.DeveloperRepository;
 import be.technifutur.game.repository.EditorRepository;
 import be.technifutur.game.repository.GameRepository;
@@ -14,6 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -24,71 +34,104 @@ public class GameServiceImpl implements GameService{
     private final GameMapper mapper;
     private final DeveloperRepository developerRepository;
     private final EditorRepository editorRepository;
+    private final DeveloperService developerService;
+    private final EditorService editorService;
+    private final MarketClient marketClient;
 
-    public GameServiceImpl(GameRepository repository, GameMapper mapper, DeveloperRepository developerRepository, EditorRepository editorRepository) {
+    public GameServiceImpl(GameRepository repository, GameMapper mapper, DeveloperRepository developerRepository, EditorRepository editorRepository, DeveloperService developerService, EditorService editorService, MarketClient marketClient) {
         this.repository = repository;
         this.mapper = mapper;
         this.developerRepository = developerRepository;
         this.editorRepository = editorRepository;
+        this.developerService = developerService;
+        this.editorService = editorService;
+        this.marketClient = marketClient;
     }
 
     @Override
-    public List<GameDTO> getGames() {
-        return repository.findAll()
+    public List<DetailedGameDTO> getGames() {
+        MarketDTO marketDTO = (MarketDTO) marketClient.getAll();
+        GameDTO gameDTO = (GameDTO) repository.findAll()
                 .stream()
                 .map(mapper::entityToDTO)
                 .toList();
+        DetailedGameDTO detailedGameDTO = mapper.simpleToDetailedDTO(marketDTO, gameDTO);
+        return (List<DetailedGameDTO>) detailedGameDTO;
     }
 
     @Override
-    public GameDTO getGameByReference(UUID reference) {
+    public DetailedGameDTO getGameByReference(UUID reference) {
         GameDTO gameDTO = repository.findByReference(reference)
                 .map(mapper::entityToDTO)
                 .orElseThrow(() -> new ElementNotFoundException(reference, Game.class));
-        return gameDTO;
+        MarketDTO marketDTO = marketClient.getOneByRef(reference);
+        DetailedGameDTO detailedGameDTO = mapper.simpleToDetailedDTO(marketDTO, gameDTO);
+        return detailedGameDTO;
     }
 
     @Override
-    public GameDTO getGameByTitle(String title) {
+    public DetailedGameDTO getGameByTitle(String title) {
         GameDTO gameDTO = repository.findByTitle(title)
                 .map(mapper::entityToDTO)
                 .orElseThrow(() -> new ElementNotFoundException(title, Game.class));
-        return gameDTO;
+        MarketDTO marketDTO = (MarketDTO) marketClient.getAll().stream().filter(ti -> ti.equals(title));
+        DetailedGameDTO detailedGameDTO = mapper.simpleToDetailedDTO(marketDTO, gameDTO);
+        return detailedGameDTO;
     }
 
     @Override
-    public GameDTO insertGame(GameForm gameForm) {
+    public GameDTO insertGame(GameInsertForm gameForm) {
         Game entity = mapper.formToEntity(gameForm);
-        Developer dev = developerRepository.findById(gameForm.getDeveloper().getId())
-                .orElseThrow(()-> new ElementNotFoundException(gameForm.getDeveloper().getReference(), Developer.class));
-        entity.setDeveloper(dev);
-        Editor editor = editorRepository.findById(gameForm.getEditor().getId())
-                .orElseThrow(()-> new ElementNotFoundException(gameForm.getEditor().getId(), Editor.class));
+        Optional<Developer> dev = developerRepository.findByName(gameForm.getDeveloper().getName());
+        Developer developer = null;
+
+        if (dev.isPresent()){
+            developer = dev.get();
+
+        } else {
+            developerService.insertDeveloper(new DeveloperForm(gameForm.getDeveloper().getName()));
+            developer = developerRepository.findByName(gameForm.getDeveloper().getName())
+                    .orElseThrow(() -> new ElementNotFoundException(gameForm.getDeveloper().getName(), Developer.class));
+        }
+        entity.setDeveloper(developer);
+
+        Optional<Editor> edit = editorRepository.findByName(gameForm.getEditor().getName());
+        Editor editor = null;
+
+        if (edit.isPresent()){
+            editor = edit.get();
+
+        } else {
+            editorService.insertEditor(new EditorForm(gameForm.getEditor().getName()));
+            editor = editorRepository.findByName(gameForm.getEditor().getName())
+                    .orElseThrow(() -> new ElementNotFoundException(gameForm.getEditor().getName(), Editor.class));
+        }
         entity.setEditor(editor);
+
         entity = repository.save(entity);
         return mapper.entityToDTO(entity);
     }
 
     @Override
-    public GameDTO updateGame(UUID reference, GameForm gameForm) {
+    public GameDTO updateGame(UUID reference, GameUpdateForm gameForm) {
         Game entity = repository.findByReference(reference)
                 .orElseThrow(() -> new ElementNotFoundException(reference, Game.class));
         entity.setTitle(gameForm.getTitle());
         entity.setReleaseDate(gameForm.getReleaseDate());
-        entity.setGenre(gameForm.getGenre());
+        entity.setGenres(gameForm.getGenres());
         entity = repository.save(entity);
         return mapper.entityToDTO(entity);
     }
 
     @Override
-    public GameDTO deleteGame(UUID reference) {
-        GameDTO dto = getGameByReference(reference);
+    public DetailedGameDTO deleteGame(UUID reference) {
+        DetailedGameDTO dto = getGameByReference(reference);
         repository.deleteByReference(reference);
         return dto;
     }
 
     @Override
-    public GameDTO updateDeveloperofGame(UUID gameReference, UUID devReference) {
+    public GameDTO updateDeveloperOfGame(UUID gameReference, UUID devReference) {
         Game game = repository.findByReference(gameReference)
                 .orElseThrow(() -> new ElementNotFoundException(gameReference, Game.class));
         Developer developer = developerRepository.findByReference(devReference)
