@@ -26,12 +26,11 @@
                 </li>
                 <button *ngIf="!authService.getLocalStorageItem('isAuthenticated')"
                         (click)="onSignIn()"
-                        style="width: 120px;"
                         class="btn btn-outline-primary ms-auto me-2">
                     Se connecter
                 </button>
                 <div *ngIf="authService.getLocalStorageItem('isAuthenticated')">
-                    <select class="form-select ms-auto me-2" style="width: 160px;">
+                    <select class="form-select ms-auto me-2">
                         <option value="" disabled selected>{{ authService.getLocalStorageItem('username') }}</option>
                         <option value="sign-out" (click)="onSignOut()">Se déconnecter</option>
                     </select>
