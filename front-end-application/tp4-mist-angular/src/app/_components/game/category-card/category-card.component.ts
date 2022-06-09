@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-category-card',
@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-card.component.scss']
 })
 export class CategoryCardComponent implements OnInit {
-
+  @Input() numb_img:number = 0;
+  gameSection: string[] = ["solo","arcade","aventure","fight","fps","rpg"];
   constructor() { }
 
   ngOnInit(): void {

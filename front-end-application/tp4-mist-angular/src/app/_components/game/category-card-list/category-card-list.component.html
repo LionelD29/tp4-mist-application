@@ -1,1 +1,8 @@
-<p>category-card-list works!</p>
+<div class="container-fluid d-flex justify-content-center">
+   <div class="wrapper d-grid">
+        <app-category-card 
+            *ngFor="let item of counter(6);let i = index"
+            [numb_img]="i"
+            ></app-category-card>
+    </div>
+</div> 
