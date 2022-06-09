@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Game } from '../_models/game.model';
 import { GameInsertForm } from '../_models/gameInsertForm.model';
