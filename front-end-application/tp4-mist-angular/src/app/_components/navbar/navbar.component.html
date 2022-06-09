@@ -1,1 +1,42 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+        <div class="navbar-brand">
+            <h1 (click)="onClick($event)">Mist</h1>
+            <!-- <div id="logo" class="title">
+                <h1>Mist</h1>
+                <img src="/assets/logo/logo.svg" (click)="onClick($event)" alt="App logo">
+            </div> -->
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <div class="d-flex ms-auto me-2">
+                <input class="form-control me-2"
+                       type="search"
+                       placeholder="Rechercher..."
+                       aria-label="Search">
+            </div>
+            <ul class="navbar-nav">
+                <li class="nav-item ms-auto me-2">
+                    <span class="nav-link" (click)="onClick($event)">Accueil</span>
+                </li>
+                <li class="nav-item ms-auto me-2">
+                    <span id="playlist" class="nav-link" (click)="onClick($event)">Promotions</span>
+                </li>
+                <button *ngIf="!authService.getLocalStorageItem('isAuthenticated')"
+                        (click)="onSignIn()"
+                        style="width: 120px;"
+                        class="btn btn-outline-primary ms-auto me-2">
+                    Se connecter
+                </button>
+                <div *ngIf="authService.getLocalStorageItem('isAuthenticated')">
+                    <select class="form-select ms-auto me-2" style="width: 160px;">
+                        <option value="" disabled selected>{{ authService.getLocalStorageItem('username') }}</option>
+                        <option value="sign-out" (click)="onSignOut()">Se déconnecter</option>
+                    </select>
+                </div>
+            </ul>
+        </div>
+    </div>
+</nav>
