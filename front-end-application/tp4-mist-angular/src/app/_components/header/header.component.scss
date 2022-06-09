@@ -1,0 +1,10 @@
+.hack{
+    width: 100vw;
+    clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
+}
+
+@media (max-width:600px){
+    .hack{
+        clip-path: none;
+    }
+}
