@@ -1,1 +1,63 @@
-<p>sign-up works!</p>
+<div class="container-sm" style="max-width: 550px;">
+    <div class="container d-flex justify-content-center align-items-center pt-5 pb-5">
+        <h2>Créer un compte</h2>
+    </div> 
+    
+    <form [formGroup]="signUpForm"
+            (ngSubmit)="onSignUp()">
+
+        <div class="mb-3">
+            <input type="text" class="form-control"
+                    placeholder="Prénom"
+                    formControlName="firstName"
+                    required>
+        </div>
+
+        <div class="mb-3">
+            <input type="text" class="form-control"
+                    placeholder="Nom"
+                    formControlName="lastName"
+                    required>
+        </div>
+
+        <div class="mb-3">
+            <input type="date" class="form-control"
+                    placeholder="Date de naissance"
+                    formControlName="birthDate"
+                    required>
+        </div>
+
+        <div class="mb-3">
+            <input type="email" class="form-control"
+                    placeholder="Email"
+                    formControlName="email"
+                    required>
+        </div>
+
+        <div class="mb-3">
+            <input type="text" class="form-control"
+                    placeholder="Téléphone"
+                    formControlName="phoneNumber"
+                    required>
+        </div>
+    
+        <div class="mb-3">
+            <input type="text" class="form-control"
+                    placeholder="Nom d'utilisateur"
+                    formControlName="username"
+                    required>
+        </div>
+    
+        <div class="mb-3">
+            <input type="password" class="form-control"
+                    placeholder="Mot de passe"
+                    formControlName="password"
+                    required>
+        </div>
+    
+        <button [disabled]="signUpForm.pristine || signUpForm.invalid"
+                 type="submit" class="btn btn-outline-success">
+            Créer mon compte
+        </button>
+    </form>
+</div>

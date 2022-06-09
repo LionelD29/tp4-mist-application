@@ -18,6 +18,9 @@ import { Error404Component } from './_pages/error404/error404.component';
 import { AuthComponent } from './_pages/auth/auth.component';
 import { SignInComponent } from './_components/auth/sign-in/sign-in.component';
 import { SignUpComponent } from './_components/auth/sign-up/sign-up.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './_helpers/interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -40,9 +43,17 @@ import { SignUpComponent } from './_components/auth/sign-up/sign-up.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptor,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

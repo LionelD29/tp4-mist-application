@@ -1,1 +1,33 @@
-<p>sign-in works!</p>
+<div class="container-sm mb-3" style="max-width: 550px;">
+    <div class="container d-flex justify-content-center align-items-center pt-5 pb-5">
+        <h2>Se connecter</h2>
+    </div> 
+    
+    <form [formGroup]="signInForm"
+            (ngSubmit)="onSignIn()">
+    
+        <div class="mb-3">
+            <input type="email" class="form-control"
+                    placeholder="Email"
+                    formControlName="email"
+                    required>
+        </div>
+    
+        <div class="mb-3">
+            <input type="password" class="form-control"
+                    placeholder="Mot de passe"
+                    formControlName="password"
+                    required>
+        </div>
+    
+        <button [disabled]="signInForm.pristine || signInForm.invalid"
+                 type="submit" class="btn btn-outline-primary">
+            Se connecter
+        </button>
+    </form>
+    
+    <p>Toujours pas de compte ? Inscrivez-vous dès maintenant !</p>
+    <button (click)="onSignUp()" class="btn btn-outline-success">
+        S'inscrire
+    </button>
+</div>

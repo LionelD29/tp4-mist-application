@@ -2,6 +2,7 @@ package be.technifutur.user.business.service;
 
 import be.technifutur.shared.model.dto.BillingAddressDTO;
 import be.technifutur.user.business.mapper.BillingAddressMapper;
+import be.technifutur.user.exception.ElementAlreadyExistsException;
 import be.technifutur.user.exception.ElementNotFoundException;
 import be.technifutur.user.model.entity.BillingAddress;
 import be.technifutur.user.model.entity.User;
@@ -51,6 +52,11 @@ public class BillingAddressService {
         User user = findUserByRef(userRef);
         BillingAddress address = billingAddressMapper.formToEntity(user, form);
         address = billingAddressRepository.save(address);
+        if (user.getBillingAddresses().contains(address)) {
+            throw new ElementAlreadyExistsException(
+                    User.class.getSimpleName() + user.getFirstName() + " " + user.getLastName() + " already have the address " + address.getAddress()
+            );
+        }
         user.getBillingAddresses().add(address);
         userRepository.save(user);
     }
