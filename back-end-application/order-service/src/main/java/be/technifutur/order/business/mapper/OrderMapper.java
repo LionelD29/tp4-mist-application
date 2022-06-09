@@ -2,10 +2,12 @@ package be.technifutur.order.business.mapper;
 
 import be.technifutur.order.model.dto.OrderDTO;
 import be.technifutur.order.model.entity.Order;
+import be.technifutur.order.model.entity.OrderStatus;
 import be.technifutur.order.model.form.OrderForm;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Service
@@ -23,6 +25,8 @@ public class OrderMapper {
 //                .buyerName(form.getBuyerName())
                 .userRef(userRef)
                 .billingAddress(form.getBillingAddress())
+                .orderDate(LocalDate.now())
+                .status(OrderStatus.PAID)
                 .games(form.getGames()
                         .stream()
                         .map(gameMapper::formToEntity)
@@ -36,12 +40,12 @@ public class OrderMapper {
         }
 
         return OrderDTO.builder()
-                .userRef(entity.getUserRef())
 //                .buyerName(entity.getBuyerName())
+                .userRef(entity.getUserRef())
                 .billingAddress(entity.getBillingAddress())
                 .totalPrice(entity.getTotalPrice())
                 .orderDate(entity.getOrderDate())
-                .status(entity.getStatus())
+                .status(OrderStatus.SENT)
                 .games(entity.getGames()
                         .stream()
                         .map(gameMapper::entityToDTO)
