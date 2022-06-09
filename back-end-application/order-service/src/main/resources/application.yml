@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: order-service
+  profiles:
+    active: technifutur
+  config:
+    import: configserver:http://user:pass@10.27.1.17:9999
