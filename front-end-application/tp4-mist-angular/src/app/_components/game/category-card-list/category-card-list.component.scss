@@ -1,0 +1,31 @@
+@use '/src/styles/global' as c;
+.wrapper{
+    width: 100%;
+    min-height: 600px;
+    background-color: transparent;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(3,100px);
+    row-gap: 2rem;
+    justify-items: center;
+    align-items: center;
+}
+.box{
+    width: 300px;
+    height: 200px;
+}
+
+@media (min-width:1200px){
+    .wrapper{
+        grid-template-columns: repeat(3,1fr);
+        grid-template-rows: repeat(2,1fr);
+        width: 90%;
+    }
+}
+
+@media (min-width:600px) and (max-width:1200px){
+    .wrapper{
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(3,200px);
+        width: 90%;
+    }
+}

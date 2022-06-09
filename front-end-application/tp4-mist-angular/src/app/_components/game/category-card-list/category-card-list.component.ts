@@ -12,4 +12,8 @@ export class CategoryCardListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
+  counter(i: number) {
+    return new Array(i);
+}
 }
