@@ -2,12 +2,10 @@ import { Developer } from "./developer.model";
 import { Editor } from "./editor.model";
 import { Genre } from "./genre.model";
 
-export interface Game {
-    id: number,
-    reference: String,
+export interface GameInsertForm{
     title: String,
     releaseDate: Date,
-    genres: Genre[],
+    genre: Genre[],
+    developer: Developer,
     editor: Editor
-    developer: Developer
 }

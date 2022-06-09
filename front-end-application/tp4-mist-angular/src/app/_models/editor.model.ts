@@ -2,7 +2,7 @@ import { Game } from "./game.model"
 
 export interface Editor {
     id: number,
-    reference: number //od a uuid ??
+    reference: String,
     name: String,
     games: Game[]
 }
