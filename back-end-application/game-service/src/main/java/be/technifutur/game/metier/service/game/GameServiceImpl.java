@@ -70,12 +70,13 @@ public class GameServiceImpl implements GameService{
     }
 
     @Override
-    //TODO comment récupérer ici sans ref?
-    public GameDTO getGameByTitle(String title) {
+    public DetailedGameDTO getGameByTitle(String title) {
         GameDTO gameDTO = repository.findByTitle(title)
                 .map(mapper::entityToDTO)
                 .orElseThrow(() -> new ElementNotFoundException(title, Game.class));
-        return gameDTO;
+        MarketDTO marketDTO = (MarketDTO) marketClient.getAll().stream().filter(ti -> ti.equals(title));
+        DetailedGameDTO detailedGameDTO = mapper.simpleToDetailedDTO(marketDTO, gameDTO);
+        return detailedGameDTO;
     }
 
     @Override

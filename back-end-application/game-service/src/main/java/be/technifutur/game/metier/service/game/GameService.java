@@ -14,7 +14,7 @@ public interface GameService {
 
     DetailedGameDTO getGameByReference(UUID reference);
 
-    GameDTO getGameByTitle(String title);
+    DetailedGameDTO getGameByTitle(String title);
 
     GameDTO insertGame(GameInsertForm gameForm);
 

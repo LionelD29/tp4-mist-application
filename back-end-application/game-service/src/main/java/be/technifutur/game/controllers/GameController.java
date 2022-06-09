@@ -45,9 +45,9 @@ public class GameController {
     }
 
     @GetMapping(params = "title")
-    public ResponseEntity<GameDTO> getGameByTitle(@RequestParam(name = "title") String title){
+    public ResponseEntity<DetailedGameDTO> getGameByTitle(@RequestParam(name = "title") String title){
         try {
-            GameDTO dto = service.getGameByTitle(title);
+            DetailedGameDTO dto = service.getGameByTitle(title);
             return ResponseEntity.status(HttpStatus.OK)
                     .header("from controller", "GameController")
                     .body(service.getGameByTitle(title));
