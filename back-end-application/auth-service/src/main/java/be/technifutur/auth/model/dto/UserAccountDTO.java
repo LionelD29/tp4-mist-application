@@ -2,6 +2,7 @@ package be.technifutur.auth.model.dto;
 
 import lombok.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -12,7 +13,7 @@ public class UserAccountDTO {
 
     private UUID ref;
     private String username;
-    private String password;
     private String email;
+    private List<String> roles;
 
 }

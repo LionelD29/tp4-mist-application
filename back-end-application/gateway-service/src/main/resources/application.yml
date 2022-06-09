@@ -27,6 +27,25 @@ spring:
           uri: lb://user-service:8585
           predicates:
             - Path=/user/**
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:4200"
+            allowedMethods:
+              - GET
+              - POST
+              - DELETE
+              - PATCH
+              - PUT
+            allowedHeaders:
+              - Content-Type
+              - X-Requested-With
+              - Origin
+              - Accept
+              - Authorization
+            exposedHeaders:
+              - Authorization
 
 ---
 spring:

@@ -34,8 +34,8 @@ public class UserAccountMapper {
         return UserAccountDTO.builder()
                 .ref(entity.getRef())
                 .username(entity.getUsername())
-                .password(entity.getPassword())
                 .email(entity.getEmail())
+                .roles(entity.getRoles())
                 .build();
     }
 
