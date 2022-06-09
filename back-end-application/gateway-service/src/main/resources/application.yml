@@ -1,0 +1,48 @@
+spring:
+  profiles:
+    active: default
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: to-price
+          uri: lb://market-service:8383
+          predicates:
+            - Path=/market/**
+        - id: to-game
+          uri: lb://game-service:8282
+          predicates:
+            - Path=/game/**
+        - id: to-order
+          uri: lb://order-service:8484
+          predicates:
+            - Path=/orders/**
+        - id: to-auth
+          uri: lb://auth-service:8181
+          predicates:
+            - Path=/auth/**
+        - id: to-user
+          uri: lb://user-service:8585
+          predicates:
+            - Path=/user/**
+
+---
+spring:
+  application:
+    name: gateway-service
+  config:
+    import: configserver:http://user:pass@localhost:9999
+    activate:
+      on-profile: default
+
+
+---
+spring:
+  application:
+    name: gateway-service
+  config:
+    import: configserver:http://user:pass@10.27.1.17:9999
+    activate:
+      on-profile: technifutur
