@@ -1,22 +1,22 @@
 AUTH SERVICE - REST API
 =======================
 
-BASE_URL: http://localhost:<port>/auth
+BASE_URL: http://localhost:8181/auth
 
-no auth:       POST   - /signIn          --> public String signIn(@RequestBody SignInForm form) (returns a JWT)
-no auth:       POST   - /signUp          --> public String signUp(@RequestBody SignUpForm form) (returns a JWT) ** // sign up and login
-authenticated: GET    - /user/roles      --> public SimpleUserDTO getUserRoles(Authentication auth)
-authenticated: GET    - /user/account    --> public UserDTO getUserAccount(Authentication auth)
-authenticated: PUT    - /user/update     --> public void updateUserAccount(@RequestBody SignUpForm form)
-admin:         PATCH  - /user/toggle     --> public void toggleUserAccount(@RequestParam UUID ref) // pass boolean 'active' to false/true
+DONE -- no auth:       POST   - /sign-in          --> public String signIn(@RequestBody SignInForm form) (returns a JWT)
+DONE -- no auth:       POST   - /sign-up          --> public String signUp(@RequestBody SignUpForm form) (returns a JWT) ** // sign up and login
+DONE -- authenticated: GET    - /authenticate     --> public SimpleUserAccountDTO getUserRoles(Authentication auth)
+DONE -- authenticated: GET    - /account          --> public UserAccountDTO getUserAccount(Authentication auth)
+DONE -- authenticated: PUT    - /update           --> public void updateUserAccount(@RequestBody SignUpForm form) **
+DONE -- admin:         PATCH  - /toggle           --> public void toggleUserAccount(@RequestParam UUID ref) // update 'active' boolean to false/true
 
 -----------------------------
-SimpleUserDTO:
+SimpleUserAccountDTO:
  - ref: UUID
  - roles: List<String>
 
 -----------------------------
-UserDTO:
+UserAccountDTO:
  - ref: UUID
  - username: String
  - password: String
@@ -28,17 +28,17 @@ UserDTO:
 USER SERVICE - REST API
 =======================
 
-BASE_URL: http://localhost:<port>/user
+BASE_URL: http://localhost:8585/user
 
-no auth:       POST   - /add                    --> public void createUser(@RequestBody UserForm form) **
-authenticated: PUT    - /update                 --> public void updateUserInfo(Authentication auth, @RequestBody UserForm form)
-authenticated: GET    - /details                --> public UserDTO getUserInfo(Authentication auth) // auth.getPrincipal() should return the user ref (UUID)
-authenticated: GET    - /billing-address        --> public List<BillingAddressDTO> getUserBillingAddresses(Authentication auth)
-authenticated: POST   - /billing-address/add    --> public void addBillingAddress(Authentication auth, @RequestBody BillingAddressForm form)
-authenticated: DELETE - /billing-address/delete --> public void deleteBillingAddress(Authentication auth, @RequestParam Long addressId)
-authenticated: GET    - /wishlist               --> public List<GameDTO> getUserWishlist(Authentication auth)
-authenticated: POST   - /wishlist/add           --> public void addGameToWishlist(Authentication auth, @RequestBody GameForm form)
-authenticated: DELETE - /wishlist/delete        --> public void deleteGameFromWishlist(Authentication auth, @RequestParam UUID gameRef)
+TODO -- RabbitMQ  - signUp                              --> public void createUser(UserForm form) **
+TODO -- RabbitMQ  - updateUser                          --> public void updateUserInfo(UserForm form) **
+DONE -- authenticated: GET    - /details                --> public UserDTO getUserInfo(Authentication auth) // auth.getPrincipal() should return the user ref (UUID)
+DONE -- authenticated: GET    - /billing-address        --> public List<BillingAddressDTO> getUserBillingAddresses(Authentication auth)
+DONE -- authenticated: POST   - /billing-address/add    --> public void addBillingAddress(Authentication auth, @RequestBody BillingAddressForm form)
+DONE -- authenticated: DELETE - /billing-address/delete --> public void deleteBillingAddress(Authentication auth, @RequestParam Long addressId)
+DONE -- authenticated: GET    - /wishlist               --> public List<GameDTO> getUserWishlist(Authentication auth)
+DONE -- authenticated: POST   - /wishlist/add           --> public void addGameToWishlist(Authentication auth, @RequestBody GameForm form)
+DONE -- authenticated: DELETE - /wishlist/delete        --> public void deleteGameFromWishlist(Authentication auth, @RequestParam UUID gameRef)
 
 
 //////////////////////////

@@ -1,6 +1,8 @@
 spring:
   application:
-    name: auth-service
+    name: user-service
+  profiles:
+    active: default
   config:
     import: configserver:http://user:pass@localhost:9999
   rabbitmq:
