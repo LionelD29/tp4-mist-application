@@ -22,6 +22,7 @@ import be.technifutur.game.repository.GameRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -50,13 +51,24 @@ public class GameServiceImpl implements GameService{
 
     @Override
     public List<DetailedGameDTO> getGames() {
-        MarketDTO marketDTO = (MarketDTO) marketClient.getAll();
-        GameDTO gameDTO = (GameDTO) repository.findAll()
+        List<MarketDTO> marketDTO = marketClient.getAll();
+        List<GameDTO> gameDTO = repository.findAll()
                 .stream()
                 .map(mapper::entityToDTO)
                 .toList();
-        DetailedGameDTO detailedGameDTO = mapper.simpleToDetailedDTO(marketDTO, gameDTO);
-        return (List<DetailedGameDTO>) detailedGameDTO;
+        List<DetailedGameDTO> list = new ArrayList<>();
+
+        for (MarketDTO market: marketDTO){
+            GameDTO game = gameDTO.stream()
+                    .filter(
+                            g -> g.getReference()
+                                    .equals(market.getGameRef()))
+                    .findFirst()
+                    .orElseThrow(() -> new ElementNotFoundException(market.getGameRef(), GameDTO.class));
+            DetailedGameDTO detailedGameDTO = mapper.simpleToDetailedDTO(market, game);
+            list.add(detailedGameDTO);
+        }
+        return list;
     }
 
     @Override

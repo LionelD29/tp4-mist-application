@@ -50,7 +50,7 @@ public class DatabaseFiller implements InitializingBean {
         editorRepository.save(e);
 
         Game g = Game.builder()
-                .reference(UUID.randomUUID())
+                .reference(UUID.fromString("195e9333-81db-43d3-8506-ed9467d3c6c4"))
                 .title("Elden Ring")
                 .releaseDate(LocalDate.of(2022, 02, 25))
                 .genres(List.of(Genre.RPG, Genre.SOLO))

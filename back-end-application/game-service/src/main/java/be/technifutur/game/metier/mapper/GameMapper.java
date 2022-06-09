@@ -54,14 +54,15 @@ public class GameMapper {
             return null;
         }
 
+
         return DetailedGameDTO.builder()
                 .id(gameDTO.getId())
                 .reference(gameDTO.getReference())
                 .title(gameDTO.getTitle())
                 .releaseDate(gameDTO.getReleaseDate())
                 .genres(gameDTO.getGenres())
-                .developer(DeveloperDTO.builder().build())
-                .editor(EditorDTO.builder().build())
+                .developer(gameDTO.getDeveloper() == null ? null : GameDTO.DeveloperDTO.builder().reference(gameDTO.getDeveloper().getReference()).name(gameDTO.getDeveloper().getName()).build())
+                .editor(gameDTO.getEditor() == null ? null : GameDTO.EditorDTO.builder().reference(gameDTO.getEditor().getReference()).name(gameDTO.getEditor().getName()).build())
                 .price(marketDTO.getPrice())
                 .stock(marketDTO.getStock())
                 .promotion(marketDTO.getPromotion())

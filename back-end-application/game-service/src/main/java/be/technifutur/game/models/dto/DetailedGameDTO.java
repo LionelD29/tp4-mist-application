@@ -17,8 +17,8 @@ public class DetailedGameDTO {
     private String title;
     private LocalDate releaseDate;
     private List<Genre> genres;
-    private DeveloperDTO developer;
-    private EditorDTO editor;
+    private GameDTO.DeveloperDTO developer;
+    private GameDTO.EditorDTO editor;
     private double price;
     private int stock;
     private int promotion;

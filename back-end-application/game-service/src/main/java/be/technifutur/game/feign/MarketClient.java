@@ -11,7 +11,7 @@ import java.util.UUID;
 @FeignClient(name = "market-service")
 public interface MarketClient {
 
-    @GetMapping(path = "/market")
+    @GetMapping(path = "/market/all")
     List<MarketDTO> getAll();
 
     @GetMapping(path = "/market/{reference}")
