@@ -5,15 +5,23 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    cursor: pointer;
     width: 300px;
     height: 200px;
-    border-radius: 15px;    
+    border-radius: 12px;    
   }
+  
 
-  .gamecard:hover .image {
-    -webkit-transform: scale(1.1);
+  .gamecard:hover{
+    & .image{
+      -webkit-transform: scale(1.1);
             transform: scale(1.1);
-    bottom: 11px;
+    bottom: 10px;
+    }
+    & .image1{
+      bottom: 10px;
+    }
+    
   }
   
   .image {
@@ -24,6 +32,18 @@
     height: auto;
     -webkit-transition: 0.5s ease;
     transition: 0.5s ease;
+  }
+  .image2, .image0{
+    left: 12%;
+  }
+  .image3{
+    left: 18%;
+  }
+  .image4{
+    left: 6%;
+  }
+  .image5{
+    left: -1%;
   }
 
   .title{
@@ -38,10 +58,7 @@
       0 0 10px c.$violet-blue,
       0 0 21px #fff,
       0 0 42px c.$violet-blue,
-      0 0 82px c.$violet-blue,
-      0 0 92px c.$violet-blue,
-      0 0 102px c.$violet-blue,
-      0 0 151px c.$violet-blue;
+      0 0 46px c.$violet-blue;
   }
   @media (max-width:600px){
     .image{
