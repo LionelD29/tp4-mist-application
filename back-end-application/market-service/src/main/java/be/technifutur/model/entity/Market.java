@@ -26,4 +26,5 @@ public class Market {
     @PositiveOrZero
     private int stock;
     private int promotion;
+    private int download;
 }

@@ -1,8 +1,8 @@
 spring:
+  profiles:
+    active: technifutur
   application:
     name: market-service-test
-  config:
-    import: configserver:http://user:pass@localhost:9999
   datasource:
     url: jdbc:h2:mem:marletdbtest;DB_CLOSE_DELAY=-1
     username: sa
@@ -11,3 +11,17 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
+---
+spring:
+  config:
+    import: configserver:http://user:pass@localhost:9999
+    activate:
+      on-profile: default
+
+
+---
+spring:
+  config:
+    import: configserver:http://user:pass@10.27.1.17:9999
+    activate:
+      on-profile: technifutur

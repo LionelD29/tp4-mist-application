@@ -40,6 +40,7 @@ class MarketServiceTest {
                 .gameRef(UUID_TEST)
                 .price(100)
                 .stock(50)
+                .download(100)
                 .build();
 
     }
@@ -47,7 +48,7 @@ class MarketServiceTest {
     @Test
     void can_add_market() {
         //given
-        MarketForm marketForm = new MarketForm(UUID.randomUUID(),103.34, 20,0);
+        MarketForm marketForm = new MarketForm(UUID.randomUUID(),103.34, 20,0, 100);
 
         //when
         MarketDto addedMarket = underTest.addMarket(marketForm);
@@ -140,7 +141,7 @@ class MarketServiceTest {
         doReturn(opt).when(mockRepo).findByGameRef(UUID_TEST);
 
         //when
-        underTest.updateAll(UUID_TEST, new MarketForm(UUID.randomUUID(),50.25,33,0));
+        underTest.updateAll(UUID_TEST, new MarketForm(UUID.randomUUID(),50.25,33,0,100));
 
         //then
         ArgumentCaptor<Market> captor = ArgumentCaptor.forClass(Market.class);
