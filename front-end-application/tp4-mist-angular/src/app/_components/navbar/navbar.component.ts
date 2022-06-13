@@ -23,23 +23,6 @@ export class NavbarComponent implements OnInit {
       }
     }
   }
-  // @HostListener('window:resize')
-  // mobilemenu(e: Event):void{
-  //   console.log(window.innerWidth);
-  //   var cpt = 0;
-  //   const navbar = document.getElementById("navbar");
-  //   const elem = document.createElement("div");
-  //   if(window.screenX < 1000){
-  //     elem.classList.add("mobile-menu");  
-      
-  //     if(navbar && cpt === 0){
-  //       cpt++;
-  //       navbar.appendChild(elem);
-  //     }
-  //   }else{
-  //     navbar?.removeChild(elem);
-  //   }
-  // }
   constructor(
     public authService: AuthService,
     private router: Router
@@ -64,9 +47,21 @@ export class NavbarComponent implements OnInit {
   }
   
   openMenu(){
-    const btn = document.getElementById("menuu")
-    if(btn)
+    const btn = document.getElementById("menu-btn");
+    const navbar = document.getElementById("navbar");
+    const checkbtn = document.getElementById("checkbtn") as HTMLInputElement | null; 
+    if(btn && checkbtn)
       btn.classList.toggle('opened');
+      if(checkbtn){
+        checkbtn.checked = checkbtn.checked ? false : true;
+        if(checkbtn.checked){
+          navbar?.classList.add("navbarc");
+        }else{
+          navbar?.classList.remove("navbarc");
+
+        }
+      }
+        
   }
 
 }

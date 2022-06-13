@@ -12,16 +12,6 @@ span, button{
     border: 2px solid #F40099;
 }
 
-#toggler{
-    display: none;
-}
-
-#toggler:checked ~ nav{
-    background-color: red;
-}
-
-
-
 .menu {
     background-color: transparent;
     border: none;
@@ -64,14 +54,25 @@ span, button{
     stroke-width: 6;
   }
 
+ .navbarc{
+    display: block;
+    position: relative;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    left: -50%;
+    transition: all 1s ease-in-out;
+ }
+ #checkbtn{
+    display: none;
+ }
+ #checkbtn:checked ~ .navbarc{
+
+ }
+
 @media (min-width:1000px){
     .menu{
         display: none;
     }
     
-}
-@media (max-width:1000px){
-    #navbar{
-        
-    }
 }
