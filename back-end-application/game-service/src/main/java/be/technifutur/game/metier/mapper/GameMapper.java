@@ -28,6 +28,7 @@ public class GameMapper {
                 .id(entity.getId())
                 .reference(entity.getReference())
                 .title(entity.getTitle())
+                .imageUrl(entity.getImageUrl())
                 .releaseDate(entity.getReleaseDate())
                 .genres(entity.getGenres())
                 .developer(developer)
@@ -44,6 +45,7 @@ public class GameMapper {
         return Game.builder()
                 .title(form.getTitle())
                 .reference(UUID.randomUUID())
+                .imageUrl(form.getImageUrl())
                 .releaseDate(form.getReleaseDate())
                 .genres(form.getGenres())
                 .build();
@@ -59,6 +61,7 @@ public class GameMapper {
                 .id(gameDTO.getId())
                 .reference(gameDTO.getReference())
                 .title(gameDTO.getTitle())
+                .imageUrl(gameDTO.getImageUrl())
                 .releaseDate(gameDTO.getReleaseDate())
                 .genres(gameDTO.getGenres())
                 .developer(gameDTO.getDeveloper() == null ? null : GameDTO.DeveloperDTO.builder().reference(gameDTO.getDeveloper().getReference()).name(gameDTO.getDeveloper().getName()).build())

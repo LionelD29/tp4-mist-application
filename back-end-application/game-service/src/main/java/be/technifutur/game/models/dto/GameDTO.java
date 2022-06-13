@@ -15,6 +15,7 @@ public class GameDTO {
     private Long id;
     private UUID reference;
     private String title;
+    private String imageUrl;
     private LocalDate releaseDate;
     private List<Genre> genres;
     private DeveloperDTO developer;

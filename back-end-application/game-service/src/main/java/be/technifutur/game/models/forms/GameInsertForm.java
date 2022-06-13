@@ -15,6 +15,9 @@ import java.util.List;
 @AllArgsConstructor
 public class GameInsertForm {
 
+    private double price;
+    private int promotion;
+    private String imageUrl;
     private String title;
     private LocalDate releaseDate;
     private List<Genre> genres;

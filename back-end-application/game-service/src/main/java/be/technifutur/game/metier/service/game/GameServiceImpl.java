@@ -16,16 +16,15 @@ import be.technifutur.game.models.forms.DeveloperForm;
 import be.technifutur.game.models.forms.EditorForm;
 import be.technifutur.game.models.forms.GameInsertForm;
 import be.technifutur.game.models.forms.GameUpdateForm;
+import be.technifutur.game.producer.MessageSender;
 import be.technifutur.game.repository.DeveloperRepository;
 import be.technifutur.game.repository.EditorRepository;
 import be.technifutur.game.repository.GameRepository;
+import be.technifutur.shared.model.form.MarketForm;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @Transactional
@@ -38,8 +37,9 @@ public class GameServiceImpl implements GameService{
     private final DeveloperService developerService;
     private final EditorService editorService;
     private final MarketClient marketClient;
+    private final MessageSender messageSender;
 
-    public GameServiceImpl(GameRepository repository, GameMapper mapper, DeveloperRepository developerRepository, EditorRepository editorRepository, DeveloperService developerService, EditorService editorService, MarketClient marketClient) {
+    public GameServiceImpl(GameRepository repository, GameMapper mapper, DeveloperRepository developerRepository, EditorRepository editorRepository, DeveloperService developerService, EditorService editorService, MarketClient marketClient, MessageSender messageSender) {
         this.repository = repository;
         this.mapper = mapper;
         this.developerRepository = developerRepository;
@@ -47,6 +47,7 @@ public class GameServiceImpl implements GameService{
         this.developerService = developerService;
         this.editorService = editorService;
         this.marketClient = marketClient;
+        this.messageSender = messageSender;
     }
 
     @Override
@@ -121,6 +122,17 @@ public class GameServiceImpl implements GameService{
         entity.setEditor(editor);
 
         entity = repository.save(entity);
+
+        MarketForm form = new MarketForm(
+                entity.getReference(),
+                gameForm.getPrice(),
+                new Random().nextInt(5, 21),
+                gameForm.getPromotion(),
+                new Random().nextInt(0, 1000)
+        );
+
+        messageSender.askForGameCreation(form); // Send RabbitMQ message to market-service to create a market entry
+
         return mapper.entityToDTO(entity);
     }
 

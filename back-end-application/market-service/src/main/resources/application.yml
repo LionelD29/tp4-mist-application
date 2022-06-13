@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: technifutur
+    active: default
 
 ---
 spring:
@@ -10,6 +10,11 @@ spring:
     import: configserver:http://user:pass@localhost:9999
     activate:
       on-profile: default
+  rabbitmq:
+    port: 5672
+    host: localhost
+    username: guest
+    password: guest
 
 
 ---
@@ -20,3 +25,8 @@ spring:
     import: configserver:http://user:pass@10.27.1.17:9999
     activate:
       on-profile: technifutur
+  rabbitmq:
+    port: 5672
+    host: 10.27.1.17
+    username: guest
+    password: guest
