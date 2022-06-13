@@ -1,0 +1,754 @@
+[
+  {
+    "price": 59.99,
+    "promotion": 20,
+    "imageUrl": "https://bit.ly/3tzE0AN",
+    "title": "Forza Horizon 5",
+    "releaseDate": "2021-11-08",
+    "genres": [
+      "SPORTS"
+    ],
+    "developer": {
+      "name": "Playground Games"
+    },
+    "editor": {
+      "name": "Xbox Game Studios"
+    }
+  },
+  {
+    "price": 39.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3tUTyiP",
+    "title": "Transport Fever 2",
+    "releaseDate": "2019-12-11",
+    "genres": [
+      "STRATEGY", "SOLO"
+    ],
+    "developer": {
+      "name": "Urban Games"
+    },
+    "editor": {
+      "name": "Good Shepherd Entertainment"
+    }
+  },
+  {
+    "price": 39.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3zDxAUW",
+    "title": "Hell Let Loose",
+    "releaseDate": "2021-07-27",
+    "genres": [
+      "ACTION", "SOLO", "MULTI", "FPS"
+    ],
+    "developer": {
+      "name": "Black Matter Pty Ltd"
+    },
+    "editor": {
+      "name": "Team17"
+    }
+  },
+  {
+    "price": 39.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3xIW1im",
+    "title": "Call of Duty: Black Ops",
+    "releaseDate": "2010-11-08",
+    "genres": [
+      "ACTION", "FPS"
+    ],
+    "developer": {
+      "name": "Treyarch"
+    },
+    "editor": {
+      "name": "Activision"
+    }
+  },
+  {
+    "price": 39.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3xJqgpl",
+    "title": "Assassin's Creed Black Flag - Gold Edition",
+    "releaseDate": "2013-11-19",
+    "genres": [
+      "ACTION", "ADVENTURE"
+    ],
+    "developer": {
+      "name": "Ubisoft Montreal"
+    },
+    "editor": {
+      "name": "Ubisoft"
+    }
+  },
+  {
+    "price": 19.99,
+    "promotion": 75,
+    "imageUrl": "https://bit.ly/3xJqnBh",
+    "title": "DOOM",
+    "releaseDate": "2016-05-12",
+    "genres": [
+      "ACTION", "SOLO", "MULTI", "FPS", "SCIENCEFICTION"
+    ],
+    "developer": {
+      "name": "id Software"
+    },
+    "editor": {
+      "name": "Bethesda Softworks"
+    }
+  },
+  {
+    "price": 8.99,
+    "promotion": 40,
+    "imageUrl": "https://bit.ly/3mFHMVg",
+    "title": "Chivalry 2 - Special Edition",
+    "releaseDate": "2022-06-12",
+    "genres": [
+      "ACTION"
+    ],
+    "developer": {
+      "name": "Torn Banner Studios"
+    },
+    "editor": {
+      "name": "Tripwire Presents"
+    }
+  },
+  {
+    "price": 29.99,
+    "promotion": 67,
+    "imageUrl": "https://bit.ly/3HhdVvM",
+    "title": "Deep Rock Galactic",
+    "releaseDate": "2020-05-13",
+    "genres": [
+      "ACTION", "MULTI", "FPS"
+    ],
+    "developer": {
+      "name": "Coffee Stain Publishing"
+    },
+    "editor": {
+      "name": "Coffee Stain Publishing"
+    }
+  },
+  {
+    "price": 16.79,
+    "promotion": 10,
+    "imageUrl": "https://bit.ly/3xrBn5a",
+    "title": "Builder Simulator",
+    "releaseDate": "2022-06-09",
+    "genres": [
+      "INDIE", "ADVENTURE", "STRATEGY"
+    ],
+    "developer": {
+      "name": "Live Motion Games"
+    },
+    "editor": {
+      "name": "Live Motion Games"
+    }
+  },
+  {
+    "price": 25.00,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/39nYHsk",
+    "title": "Factorio",
+    "releaseDate": "2020-08-14",
+    "genres": [
+      "INDIE", "STRATEGY"
+    ],
+    "developer": {
+      "name": "Wube Software LTD."
+    },
+    "editor": {
+      "name": "Wube Software LTD."
+    }
+  },
+  {
+    "price": 29.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3aY8E0d",
+    "title": "Subnautica",
+    "releaseDate": "2018-01-23",
+    "genres": [
+      "INDIE", "ADVENTURE", "VR"
+    ],
+    "developer": {
+      "name": "Unknown Worlds Entertainment"
+    },
+    "editor": {
+      "name": "Unknown Worlds Entertainment"
+    }
+  },
+  {
+    "price": 59.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3tzNmMN",
+    "title": "ELDEN RING",
+    "releaseDate": "2022-02-25",
+    "genres": [
+      "ACTION", "RPG"
+    ],
+    "developer": {
+      "name": "FromSoftware Inc."
+    },
+    "editor": {
+      "name": "FromSoftware Inc."
+    }
+  },
+  {
+    "price": 59.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3HjOmuj",
+    "title": "Dying Light 2",
+    "releaseDate": "2022-02-04",
+    "genres": [
+      "ACTION", "ADVENTURE", "RPG"
+    ],
+    "developer": {
+      "name": "Techland"
+    },
+    "editor": {
+      "name": "Techland"
+    }
+  },
+  {
+    "price": 11.59,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3mICnwU",
+    "title": "Phasmophobia",
+    "releaseDate": "2020-09-18",
+    "genres": [
+      "INDIE", "ACTION", "HORROR", "VR"
+    ],
+    "developer": {
+      "name": "Kinetic Games"
+    },
+    "editor": {
+      "name": "Kinetic Games"
+    }
+  },
+  {
+    "price": 19.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3zzYPzY",
+    "title": "Dead Space 2",
+    "releaseDate": "2011-01-26",
+    "genres": [
+      "ACTION", "ADVENTURE", "HORROR", "SURVIVAL"
+    ],
+    "developer": {
+      "name": "Visceral Games"
+    },
+    "editor": {
+      "name": "Electronic Arts"
+    }
+  },
+  {
+    "price": 19.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3zzne8t",
+    "title": "Dead Space",
+    "releaseDate": "2008-10-20",
+    "genres": [
+      "ACTION", "ADVENTURE", "HORROR", "SURVIVAL"
+    ],
+    "developer": {
+      "name": "EA Redwood Shores"
+    },
+    "editor": {
+      "name": "Electronic Arts"
+    }
+  },
+  {
+    "price": 39.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3xLgH9G",
+    "title": "The Elder Scrolls V: Skyrim Special Edition",
+    "releaseDate": "2016-10-28",
+    "genres": [
+      "ACTION", "ADVENTURE", "RPG", "SOLO"
+    ],
+    "developer": {
+      "name": "Bethesda Game Studios"
+    },
+    "editor": {
+      "name": "Bethesda Softworks"
+    }
+  },
+  {
+    "price": 9.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3OaKi1r",
+    "title": "Kerbal Space Program",
+    "releaseDate": "2015-04-27",
+    "genres": [
+      "INDIE", "SOLO", "STRATEGY"
+    ],
+    "developer": {
+      "name": "Squad"
+    },
+    "editor": {
+      "name": "Private Division"
+    }
+  },
+  {
+    "price": 24.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3MGaekB",
+    "title": "Elite Dangerous",
+    "releaseDate": "2015-04-02",
+    "genres": [
+      "ACTION", "ADVENTURE", "MULTI", "RPG", "SCIENCEFICTION", "STRATEGY", "OPENWORLD"
+    ],
+    "developer": {
+      "name": "Frontier Developments"
+    },
+    "editor": {
+      "name": "Frontier Developments"
+    }
+  },
+  { 
+    "price": 39.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3xLEgPz",
+    "title": "Pro Cycling Manager 2022",
+    "releaseDate": "2022-06-09",
+    "genres": [
+      "SPORTS", "STRATEGY"
+    ],
+    "developer": {
+      "name": "Cyanide"
+    },
+    "editor": {
+      "name": "Nacon"
+    }
+  },
+  { 
+    "price": 35.99, 
+    "promotion": 40,
+    "imageUrl": "https://bit.ly/3O9Jqdn",
+    "title": "Chivalry 2",
+    "releaseDate": "2022-06-12",
+    "genres": [
+      "ACTION"
+    ],
+    "developer": {
+      "name": "Torn Banner Studios"
+    },
+    "editor": {
+      "name": "Tripwire Presents"
+    }
+  },
+  { 
+    "price": 59.99, 
+    "promotion": 50,
+    "imageUrl": "https://bit.ly/3OgVkm5",
+    "title": "Cyberpunk 2077",
+    "releaseDate": "2020-12-10",
+    "genres": [
+      "RPG"
+    ],
+    "developer": {
+      "name": "CD PROJEKT RED"
+    },
+    "editor": {
+      "name": "CD PROJEKT RED"
+    }
+  },
+  { 
+    "price": 69.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3mKjKbC",
+    "title": "Microsoft Flight Simulator Game of the Year Edition",
+    "releaseDate": "2020-04-18",
+    "genres": [
+      "VR"
+    ],
+    "developer": {
+      "name": "Stunlock Studios"
+    },
+    "editor": {
+      "name": "Stunlock Studios"
+    }
+  },
+  { 
+    "price": 95.96, 
+    "promotion": 52,
+    "imageUrl": "https://bit.ly/3zwcGqQ",
+    "title": "Jurassic World Evolution 2: Premium Edition",
+    "releaseDate": "",
+    "genres": [
+      "STRATEGY", "ACTION"
+    ],
+    "developer": {
+      "name": "Frontier Developments"
+    },
+    "editor": {
+      "name": "Frontier Developments"
+    }
+  },
+  { 
+    "price": 49.56, 
+    "promotion": 34,
+    "imageUrl": "https://bit.ly/3xtb4LE",
+    "title": "ARK: Ultimate Survivor Upgrade",
+    "releaseDate": "",
+    "genres": [
+      "ACTION", "ADVENTURE", "INDIE", "RPG", "MULTI"
+    ],
+    "developer": {
+      "name": "Studio Wildcard"
+    },
+    "editor": {
+      "name": "Studio Wildcard"
+    }
+  },
+  { 
+    "price": 59.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3HfDhu9",
+    "title": "The Quarry",
+    "releaseDate": "2022-06-10",
+    "genres": [
+      "ADVENTURE"
+    ],
+    "developer": {
+      "name": "Supermassive Games"
+    },
+    "editor": {
+      "name": "2K Games"
+    }
+  },
+  { 
+    "price": 59.99, 
+    "promotion": 50,
+    "imageUrl": "https://bit.ly/3O96CbQ",
+    "title": "Jurassic World Evolution 2",
+    "releaseDate": "2021-11-09",
+    "genres": [
+      "STRATEGY"
+    ],
+    "developer": {
+      "name": "Frontier Developments"
+    },
+    "editor": {
+      "name": "Frontier Developments"
+    }
+  },
+  { 
+    "price": 39.99, 
+    "promotion": 50,
+    "imageUrl": "https://bit.ly/39ixoQd",
+    "title": "It Takes Two",
+    "releaseDate": "2021-03-26",
+    "genres": [
+      "ACTION", "ADVENTURE"
+    ],
+    "developer": {
+      "name": "Hazelight"
+    },
+    "editor": {
+      "name": "Electronic Arts"
+    }
+  },
+  { 
+    "price": 39.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3Hipa7e",
+    "title": "Rust",
+    "releaseDate": "2018-02-08",
+    "genres": [
+      "ACTION", "ADVENTURE", "INDIE", "RPG", "MULTI"
+    ],
+    "developer": {
+      "name": "Facepunch Studios"
+    },
+    "editor": {
+      "name": "Facepunch Studios"
+    }
+  },
+  { 
+    "price": 49.99, 
+    "promotion": 20,
+    "imageUrl": "https://bit.ly/3NLrohL",
+    "title": "Mount & Blade II: Bannerlord",
+    "releaseDate": "2020-03-30",
+    "genres": [
+      "ACTION", "RPG", "STRATEGY"
+    ],
+    "developer": {
+      "name": "TaleWorlds Entertainment"
+    },
+    "editor": {
+      "name": "TaleWorlds Entertainment"
+    }
+  },
+  { 
+    "price": 16.79,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3tw5w1O",
+    "title": "Valheim",
+    "releaseDate": "2021-02-02",
+    "genres": [
+      "ACTION", "ADVENTURE", "INDIE", "RPG"
+    ],
+    "developer": {
+      "name": "Iron Gate AB"
+    },
+    "editor": {
+      "name": "Coffee Stain Publishing"
+    }
+  },
+  { 
+    "price": 39.99, 
+    "promotion": 60,
+    "imageUrl": "https://bit.ly/3n0xrDL",
+    "title": "Halo: The Master Chief Collection",
+    "releaseDate": "2019-12-03",
+    "genres": [
+      "ACTION"
+    ],
+    "developer": {
+      "name": "343 Industries"
+    },
+    "editor": {
+      "name": "Xbox Game Studios"
+    }
+  },
+  { 
+    "price": 24.99, 
+    "promotion": 20,
+    "imageUrl": "https://bit.ly/3zwduMo",
+    "title": "ARK: Genesis Season Pass",
+    "releaseDate": "2019-08-08",
+    "genres": [
+      "ACTION", "ADVENTURE", "INDIE", "MULTI", "RPG"
+    ],
+    "developer": {
+      "name": "Studio Wildcard"
+    },
+    "editor": {
+      "name": "Studio Wildcard"
+    }
+  },
+  { 
+    "price": 4.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3txsq96",
+    "title": "Return to Castle Wolfenstein",
+    "releaseDate": "2001-11-20",
+    "genres": [
+      "ACTION", "FPS"
+    ],
+    "developer": {
+      "name": "Gray Matter Studios"
+    },
+    "editor": {
+      "name": "Bethesda-Softworks"
+    }
+  },
+  { 
+    "price": 8.19,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3Qu0Vay",
+    "title": "Counter-Strike",
+    "releaseDate": "2000-11-01",
+    "genres": [
+      "ACTION", "FPS", "MULTI"
+    ],
+    "developer": {
+      "name": "Valve"
+    },
+    "editor": {
+      "name": "Valve"
+    }
+  },
+  { 
+    "price": 0,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/2wNCgWE",
+    "title": "Counter-Strike: Global Offensive",
+    "releaseDate": "2012-08-21",
+    "genres": [
+      "ACTION", "FPS", "MULTI"
+    ],
+    "developer": {
+      "name": "Valve"
+    },
+    "editor": {
+      "name": "Valve"
+    }
+  },
+  { 
+    "price": 29.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3txTEMW",
+    "title": "Assassin's Creed® Unity",
+    "releaseDate": "2014-11-13",
+    "genres": [
+      "ACTION", "ADVENTURE"
+    ],
+    "developer": {
+      "name": "Ubisoft"
+    },
+    "editor": {
+      "name": "Ubisoft"
+    }
+  },
+  { 
+    "price": 19.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3xNexq8",
+    "title": "BioShock™ Remastered",
+    "releaseDate": "2016-09-16",
+    "genres": [
+      "ACTION", "RPG", "FPS", "SCIENCEFICTION"
+    ],
+    "developer": {
+      "name": "2K"
+    },
+    "editor": {
+      "name": "2K"
+    }
+  },
+  { 
+    "price": 8.19,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3xtcGoG",
+    "title": "Half-Life",
+    "releaseDate": "1998-11-08",
+    "genres": [
+      "ACTION", "FPS", "SCIENCEFICTION"
+    ],
+    "developer": {
+      "name": "Valve"
+    },
+    "editor": {
+      "name": "Valve"
+    }
+  },
+  { 
+    "price": 20.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3Of4ijp",
+    "title": "Hades",
+    "releaseDate": "2020-09-17",
+    "genres": [
+      "ACTION", "INDIE", "RPG", "SCIENCEFICTION"
+    ],
+    "developer": {
+      "name": "Supergiant Games"
+    },
+    "editor": {
+      "name": "Supergiant Games"
+    }
+  },
+  { 
+    "price": 29.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3txDmUt",
+    "title": "Ravenmark: Scourge of Estellion",
+    "releaseDate": "2015-09-10",
+    "genres": [
+      "STRATEGY", "RPG"
+    ],
+    "developer": {
+      "name": "Witching Hour Studios"
+    },
+    "editor": {
+      "name": "Slitherine Ltd."
+    }
+  },
+  { 
+    "price": 0,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3b2jYbP",
+    "title": "Lionel the Dragon",
+    "releaseDate": "",
+    "genres": [
+      "INDIE"
+    ],
+    "developer": {
+      "name": "Big Spec Games"
+    },
+    "editor": {
+      "name": "Big Spec Games"
+    }
+  },
+  { 
+    "price": 0.79,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3xLL1kv",
+    "title": "Sir Christopher",
+    "releaseDate": "2021-03-22",
+    "genres": [
+      "ACTION", "ADVENTURE", "INDIE", "RPG"
+    ],
+    "developer": {
+      "name": "Max Pedro"
+    },
+    "editor": {
+      "name": "Gales Corp."
+    }
+  },
+  { 
+    "price": 0,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3NMfxQB",
+    "title": "Sébastien Loeb Rally EVO",
+    "releaseDate": "2016-01-29",
+    "genres": [
+      "SPORTS"
+    ],
+    "developer": {
+      "name": "Milestone S.r.l."
+    },
+    "editor": {
+      "name": "Milestone S.r.l."
+    }
+  },
+  { 
+    "price": 16.79,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3NMfzrH",
+    "title": "My Friend Pedro",
+    "releaseDate": "2019-06-20",
+    "genres": [
+      "ACTION", "INDIE"
+    ],
+    "developer": {
+      "name": "DeadToast Entertainment"
+    },
+    "editor": {
+      "name": "Devolver Digital"
+    }
+  },
+  { 
+    "price": 59.99,
+    "promotion": 0,
+    "imageUrl": "https://bit.ly/3xkmyBg",
+    "title": "Attack on Titan / A.O.T. Wings of Freedom",
+    "releaseDate": "2016-08-26",
+    "genres": [
+      "ACTION", "SOLO"
+    ],
+    "developer": {
+      "name": "KOEI TECMO GAMES CO., LTD."
+    },
+    "editor": {
+      "name": "KOEI TECMO GAMES CO., LTD."
+    }
+  },
+  { 
+    "price": 19.99, 
+    "promotion": 80,
+    "imageUrl": "https://bit.ly/3Hmr3jw",
+    "title": "Command & Conquer™ Remastered Collection",
+    "releaseDate": "2020-06-05",
+    "genres": [
+      "STRATEGY", "SOLO"
+    ],
+    "developer": {
+      "name": "Petroglyph"
+    },
+    "editor": {
+      "name": "Electronic Arts"
+    }
+  }
+]

@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import java.util.UUID;
 
@@ -16,13 +15,13 @@ import java.util.UUID;
 public class MarketForm {
 
     private UUID gameRef;
-    @Positive
+    @PositiveOrZero
     private double price;
     @PositiveOrZero
     private int stock;
     @PositiveOrZero
     private int promotion;
-    @Positive
+    @PositiveOrZero
     private int download;
 
 }

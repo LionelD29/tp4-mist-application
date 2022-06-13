@@ -28,7 +28,7 @@ import java.util.*;
 
 @Service
 @Transactional
-public class GameServiceImpl implements GameService{
+public class GameServiceImpl implements GameService {
 
     private final GameRepository repository;
     private final GameMapper mapper;
@@ -172,5 +172,10 @@ public class GameServiceImpl implements GameService{
                 .orElseThrow(() -> new ElementNotFoundException(edReference, Developer.class));
         game.setEditor(editor);
         return mapper.entityToDTO(game);
+    }
+
+    @Override
+    public void insertGameList(List<GameInsertForm> gameList) {
+        gameList.forEach(this::insertGame);
     }
 }

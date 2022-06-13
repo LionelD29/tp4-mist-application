@@ -21,7 +21,7 @@ public class Market {
     private Long id;
     @Column(unique = true, nullable = false)
     private UUID gameRef;
-    @Positive
+    @PositiveOrZero
     private double price;
     @PositiveOrZero
     private int stock;
