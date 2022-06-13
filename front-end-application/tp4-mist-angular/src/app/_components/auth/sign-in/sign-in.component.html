@@ -1,4 +1,4 @@
-<div class="container-sm mb-3" style="max-width: 550px;">
+<div class="container-sm mb-3 sign" style="max-width: 550px;">
     <div class="container d-flex justify-content-center align-items-center pt-5 pb-5">
         <h2>Se connecter</h2>
     </div> 
@@ -21,13 +21,13 @@
         </div>
     
         <button [disabled]="signInForm.pristine || signInForm.invalid"
-                 type="submit" class="btn btn-outline-primary">
+                 type="submit" class="sign-in w-100 p-2 mb-2">
             Se connecter
         </button>
     </form>
     
     <p>Toujours pas de compte ? Inscrivez-vous dès maintenant !</p>
-    <button (click)="onSignUp()" class="btn btn-outline-success">
+    <button (click)="onSignUp()" class="sign-up">
         S'inscrire
     </button>
 </div>
