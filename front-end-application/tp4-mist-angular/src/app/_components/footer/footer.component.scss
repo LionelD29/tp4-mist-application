@@ -1,0 +1,30 @@
+.footer{
+    margin: 1% 0% 0% 0%;
+    padding: 2%;
+    background-image: linear-gradient(to right, rgb(17, 0, 68), rgb(86, 0, 111));
+    opacity: 50%;
+    color: white;
+}
+
+.top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    .about{
+        max-width: 30%;
+    }
+    .git{
+        width: 20px;
+        height: 20px;
+        border-radius: 15px;
+    }
+}
+
+.bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items:flex-end;
+    border-top: 1px white solid;
+    padding: 1%;
+}
