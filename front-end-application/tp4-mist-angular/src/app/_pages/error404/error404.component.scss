@@ -1,6 +1,13 @@
+.page{
+    display: flex;
+    flex-direction: column;
+    height: 800px;
+}
+
 .error{
     text-align: center;
-    color: rgb(131, 0, 134);
+    // color: linear-gradient(to bottom, rgb(227, 0, 154), rgb(138, 0, 190));
+    color: rgb(138, 0, 190);
 }
 
 .container{
@@ -11,6 +18,10 @@
 .container img {
     width: 100%;
     height: auto;
-    border: 2px rgb(131, 0, 134) solid;
+    border: 2px rgb(138, 0, 190) solid;
     border-radius: 15px 15px 15px 15px;
+}
+
+.button{
+    text-align: center;
 }
