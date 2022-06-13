@@ -1,0 +1,16 @@
+.error{
+    text-align: center;
+    color: rgb(131, 0, 134);
+}
+
+.container{
+    width: 500px;
+    height: 120px;
+}
+
+.container img {
+    width: 100%;
+    height: auto;
+    border: 2px rgb(131, 0, 134) solid;
+    border-radius: 15px 15px 15px 15px;
+}
