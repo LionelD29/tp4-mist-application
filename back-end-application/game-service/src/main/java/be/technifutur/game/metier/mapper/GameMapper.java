@@ -66,6 +66,7 @@ public class GameMapper {
                 .price(marketDTO.getPrice())
                 .stock(marketDTO.getStock())
                 .promotion(marketDTO.getPromotion())
+                .download(marketDTO.getDownload())
                 .build();
     }
 }

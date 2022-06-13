@@ -15,4 +15,5 @@ public class MarketDTO {
     private double price;
     private int stock;
     private int promotion;
+    private int download;
 }

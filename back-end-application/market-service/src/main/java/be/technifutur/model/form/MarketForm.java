@@ -21,5 +21,7 @@ public class MarketForm {
     private int stock;
     @PositiveOrZero
     private Integer pomotion;
+    @Positive
+    private int download;
 
 }

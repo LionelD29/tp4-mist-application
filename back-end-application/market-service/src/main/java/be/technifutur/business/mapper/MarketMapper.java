@@ -24,6 +24,7 @@ public class MarketMapper {
                 .price(entity.getPrice())
                 .stock(entity.getStock())
                 .promotion(entity.getPromotion())
+                .download(entity.getDownload())
                 .build();
     }
 
@@ -41,6 +42,7 @@ public class MarketMapper {
                 .price(form.getPrice())
                 .stock(form.getStock())
                 .promotion(form.getPomotion() != null ? form.getPomotion() : 0)
+                .download(form.getDownload())
                 .build();
     }
 }

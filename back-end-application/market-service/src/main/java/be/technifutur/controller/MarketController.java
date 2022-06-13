@@ -36,32 +36,37 @@ public class MarketController {
         return service.getAll();
     }
 
+
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/{ref}")
     public void deleteMarket(@PathVariable UUID ref) {
         service.deleteOneMarket(ref);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PatchMapping("/update/price/{ref}")
     public MarketDto updatePriceOnly(@PathVariable UUID ref, @RequestParam double price) {
         return service.updatePriceOnly(ref, price);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PatchMapping("/update/{ref}")
     public MarketDto updateStockOnly(@PathVariable UUID ref, @RequestParam int stock) {
         return service.updateStockOnly(ref, stock);
     }
 
-
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PatchMapping("/update/promo/{ref}")
     public MarketDto updatePromotionOnly(@PathVariable UUID ref, @RequestParam int promotion) {
         return service.updatePromotionOnly(ref, promotion);
     }
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/update/{ref}")
     public MarketDto updateAll(@PathVariable UUID ref,@Valid @RequestBody MarketForm form) {
         return service.updateAll(ref, form);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/add")
     public MarketDto addMarket(@RequestBody MarketForm form) {
