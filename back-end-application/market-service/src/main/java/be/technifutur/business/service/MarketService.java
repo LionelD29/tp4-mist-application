@@ -75,7 +75,7 @@ public class MarketService {
                 .orElseThrow(() -> new MarketPriceNotFoundException(ref, MarketDto.class));
         market.setStock(form.getStock());
         market.setPrice(form.getPrice());
-        market.setPromotion(form.getPomotion() != null ? form.getPomotion() : 0);
+        market.setPromotion(form.getPromotion() != null ? form.getPromotion() : 0);
         repo.save(market);
         return mapper.entityToDTO(market);
     }

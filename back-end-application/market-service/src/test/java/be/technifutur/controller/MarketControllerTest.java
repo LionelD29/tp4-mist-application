@@ -152,7 +152,7 @@ class MarketControllerTest {
 
         market.setPrice(form.getPrice());
         market.setStock(form.getStock());
-        market.setPromotion(form.getPomotion());
+        market.setPromotion(form.getPromotion());
         //when
         when(service.updateAll(any(), any())).thenReturn(mapper.entityToDTO(market));
 
@@ -175,7 +175,7 @@ class MarketControllerTest {
 
         market.setPrice(form.getPrice());
         market.setStock(form.getStock());
-        market.setPromotion(form.getPomotion());
+        market.setPromotion(form.getPromotion());
         //when
         when(service.updateAll(any(), any())).thenReturn(mapper.entityToDTO(market));
 

@@ -14,13 +14,14 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter @Setter
 public class MarketForm {
+
     private UUID gameRef;
     @Positive
     private double price;
     @PositiveOrZero
     private int stock;
     @PositiveOrZero
-    private Integer pomotion;
+    private Integer promotion;
     @Positive
     private int download;
 

@@ -41,7 +41,7 @@ public class MarketMapper {
                 .gameRef(UUID.randomUUID())
                 .price(form.getPrice())
                 .stock(form.getStock())
-                .promotion(form.getPomotion() != null ? form.getPomotion() : 0)
+                .promotion(form.getPromotion() != null ? form.getPromotion() : 0)
                 .download(form.getDownload())
                 .build();
     }
