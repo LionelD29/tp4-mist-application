@@ -11,7 +11,9 @@ span, button{
     padding: 0.3rem 3rem;
     border: 2px solid #F40099;
 }
-
+.title > img{
+  width: 60px;
+}
 .menu {
     background-color: transparent;
     border: none;
@@ -53,25 +55,46 @@ span, button{
     stroke-dashoffset: -134;
     stroke-width: 6;
   }
+  #navbar{
+    transition: background 0.5s ease-in-out;
+  }
 
  .navbarc{
-    position: relative;
-    z-index: 10;
-    width: 100%;
+    position: absolute;
+    background-color: c.$dark-grey;
+    z-index: 1000;
+    width: 100vw;
     height: 100vh;
-    left: -50%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
     transition: all 1s ease-in-out;
  }
- #checkbtn{
-    display: none;
- }
- #checkbtn:checked ~ .navbarc{
 
+ .collapser{
+  display: none !important;
+ }
+
+ .navbarItems{
+  position: fixed;
+  width: 80%;
+  margin-top: 10rem;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  
+  }
+ .navparent{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
  }
 
 @media (min-width:1000px){
     .menu{
         display: none;
-    }
-    
+    }    
 }
+

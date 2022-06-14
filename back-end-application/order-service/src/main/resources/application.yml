@@ -2,6 +2,7 @@ spring:
   application:
     name: order-service
   profiles:
-    active: technifutur
+    active: default
   config:
-    import: configserver:http://user:pass@10.27.1.17:9999
+    import: configserver:http://user:pass@localhost:9999
+#    import: configserver:http://user:pass@10.27.1.17:9999
