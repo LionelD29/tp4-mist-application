@@ -1,8 +1,10 @@
-<div class="main-card">
-    <div class="promo-icon">
-        <p>13%</p>
+<div class="main-card" [ngStyle]="{'background-image': 'url(' + game.imageUrl + ')'}">
+    <a [routerLink]="['/game/{{game.id}}']">
+    <div class="promo-icon" *ngIf="game.promotion != 0">
+        <p>-{{ game.promotion }}%</p>
         <img src="assets/cards/promo1.png" style="width: 50px" alt="">
     </div>
-    <div class="title">un titre</div>
-    <div class="price">40€</div>
+    <div class="title">{{ game.title }}</div>
+    <div class="price">{{ game.price }}€</div>
+    </a>
 </div>
