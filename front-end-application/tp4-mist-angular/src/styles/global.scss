@@ -4,3 +4,16 @@ $dark-grey : #292929;
 $light-grey : #333333;
 $pink: #F40099;
 
+.searchbar{
+    width: 322px;
+    height: 38px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    margin: 0 auto;
+}
+@media(max-width:500px){
+    .searchbar{
+        width: 90%;
+    }
+}

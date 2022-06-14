@@ -12,7 +12,6 @@ export class NavbarComponent implements OnInit {
   @HostListener('window:scroll') 
   onScroll(e: Event): void {
     const navbar = document.getElementById("navbar");
-    const body = document.getElementsByTagName("body")[0];
     if(window.scrollY > 300){ 
       if(navbar){
         navbar.style.backgroundColor = "#292929";
@@ -82,6 +81,7 @@ export class NavbarComponent implements OnInit {
         if(!navbar.classList.contains("navbarc")){
           navbar.style.backgroundColor = "#292929";
           navbar.classList.add("navbarc");
+          navbar.style.left= "0";
           body.style.overflow = "hidden";
         }
       }
@@ -89,6 +89,7 @@ export class NavbarComponent implements OnInit {
       if(navbar){
         navbar.style.backgroundColor = "transparent";
         navbar.classList.remove("navbarc");
+        navbar.style.left= "-100%";
       }
       body.style.overflow = "auto"; 
     }      
@@ -96,10 +97,10 @@ export class NavbarComponent implements OnInit {
 
   openMenu(){
     if(window.innerWidth < 1000){
-    this.isOpen = this.isOpen ? false : true;
-    const navbar_elem = document.getElementById("navbarContent");
-    const navbar_parent = document.getElementById("parentItem");
-    const btn = document.getElementById("menu-btn");
+      this.isOpen = this.isOpen ? false : true;
+      const navbar_elem = document.getElementById("navbarContent");
+      const navbar_parent = document.getElementById("parentItem");
+      const btn = document.getElementById("menu-btn");
     if(this.isOpen){
       if(navbar_elem && navbar_parent){
         navbar_elem.classList.remove("collapser");

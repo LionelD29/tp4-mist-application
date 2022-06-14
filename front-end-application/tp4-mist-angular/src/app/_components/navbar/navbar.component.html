@@ -14,12 +14,13 @@
             </svg>
         </button>
         <div class="justify-content-end d-flex" id="navbarContent">
-           
-            <input style="background-color: #292929;color: aliceblue;" class="research mt-2 mt-md-0"
-                type="search"
-                placeholder="Rechercher..."
-                aria-label="Search">
-          
+            <form class="searchbar" action="">
+                <input class="research"
+                    type="search"
+                    placeholder="Rechercher..."
+                    aria-label="Search">
+                <button id="search_sub" class="submit_btn" type="submit">Go</button>
+            </form>
             <ul class="navbar-nav" id="listItem">
                 <li class="nav-item">
                     <span class="nav-link ms-sm-3 ms-0 mt-2 mt-lg-0" (click)="onClick($event)">Accueil</span>
