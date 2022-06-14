@@ -64,6 +64,13 @@ public class GameController {
         return ResponseEntity.ok(service.insertGame(form));
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping("/add-list")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void insertGameList(@RequestBody List<GameInsertForm> list){
+        service.insertGameList(list);
+    }
+
 
     // --- PUT ---
     @PreAuthorize("hasAuthority('ADMIN')")

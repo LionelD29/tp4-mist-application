@@ -1,4 +1,4 @@
-package be.technifutur.game.config;
+package be.technifutur.market.config;
 
 import be.technifutur.shared.model.security.JwtValidationFilter;
 import org.springframework.context.annotation.Bean;
@@ -7,15 +7,12 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class BeanConfig {
-
     @Bean
-    public RestTemplate restTemplate(){
+    public RestTemplate template() {
         return new RestTemplate();
     }
-
     @Bean
-    public JwtValidationFilter jwtValidationFilter(){
-        return new JwtValidationFilter(restTemplate(), "localhost", 8181);
-        //chez moi, changer le authService en "localhost" (sinon 10.27.1.17)
+    public JwtValidationFilter jwtValidationFilter(RestTemplate template){
+        return new JwtValidationFilter(template, "localhost", 8181);
     }
 }

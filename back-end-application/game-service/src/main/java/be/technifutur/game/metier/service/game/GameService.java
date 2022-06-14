@@ -25,4 +25,6 @@ public interface GameService {
     GameDTO updateDeveloperOfGame(UUID gameReference, UUID devReference);
 
     GameDTO updateEditorOfGame(UUID gameReference, UUID edReference);
+
+    void insertGameList(List<GameInsertForm> gameList);
 }
