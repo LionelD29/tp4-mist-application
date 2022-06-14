@@ -1,5 +1,5 @@
 <div class="main-card" [ngStyle]="{'background-image': 'url(' + game.imageUrl + ')'}">
-    <a [routerLink]="['/game/{{game.id}}']">
+    <a routerLink="/details/{{game.reference}}">
     <div class="promo-icon" *ngIf="game.promotion != 0">
         <p>-{{ game.promotion }}%</p>
         <img src="assets/cards/promo1.png" style="width: 50px" alt="">
