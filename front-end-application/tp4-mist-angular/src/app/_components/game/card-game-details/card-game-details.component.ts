@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Developer } from 'src/app/_models/developer.model';
+import { Editor } from 'src/app/_models/editor.model';
 import { Game } from 'src/app/_models/game.model';
 import { GameService } from 'src/app/_services/game.service';
 
@@ -11,10 +13,17 @@ import { GameService } from 'src/app/_services/game.service';
 export class CardGameDetailsComponent implements OnInit {
 
   game!: Game;
-  id!: number;
+  editor!: Editor;
+  developers!: Developer[];
+  reference!: String;
 
   constructor(private route: ActivatedRoute, private gameService: GameService) {
-    this.id = route.snapshot.params['reference'];
+    this.reference = route.snapshot.params['reference'];
+    this.gameService.getGameByReference(this.reference).subscribe({
+      next: game => this.game = game,
+      error: err => console.log("echec"),
+      complete: () => console.log("get game - completed")
+    });
    }
 
   ngOnInit(): void {

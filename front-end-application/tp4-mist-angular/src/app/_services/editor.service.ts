@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Editor } from '../_models/editor.model';
-import { EditorForm } from '../_models/editorForm.model';
+import { EditorForm } from '../_models/editorForm';
 
 @Injectable({
   providedIn: 'root'
