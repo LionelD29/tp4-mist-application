@@ -1,33 +1,35 @@
 <div class="details">
     <div class="left">
-        <h3>Title : blablabla</h3>
-        <p>toutoutotutotut</p>
+        <h2>{{game.title}}</h2>
+        <br>
+        <img [src]="game.imageUrl" alt="" class="img">
 
-        <h4>About the game</h4>
-        <p>Petit résumé de chacun ? Si on a le courage...</p>
+        <!-- <h4>About the game</h4>
+        <p>Petit résumé de chacun ? Si on a le courage...</p> -->
     </div>
     
-    <div>
-        <h4>Details</h4>
+    <div class="right">
+        <h4>Détails du jeux</h4>
+        <br>
         <ul>
-            <li>Image</li>
-            <li>releaseDate</li>
-            <li>genre / tags</li>
-            <li>developer</li>
-            <li>editor</li>
-            <li>price</li>
-            <li>stock -> if > 0</li>
-            <li>promotion -> if > 0</li>
-            <li>download</li>
+            <li><span>Date de sortie :</span> {{game.releaseDate}} </li>
+            <li><span>Genres :</span> {{game.genres}} </li>
+            <li><span>Développeur :</span> {{game.developer.name}} </li>
+            <li><span>Éditeur :</span> {{game.editor.name}} </li>
+            <li><span>Prix :</span> {{game.price}} € </li>
+            <li><span>Stock restant :</span>  {{game.stock}} clé(s) </li>
+            <li><span>Promotion actuelle :</span> {{game.promotion}} % </li>
+            <li><span>Nombre de téléchargements :</span> {{game.download}} </li>
         </ul>
         
-        <h4>Configurations</h4>
-        <p>Utile ou pas ?</p>
     </div>
     
 
     
 </div>
 
-<button> Buy now</button>
+<div class="button">
+    <button> Buy now</button>
+</div>
+
 
