@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Game } from 'src/app/_models/game.model';
+import { GameService } from 'src/app/_services/game.service';
 
 @Component({
   selector: 'app-promo-card-list',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PromoCardListComponent implements OnInit {
 
-  constructor() { }
+  games!: Game[];
+
+  constructor(private gameService: GameService) {
+    this.gameService.getGames().subscribe({
+      next: games => this.games = games.slice(0, 15),
+      error: err => alert("echec"),
+      complete: () => console.log("get games - completed")
+    });
+   }
 
   ngOnInit(): void {
   }

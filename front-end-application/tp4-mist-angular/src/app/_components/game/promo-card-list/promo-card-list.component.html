@@ -1,4 +1,7 @@
 <h3 class="title">Promo</h3>
-<section class="promo">
-    <app-promo-card></app-promo-card>
+<section class="promo d-flex flex-wrap justify-content-around">
+    <div *ngFor="let game of games">
+        <app-promo-card [game]="game"></app-promo-card>
+    </div>
+    
 </section>

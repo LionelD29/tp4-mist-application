@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Developer } from '../_models/developer.model';
-import { DeveloperForm } from '../_models/developerForm.model';
+import { DeveloperForm } from '../_models/developerForm';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeveloperService {
 
-  private readonly BASE_URL = "http://localhost:8282/developer";
+  private readonly BASE_URL = "http://10.27.1.17:8080/developer";
 
   constructor(private client: HttpClient) { }
 

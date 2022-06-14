@@ -6,8 +6,13 @@ export interface Game {
     id: number,
     reference: String,
     title: String,
+    imageUrl: String,
     releaseDate: Date,
     genres: Genre[],
-    editor: Editor
-    developer: Developer
+    developer: Developer,
+    editor: Editor,
+    price: number,
+    stock: number,
+    promotion: number,
+    download: number
 }
