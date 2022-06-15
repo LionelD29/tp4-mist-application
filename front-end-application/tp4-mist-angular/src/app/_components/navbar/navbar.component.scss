@@ -21,9 +21,13 @@ span, button{
     }
 }
 .title > img{
-  width: 60px;
+  width: 80px;
+  position: absolute;
+  left: 50%;
+  top: 0;
 }
 .menu {
+    
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -65,6 +69,7 @@ span, button{
     stroke-width: 6;
   }
   #navbar{
+    height: 80px;
     left: -100%;
     transition: left 0.9s ease-in-out;
   }
