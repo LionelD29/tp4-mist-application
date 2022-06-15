@@ -1,6 +1,6 @@
 @use '/src/styles/global' as c;
 @use'/src/styles/button' as b;
-button, li>span, #navbar{
+button, li>span, #logo{
     cursor: pointer !important;
 }
 span, button{
@@ -27,7 +27,6 @@ span, button{
   top: 0;
 }
 .menu {
-    
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -71,11 +70,11 @@ span, button{
   #navbar{
     height: 80px;
     left: -100%;
-    transition: left 0.9s ease-in-out;
+    transition: left 0.5s ease-in-out, background 0.2s ease-in-out;
   }
 
  .navbarc{
-    position: absolute;
+    position: fixed;
     background-color: c.$dark-grey;
     z-index: 100000;
     width: 100vw;
