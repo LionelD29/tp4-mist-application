@@ -13,7 +13,7 @@ export class GameCardListComponent implements OnInit {
 
   constructor(private gameService: GameService) {
     this.gameService.getGames().subscribe({
-      next: games => this.games = games.slice(0, 15).sort((a, b) => a.download - b.download),
+      next: games => this.games = games.slice(0, 15).sort((a, b) => b.download - a.download),
       error: err => alert("echec"),
       complete: () => console.log("get games - completed")
     })
