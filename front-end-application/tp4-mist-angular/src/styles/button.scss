@@ -51,3 +51,20 @@
     top: -2px;
     z-index: 11;
 }
+
+.formcustom{
+    background-color: #8D2CDD;
+    border: 0;
+    border-radius: 5px;
+    height: 30px;
+    color: white;
+    &> option{
+        background-color: #8D2CDD;
+        border-radius: 15px;
+        padding: 2px 3px;
+    }
+    &:hover{
+        border-top-left-radius: 10px;
+        background-color: #8D2CDD;
+    }
+}

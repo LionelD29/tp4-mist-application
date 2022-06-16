@@ -13,6 +13,6 @@ public class BeanConfig {
     }
     @Bean
     public JwtValidationFilter jwtValidationFilter(RestTemplate template){
-        return new JwtValidationFilter(template, "localhost", 8181);
+        return new JwtValidationFilter(template, "10.27.1.17", 8181);
     }
 }
