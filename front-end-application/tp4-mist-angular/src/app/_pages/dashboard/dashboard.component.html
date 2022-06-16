@@ -1,3 +1,22 @@
-<div class="container sign">
+<ng-template #loading>
+    ...Loading
+</ng-template>
 
+
+<div *ngIf="user; else loading">
+    <div class="container sign parent">
+        <h2 class="title" >Mon compte</h2>
+        <div class="personnal1 p-2">
+            <p><span class="font" >Nom : </span>{{this.user.lastName}}</p>
+            <p><span class="font" >Prenom name : </span>{{this.user.firstName}}</p>
+            <p><span class="font" >Pseudo : </span>{{this.user.username}}</p>
+        </div>
+        <div class="personnal2 p-2">
+            <p><span class="font" >Email : </span>{{this.user.email}}</p>
+            <p><span class="font" >Téléphone : </span>{{this.user.phoneNumber}}</p>
+        </div>
+        <div class="order-list p-2 pt-4">
+            <h2 class="title">Liste de commandes</h2>
+        </div>
+    </div>
 </div>

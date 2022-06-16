@@ -1,13 +1,13 @@
 .main-card{
     position: relative;
-    left: 2%;
-    width: 280px;
-    height: 280px;
+    width: 250px;
+    height: 250px;
     margin: 20px;
     // height: 170px;
     border-radius: 10px;
     background-color: white;
     background-size: cover;
+    justify-self: center;
 }
 .promo-icon{
     position: absolute;
@@ -25,7 +25,8 @@ p{
     margin-left: 3px;
 }
 .title{
-    color: white;
+    display: none;
+    max-width: 240px;
     position: absolute;
     bottom:-22px;
     left:40%;
@@ -34,18 +35,32 @@ p{
 .price{
     color: white;
     position: absolute;
-    bottom:-22px;
-    left:90%;
+    bottom: 0px;
+    left:220px;
     transform: translateX(-50%);
 }
 
 @media (max-width:800px){
-    .price, .title{
+    .price{
+        left: 160px;
         bottom: 0;
-        color: black;
+        color: white;
     }
     .main-card{
-        max-width: 40%;
-        height: 140px;
+        width: 200px;
+        height: 200px;
+    }
+    .title{
+        display: none;
+    }
+}
+
+@media (max-width:500px){
+    .main-card{
+        width: 150px;
+        height: 150px;
+    }
+    .price{
+        left: 120px;
     }
 }

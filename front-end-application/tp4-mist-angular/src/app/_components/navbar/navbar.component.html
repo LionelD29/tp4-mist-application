@@ -40,9 +40,8 @@
                 <div *ngIf="authService.getLocalStorageItem('isAuthenticated')">
                     <select class="formcustom ms-sm-3 ms-0 mt-5 mt-lg-0">
                         <option value="" disabled selected>{{ authService.getLocalStorageItem('username') }}</option>
-                        <option value="sign-out" (click)="onSignOut()" 
-                        
-                       >Se déconnecter</option>
+                        <option value="sign-out" (click)="toDashbord()">voir mon compte</option>
+                        <option value="sign-out" (click)="onSignOut()">Se déconnecter</option>
                     </select>
                 </div>
             </ul>

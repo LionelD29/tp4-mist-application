@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   @HostListener('window:scroll') 
   onScroll(e: Event): void {
     const navbar = document.getElementById("navbar");
-    if(window.scrollY > 300){ 
+    if(window.scrollY > 150){ 
       if(navbar){
         navbar.style.backgroundColor = "#292929";
       }
@@ -71,6 +71,10 @@ export class NavbarComponent implements OnInit {
   onSignOut(): void {
     this.openMenu();
     this.authService.signOut();
+  }
+
+  toDashbord():void{
+    this.router.navigate(['dashboard']);
   }
   
   navbarChanger(){
