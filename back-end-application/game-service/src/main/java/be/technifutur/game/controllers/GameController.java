@@ -4,6 +4,7 @@ import be.technifutur.game.exceptions.ElementNotFoundException;
 import be.technifutur.game.metier.service.game.GameService;
 import be.technifutur.game.models.dto.DetailedGameDTO;
 import be.technifutur.game.models.dto.GameDTO;
+import be.technifutur.game.models.entities.Genre;
 import be.technifutur.game.models.forms.GameInsertForm;
 import be.technifutur.game.models.forms.GameUpdateForm;
 import lombok.extern.slf4j.Slf4j;
@@ -54,6 +55,11 @@ public class GameController {
         } catch (ElementNotFoundException ex) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping(params = "genre")
+    public List<DetailedGameDTO> getGamesByGenre(@RequestParam(name = "genre") Genre genre) {
+        return service.getGamesByGenre(genre);
     }
 
 
