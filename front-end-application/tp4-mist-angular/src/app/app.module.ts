@@ -22,6 +22,7 @@ import { SignUpComponent } from './_components/auth/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './_helpers/interceptors/jwt.interceptor';
+import { CardGameDetailsComponent } from './_components/game/card-game-details/card-game-details.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { JwtInterceptor } from './_helpers/interceptors/jwt.interceptor';
     AuthComponent,
     SignInComponent,
     SignUpComponent,
+    CardGameDetailsComponent,
     Banner1Component
   ],
   imports: [

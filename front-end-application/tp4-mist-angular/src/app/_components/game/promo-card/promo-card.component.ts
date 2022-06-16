@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Game } from 'src/app/_models/game.model';
 
 @Component({
   selector: 'app-promo-card',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PromoCardComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  game!: Game;
+
+  constructor() {}
 
   ngOnInit(): void {
   }
