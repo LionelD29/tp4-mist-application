@@ -11,10 +11,12 @@ export class PromoCardComponent implements OnInit {
 
   @Input()
   game!: Game;
-
+  truePrice: number = 0;
   constructor() {}
 
   ngOnInit(): void {
+    this.truePrice = this.game.price * (1 - this.game.promotion / 100.0);
+    this.truePrice = Math.round(this.truePrice * 100)/100;
   }
 
 }

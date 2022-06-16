@@ -17,6 +17,7 @@ import { DashboardComponent } from './_pages/dashboard/dashboard.component';
 import { Error404Component } from './_pages/error404/error404.component';
 import { AuthComponent } from './_pages/auth/auth.component';
 import { Banner1Component } from './_components/banner/banner1/banner1.component';
+import { Banner2Component } from './_components/banner/banner2/banner2.component';
 import { SignInComponent } from './_components/auth/sign-in/sign-in.component';
 import { SignUpComponent } from './_components/auth/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -45,6 +46,7 @@ import { CategoryPageComponent } from './_pages/category-page/category-page.comp
     SignUpComponent,
     CardGameDetailsComponent,
     Banner1Component,
+    Banner2Component,
     CategoryPageComponent
   ],
   imports: [

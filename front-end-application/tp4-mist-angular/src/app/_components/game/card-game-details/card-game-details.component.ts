@@ -16,17 +16,21 @@ export class CardGameDetailsComponent implements OnInit {
   editor!: Editor;
   developers!: Developer[];
   reference!: String;
-
+  truePrice: number = 0;
   constructor(private route: ActivatedRoute, private gameService: GameService, private router: Router) {
     this.reference = route.snapshot.params['reference'];
     this.gameService.getGameByReference(this.reference).subscribe({
-      next: game => this.game = game,
+      next: game => {
+        this.game = game;
+        this.truePrice = this.game.price * (1 - this.game.promotion/100);
+        this.truePrice = Math.round(this.truePrice * 100)/100;
+      },
       error: err => console.log("echec"),
       complete: () => console.log("get game - completed")
     });
    }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
   }
 
   onClick(event: any){
