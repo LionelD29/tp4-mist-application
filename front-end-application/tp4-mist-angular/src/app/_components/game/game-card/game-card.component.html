@@ -6,7 +6,8 @@
             <img src="assets/cards/promo1.png" style="width: 50px" alt="">
         </div>
         <div class="title">{{ game.title }}</div>
-        <div class="price">{{ game.price }}€</div>
+        <div *ngIf="this.game.promotion" id="raw" class="price">{{ game.price }}€</div>
+        <div class="price">{{ this.truePrice }}€</div>
     
     </div>
 </a>

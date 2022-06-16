@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./banner2.component.scss']
 })
 export class Banner2Component implements OnInit {
+
   constructor() { }
 
   ngOnInit(): void {

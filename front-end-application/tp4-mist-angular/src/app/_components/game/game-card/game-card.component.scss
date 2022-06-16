@@ -3,11 +3,14 @@
     width: 250px;
     height: 250px;
     margin: 20px;
-    // height: 170px;
     border-radius: 10px;
     background-color: white;
     background-size: cover;
     justify-self: center;
+    transition: all 0.1s ease-in-out;
+    &:hover{
+        transform: scale(1.07);
+    }
 }
 .promo-icon{
     position: absolute;
@@ -38,8 +41,14 @@ p{
     bottom: 0px;
     left:220px;
     transform: translateX(-50%);
+    background-color: rgba(#333333, 0.5);
+    border-radius: 5px;
+    padding: 3px 5px;
 }
-
+#raw{
+    left: 155px;
+    text-decoration: line-through;
+}
 @media (max-width:800px){
     .price{
         left: 160px;
@@ -53,6 +62,10 @@ p{
     .title{
         display: none;
     }
+    #raw{
+        left:120px;
+        bottom: 30px;
+    }
 }
 
 @media (max-width:500px){
@@ -63,4 +76,5 @@ p{
     .price{
         left: 120px;
     }
+    
 }
