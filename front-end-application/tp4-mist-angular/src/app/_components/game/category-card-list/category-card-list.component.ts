@@ -7,13 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryCardListComponent implements OnInit {
 
+  genres: string[] = ["SOLO","MULTI","ADVENTURE","ACTION","FPS","RPG"];
+  buttonText: string[] = ["solo","multi","aventure","action","fps","rpg"];
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  
-  counter(i: number) {
-    return new Array(i);
-}
 }

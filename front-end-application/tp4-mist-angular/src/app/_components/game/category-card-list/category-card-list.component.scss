@@ -2,6 +2,8 @@
 .title{
     text-align: center;
     color: white;
+    margin-top: 100px;
+    margin-bottom: 50px;
 }
 .wrapper{
     width: 500px;
@@ -12,11 +14,11 @@
     row-gap: 4rem;
     justify-items: center;
     align-items: center;
-    margin: 150px auto;
+    margin: 0 auto 150px;
 }
 .box{
     width: 300px;
-    height: 200px;
+    // height: 200px;
 }
 
 @media (min-width:1200px){

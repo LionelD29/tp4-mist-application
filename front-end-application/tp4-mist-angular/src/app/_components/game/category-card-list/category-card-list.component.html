@@ -1,9 +1,10 @@
-<h3 class="title">Categories</h3>
+
+<h3 class="title">Catégories</h3>
 <div class="container-fluid d-flex justify-content-center">
    <div class="wrapper d-grid">
-        <app-category-card 
-            *ngFor="let item of counter(6);let i = index"
-            [numb_img]="i"
-            ></app-category-card>
+        <app-category-card *ngFor="let genre of genres;let i = index"
+                            [genre]="genre"
+                            [button-text]="buttonText[i]"
+                            [numb-img]="i"></app-category-card>
     </div>
 </div> 

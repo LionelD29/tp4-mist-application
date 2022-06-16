@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './_helpers/interceptors/jwt.interceptor';
 import { CardGameDetailsComponent } from './_components/game/card-game-details/card-game-details.component';
+import { CategoryPageComponent } from './_pages/category-page/category-page.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CardGameDetailsComponent } from './_components/game/card-game-details/c
     SignInComponent,
     SignUpComponent,
     CardGameDetailsComponent,
-    Banner1Component
+    Banner1Component,
+    CategoryPageComponent
   ],
   imports: [
     BrowserModule,
