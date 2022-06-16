@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-category-card',
@@ -6,11 +7,23 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./category-card.component.scss']
 })
 export class CategoryCardComponent implements OnInit {
-  @Input() numb_img:number = 0;
-  gameSection: string[] = ["solo","arcade","aventure","fight","fps","rpg"];
-  constructor() { }
+
+  @Input()
+  genre!: string;
+  @Input("button-text")
+  buttonText!: string;
+  @Input("numb-img")
+  numbImg: number = 0;
+
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  public onClick(): void {
+    this.router.navigate(['genre', this.genre]);
   }
 
 }

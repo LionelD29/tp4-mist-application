@@ -1,0 +1,16 @@
+<ng-template #loading>
+    <div>
+        <p>Chargement des données...</p>
+    </div>
+</ng-template>
+
+<div *ngIf="games; else loading">
+    <div style="margin-top: 100px;">
+        <h3 class="title">Genre : {{ this.genre }}</h3>
+        <section class="promo d-flex flex-wrap justify-content-around">
+            <div *ngFor="let game of games">
+                <app-promo-card [game]="game"></app-promo-card>
+            </div>
+        </section>
+    </div>
+</div>
