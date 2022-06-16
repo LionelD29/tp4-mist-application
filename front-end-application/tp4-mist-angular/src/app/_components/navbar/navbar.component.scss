@@ -1,18 +1,30 @@
 @use '/src/styles/global' as c;
 @use'/src/styles/button' as b;
-.navbar-brand, .nav-link {
+button, li>span, #logo{
     cursor: pointer !important;
 }
 span, button{
     color: white !important;
 }
 .research{
+    width: 322px;
+    height: 38px;
     border-radius: 15px;
     padding: 0.3rem 3rem;
     border: 2px solid #F40099;
+    z-index: 10;
+    position: relative;
+    background-color: #292929;
+    color: aliceblue;
+    &:focus + #search_sub{
+      background-color: #0A61FF;
+    }
 }
 .title > img{
   width: 60px;
+  position: absolute;
+  left: 50%;
+  top: 9px;
 }
 .menu {
     background-color: transparent;
@@ -56,20 +68,17 @@ span, button{
     stroke-width: 6;
   }
   #navbar{
-    transition: background 0.5s ease-in-out;
+    height: 80px;
+    left: -100%;
+    transition: left 0.5s ease-in-out, background 0.2s ease-in-out;
   }
 
  .navbarc{
-    position: absolute;
+    position: fixed;
     background-color: c.$dark-grey;
-    z-index: 1000;
+    z-index: 100000;
     width: 100vw;
     height: 100vh;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    transition: all 1s ease-in-out;
  }
 
  .collapser{
@@ -77,7 +86,7 @@ span, button{
  }
 
  .navbarItems{
-  position: fixed;
+  position: absolute;
   width: 80%;
   margin-top: 10rem;
   flex-direction: column;
@@ -96,5 +105,11 @@ span, button{
     .menu{
         display: none;
     }    
+}
+
+@media (max-width:600px){
+  .research{
+    width: 90%;
+  }
 }
 

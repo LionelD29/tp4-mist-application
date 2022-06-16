@@ -12,7 +12,6 @@ export class NavbarComponent implements OnInit {
   @HostListener('window:scroll') 
   onScroll(e: Event): void {
     const navbar = document.getElementById("navbar");
-    const body = document.getElementsByTagName("body")[0];
     if(window.scrollY > 300){ 
       if(navbar){
         navbar.style.backgroundColor = "#292929";
@@ -77,18 +76,26 @@ export class NavbarComponent implements OnInit {
   navbarChanger(){
     const body = document.getElementsByTagName("body")[0];
     const navbar = document.getElementById("navbar");
+    const logo = document.getElementById("logo1");
     if(this.isOpen){
-      if(navbar){
-        if(!navbar.classList.contains("navbarc")){
+      if(navbar && logo){
+        if(!navbar.classList.contains("navOpen")){
           navbar.style.backgroundColor = "#292929";
           navbar.classList.add("navbarc");
+          navbar.style.left= "0";
+          logo.style.left= "0";
+          navbar.style.height= "100vh";
           body.style.overflow = "hidden";
         }
       }
     }else{
-      if(navbar){
+      if(navbar && logo){
         navbar.style.backgroundColor = "transparent";
+        navbar.style.left= "-100%";
         navbar.classList.remove("navbarc");
+        navbar.style.height= "80px";
+        logo.style.left= "50%";
+        
       }
       body.style.overflow = "auto"; 
     }      
@@ -96,26 +103,26 @@ export class NavbarComponent implements OnInit {
 
   openMenu(){
     if(window.innerWidth < 1000){
-    this.isOpen = this.isOpen ? false : true;
-    const navbar_elem = document.getElementById("navbarContent");
-    const navbar_parent = document.getElementById("parentItem");
-    const btn = document.getElementById("menu-btn");
-    if(this.isOpen){
-      if(navbar_elem && navbar_parent){
-        navbar_elem.classList.remove("collapser");
-        navbar_elem.classList.add("navbarItems");
-        navbar_parent.classList.add("navparent")
+      this.isOpen = this.isOpen ? false : true;
+      const navbar_elem = document.getElementById("navbarContent");
+      const navbar_parent = document.getElementById("parentItem");
+      const btn = document.getElementById("menu-btn");
+      if(this.isOpen){
+        if(navbar_elem && navbar_parent){
+          navbar_elem.classList.remove("collapser");
+          navbar_elem.classList.add("navbarItems");
+          navbar_parent.classList.add("navparent")
+        }
+      }else{
+        if(navbar_elem && navbar_parent){
+          navbar_elem.classList.add("collapser");
+          navbar_elem.classList.remove("navbarItems");
+          navbar_parent.classList.remove("navparent")
+        }  
       }
-    }else{
-      if(navbar_elem && navbar_parent){
-        navbar_elem.classList.add("collapser");
-        navbar_elem.classList.remove("navbarItems");
-        navbar_parent.classList.remove("navparent")
-      }  
-    }
-    if(btn)
-      btn.classList.toggle('opened'); 
-    this.navbarChanger();
+      if(btn)
+        btn.classList.toggle('opened'); 
+      this.navbarChanger();
     }
   }
   

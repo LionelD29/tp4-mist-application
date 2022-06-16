@@ -3,9 +3,8 @@
     <div class="container-fluid" id="parentItem">
         
         <div id="logo" class="title ms-3 ms-lg-0">
-            <img src="/assets/logo.png" routerLink="/home" alt="App logo">
+            <img id="logo1" src="/assets/logo.png" routerLink="/home" alt="App logo">
         </div>
-
         <button class="menu mb-3 mb-lg-0" id="menu-btn" type="button" (click)="openMenu()">
             <svg width="50" height="50" viewBox="0 0 100 100">
                 <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
@@ -14,12 +13,13 @@
             </svg>
         </button>
         <div class="justify-content-end d-flex" id="navbarContent">
-           
-            <input style="background-color: #292929;color: aliceblue;" class="research mt-2 mt-md-0"
-                type="search"
-                placeholder="Rechercher..."
-                aria-label="Search">
-          
+            <form class="searchbar" action="">
+                <input class="research"
+                    type="search"
+                    placeholder="Rechercher..."
+                    aria-label="Search">
+                <button id="search_sub" class="submit_btn" type="submit">Go</button>
+            </form>
             <ul class="navbar-nav" id="listItem">
                 <li class="nav-item">
                     <span class="nav-link ms-sm-3 ms-0 mt-2 mt-lg-0" (click)="onClick($event)">Accueil</span>

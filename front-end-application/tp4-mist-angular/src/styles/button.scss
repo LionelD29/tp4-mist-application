@@ -28,7 +28,8 @@
 .sign-up{
     color: #ffffff !important;
     height: 40px;
-    border: 0;
+    box-sizing: border-box;
+    border: 1px solid transparent;
     border-radius: 10px;
     padding: 4px 7px;
     background-color: #8D2CDD;
@@ -37,4 +38,16 @@
         background-color: transparent;  
         border: 1px solid #F40099;
     }
+}
+
+.submit_btn{
+    position: absolute;
+    border: 0;
+    border-radius: 20px;
+    background-color: #F40099;
+    width: 60px;
+    height: 40px;
+    right: 0;
+    top: -2px;
+    z-index: 11;
 }
