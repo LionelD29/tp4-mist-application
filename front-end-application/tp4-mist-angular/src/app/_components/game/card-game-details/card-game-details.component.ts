@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Developer } from 'src/app/_models/developer.model';
 import { Editor } from 'src/app/_models/editor.model';
 import { Game } from 'src/app/_models/game.model';
@@ -17,7 +17,7 @@ export class CardGameDetailsComponent implements OnInit {
   developers!: Developer[];
   reference!: String;
 
-  constructor(private route: ActivatedRoute, private gameService: GameService) {
+  constructor(private route: ActivatedRoute, private gameService: GameService, private router: Router) {
     this.reference = route.snapshot.params['reference'];
     this.gameService.getGameByReference(this.reference).subscribe({
       next: game => this.game = game,
@@ -27,6 +27,10 @@ export class CardGameDetailsComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  }
+
+  onClick(event: any){
+    this.router.navigate(['genre', event.target.innerText]);
   }
 
 }

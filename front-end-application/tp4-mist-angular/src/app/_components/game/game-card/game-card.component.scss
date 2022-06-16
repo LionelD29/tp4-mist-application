@@ -1,0 +1,51 @@
+.main-card{
+    position: relative;
+    left: 2%;
+    width: 280px;
+    height: 280px;
+    margin: 20px;
+    // height: 170px;
+    border-radius: 10px;
+    background-color: white;
+    background-size: cover;
+}
+.promo-icon{
+    position: absolute;
+    bottom: 0;
+    width: 50px;
+    height: 30px;
+    transform: translate(-3px,3px);
+}
+p{
+    color: white;
+    position: absolute;
+    z-index: 100;
+    text-align: center;
+    line-height: 30px;
+    margin-left: 3px;
+}
+.title{
+    color: white;
+    position: absolute;
+    bottom:-22px;
+    left:40%;
+    transform: translateX(-50%);
+}
+.price{
+    color: white;
+    position: absolute;
+    bottom:-22px;
+    left:90%;
+    transform: translateX(-50%);
+}
+
+@media (max-width:800px){
+    .price, .title{
+        bottom: 0;
+        color: black;
+    }
+    .main-card{
+        max-width: 40%;
+        height: 140px;
+    }
+}

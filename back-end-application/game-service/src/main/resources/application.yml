@@ -2,10 +2,10 @@ spring:
   application:
     name: game-service
   profiles:
-    active: default
+    active: technifutur
 #    alterner entre technifutur et default (pour la maison)
   config:
-    import: configserver:http://user:pass@localhost:9999
+    import: configserver:http://user:pass@10.27.1.17:9999
 #    alterner entre 10.27.1.17 et localhost
   feign:
     client:
@@ -15,6 +15,6 @@ spring:
           - readTimeout: 160000000
   rabbitmq:
     port: 5672
-    host: localhost
-    username: guest
-    password: guest
+    host: 10.27.1.17
+    username: test
+    password: test

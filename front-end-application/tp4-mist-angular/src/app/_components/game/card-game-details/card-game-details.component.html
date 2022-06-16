@@ -1,35 +1,47 @@
-<div class="details">
-    <div class="left">
-        <h2>{{game.title}}</h2>
-        <br>
-        <img [src]="game.imageUrl" alt="" class="img">
-
-        <!-- <h4>About the game</h4>
-        <p>Petit résumé de chacun ? Si on a le courage...</p> -->
+<ng-template #loading>
+    <div>
+        <p>Chargement des données...</p>
     </div>
+</ng-template>
+
+<div *ngIf="game; else loading">
+
+    <div class="details">
+        <div class="left">
+            <h2>{{game.title}}</h2>
+            <br>
+            <img [src]="game.imageUrl" alt="" class="img">
     
-    <div class="right">
-        <h4>Détails du jeux</h4>
-        <br>
-        <ul>
-            <li><span>Date de sortie :</span> {{game.releaseDate}} </li>
-            <li><span>Genres :</span> {{game.genres}} </li>
-            <li><span>Développeur :</span> {{game.developer.name}} </li>
-            <li><span>Éditeur :</span> {{game.editor.name}} </li>
-            <li><span>Prix :</span> {{game.price}} € </li>
-            <li><span>Stock restant :</span>  {{game.stock}} clé(s) </li>
-            <li><span>Promotion actuelle :</span> {{game.promotion}} % </li>
-            <li><span>Nombre de téléchargements :</span> {{game.download}} </li>
-        </ul>
+            <!-- <h4>About the game</h4>
+            <p>Petit résumé de chacun ? Si on a le courage...</p> -->
+        </div>
         
+        <div class="right">
+            <h4>Détails du jeux</h4>
+            <br>
+            <ul>
+                <li><span class="affiche">Date de sortie :</span> {{game.releaseDate}} </li>
+                <li><span class="affiche">Tags :</span>
+                    <div *ngFor="let genre of game.genres">
+                        <span (click)="onClick($event)" class="links">{{genre}}</span>
+                    </div>  </li>
+                <li><span class="affiche">Développeur :</span> {{game.developer.name}} </li>
+                <li><span class="affiche">Éditeur :</span> {{game.editor.name}} </li>
+                <li><span class="affiche">Prix :</span> {{game.price}} € </li>
+                <li><span class="affiche">Stock restant :</span>  {{game.stock}} clé(s) </li>
+                <li><span class="affiche">Promotion actuelle :</span> {{game.promotion}} % </li>
+                <li><span class="affiche">Nombre de téléchargements :</span> {{game.download}} </li>
+            </ul>
+            
+        </div>
     </div>
     
-
+    <div class="button">
+        <button> Buy now</button>
+    </div>
     
 </div>
 
-<div class="button">
-    <button> Buy now</button>
-</div>
+
 
 
