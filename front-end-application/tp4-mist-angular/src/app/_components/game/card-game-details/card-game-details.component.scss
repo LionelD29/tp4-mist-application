@@ -32,9 +32,15 @@ li{
     box-shadow: 15px 15px 15px black;
     border-radius: 15px;
 }
+
+.links{
+    color: rgb(141, 44, 221);
+}
+
 .links:hover{
     font-style: italic;
-    color: rgb(141, 44, 221);
+    color: #F40099;
+    cursor: pointer;
 }
 
 .button{
@@ -51,8 +57,6 @@ li{
         border-radius: 10px;
         border: 0px;
         transition-duration: 0.3s;
-        // box-shadow: 15px 15px 15px black;
-        // transition: 
         
     }
     button:hover{
