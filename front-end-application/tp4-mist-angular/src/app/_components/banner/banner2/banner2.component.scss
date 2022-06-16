@@ -1,0 +1,55 @@
+@use '/src/styles/font' as f;
+@use '/src/styles/global' as c;
+#main{
+    background-color: c.$dark-grey;
+    height: 230px;
+    margin: 4rem 0;
+    position: relative;
+}
+.texte{
+    position: relative;
+    color: white;
+    font-size: 27px;
+    font-family: f.$soft-font2;
+    &::before{
+        display: block;
+        content: open-quote;
+        font-size: 80px;
+        position: absolute;
+        font-family: Georgia, serif;
+        color: white;
+        top: -40px;
+        left: -7%;
+    }
+    &::after{
+        display: block;
+        content: close-quote;
+        font-size: 80px;
+        position: absolute;
+        font-family: Georgia, serif;
+        color: white;
+        right: -10px;
+        bottom: -60px;
+    }
+}
+.trust{
+    max-width: 38rem;
+}
+.stars{
+    width: 40px;
+}
+.pasha{
+    max-width: 250px;
+    align-self: flex-end;
+}
+@media (max-width:900px){
+    .pasha{
+        display: none;
+    }
+    .trust{
+        width: 80%;
+    }
+    .texte{
+        font-size: 20px;
+    }
+}

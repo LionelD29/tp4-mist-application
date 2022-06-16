@@ -1,7 +1,6 @@
 <h3 class="title">Jeux du moment</h3>
-<section class="popular d-flex flex-wrap justify-content-around">
-    <div *ngFor="let game of games">
+<section class="promo">
+    <div class="center-card" *ngFor="let game of games">
         <app-game-card [game]="game"></app-game-card>
     </div>
-    
 </section>
