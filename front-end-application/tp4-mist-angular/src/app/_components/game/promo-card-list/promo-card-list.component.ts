@@ -13,7 +13,7 @@ export class PromoCardListComponent implements OnInit {
 
   constructor(private gameService: GameService) {
     this.gameService.getGames().subscribe({
-      next: games => this.games = games.slice(0, 15),
+      next: games => this.games = games.sort((x,y) => x.promotion < y.promotion ? 1 : -1).slice(0, 12),
       error: err => alert("echec"),
       complete: () => console.log("get games - completed")
     });
