@@ -12,6 +12,7 @@ import be.technifutur.game.models.dto.MarketDTO;
 import be.technifutur.game.models.entities.Developer;
 import be.technifutur.game.models.entities.Editor;
 import be.technifutur.game.models.entities.Game;
+import be.technifutur.game.models.entities.Genre;
 import be.technifutur.game.models.forms.DeveloperForm;
 import be.technifutur.game.models.forms.EditorForm;
 import be.technifutur.game.models.forms.GameInsertForm;
@@ -90,6 +91,19 @@ public class GameServiceImpl implements GameService {
         MarketDTO marketDTO = (MarketDTO) marketClient.getAll().stream().filter(ti -> ti.equals(title));
         DetailedGameDTO detailedGameDTO = mapper.simpleToDetailedDTO(marketDTO, gameDTO);
         return detailedGameDTO;
+    }
+
+    @Override
+    public List<DetailedGameDTO> getGamesByGenre(Genre genre) {
+        return repository.findByGenres(genre)
+                .stream()
+                .map(
+                        g -> mapper.simpleToDetailedDTO(
+                                marketClient.getOneByRef(g.getReference()),
+                                mapper.entityToDTO(g)
+                        )
+                )
+                .toList();
     }
 
     @Override
@@ -178,4 +192,5 @@ public class GameServiceImpl implements GameService {
     public void insertGameList(List<GameInsertForm> gameList) {
         gameList.forEach(this::insertGame);
     }
+
 }

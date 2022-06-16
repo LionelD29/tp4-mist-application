@@ -2,6 +2,7 @@ package be.technifutur.game.metier.service.game;
 
 import be.technifutur.game.models.dto.DetailedGameDTO;
 import be.technifutur.game.models.dto.GameDTO;
+import be.technifutur.game.models.entities.Genre;
 import be.technifutur.game.models.forms.GameInsertForm;
 import be.technifutur.game.models.forms.GameUpdateForm;
 
@@ -27,4 +28,6 @@ public interface GameService {
     GameDTO updateEditorOfGame(UUID gameReference, UUID edReference);
 
     void insertGameList(List<GameInsertForm> gameList);
+
+    List<DetailedGameDTO> getGamesByGenre(Genre genre);
 }

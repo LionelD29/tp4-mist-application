@@ -56,7 +56,6 @@ public class GameMapper {
             return null;
         }
 
-
         return DetailedGameDTO.builder()
                 .id(gameDTO.getId())
                 .reference(gameDTO.getReference())
