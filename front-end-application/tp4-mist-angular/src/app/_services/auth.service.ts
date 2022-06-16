@@ -8,7 +8,7 @@ import { LocalStorageUser, UserAccount, UserSignInForm, UserSignUpForm } from '.
 })
 export class AuthService {
  
-  private BASE_URL: string = 'http://localhost:8080/auth';
+  private BASE_URL: string = 'http://10.27.1.17:8080/auth';
 
   constructor(private http: HttpClient) { }
 
