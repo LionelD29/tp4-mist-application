@@ -91,10 +91,11 @@ export class NavbarComponent implements OnInit {
     }else{
       if(navbar && logo){
         navbar.style.backgroundColor = "transparent";
+        navbar.style.left= "-100%";
         navbar.classList.remove("navbarc");
         navbar.style.height= "80px";
         logo.style.left= "50%";
-        navbar.style.left= "-100%";
+        
       }
       body.style.overflow = "auto"; 
     }      
